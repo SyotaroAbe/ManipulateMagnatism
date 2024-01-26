@@ -99,17 +99,7 @@ CEnemy::~CEnemy()
 //===============================================
 void CEnemy::Load(HWND hWnd)
 {
-	CEnemy::Create(D3DXVECTOR3(0.0f, 220.0f, 500.0f), CEnemy::TYPE_WALK, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 320.0f, 800.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 320.0f, 1000.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 320.0f, 1200.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 320.0f, 1900.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 520.0f, 2850.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 220.0f, 3500.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 320.0f, 5100.0f), CEnemy::TYPE_WALK, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 520.0f, 6400.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 620.0f, 6600.0f), CEnemy::TYPE_NORMAL, 4);
-	CEnemy::Create(D3DXVECTOR3(0.0f, 720.0f, 6800.0f), CEnemy::TYPE_NORMAL, 4);
+	CEnemy::Create(D3DXVECTOR3(0.0f, 120.0f, 400.0f), CEnemy::TYPE_NORMAL, 4);
 }
 
 //===============================================

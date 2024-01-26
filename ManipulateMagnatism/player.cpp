@@ -26,6 +26,9 @@
 #include "bullet.h"
 #include "objectX.h"
 #include "magnet.h"
+#include "renderer.h"
+#include "fade.h"
+#include "time.h"
 
 //===============================================
 // マクロ定義
@@ -441,13 +444,13 @@ void CPlayer::Update(void)
 	// チュートリアル画面の画面範囲設定
 	//if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 	//{
-		if (m_pos.z < -600.0f)
+		if (m_pos.z < -700.0f)
 		{
-			m_pos.z = -600.0f;
+			m_pos.z = -700.0f;
 		}
-		if (m_pos.z > 600.0f)
+		if (m_pos.z > 800.0f)
 		{
-			m_pos.z = 600.0f;
+			m_pos.z = 800.0f;
 		}
 	//}
 
@@ -532,6 +535,24 @@ void CPlayer::Draw(void)
 }
 
 //===============================================
+// 死亡直後の処理
+//===============================================
+void CPlayer::Death(void)
+{
+	SetState(CPlayer::STATE_DEATH);
+	CManager::GetInstance()->AddCountDeath(CManager::GetMode());			// 死亡回数をカウント
+	CRenderer::GetFade()->Set(CScene::MODE_GAME);							// リザルト画面へ移動
+	//Reset();	// リセット
+	m_bDisp = false;
+
+	if (CManager::GetMode() == CScene::MODE_GAME)
+	{
+		int nTime = CGame::GetTime()->Get();
+		CGame::SetTime(nTime);		// 時間の設定
+	}
+}
+
+//===============================================
 // オブジェクトXとの当たり判定
 //===============================================
 void CPlayer::CollisionObjX(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin)
@@ -584,7 +605,7 @@ void CPlayer::CollisionEnemy(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 	{// 範囲内にある
 		if (m_state != STATE_DAMAGE && m_bInvincible == false)
 		{// 敵に当たった
-			SetState(STATE_DAMAGE);
+			Death();
 		}
 	}
 }

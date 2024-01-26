@@ -161,19 +161,16 @@ void CGame::Update(void)
 	}
 #endif
 
-	if (m_pPlayer->GetPos().z > 7500.0f)
+	if (m_pPlayer->GetPos().z >= 800.0f)
 	{// BackSpace
-		CRenderer::GetFade()->Set(CScene::MODE_BOSS);		// リザルト画面へ移動
+		m_pPlayer->SetState(CPlayer::STATE_CLEAR);
+		CRenderer::GetFade()->Set(CScene::MODE_RESULT);		// リザルト画面へ移動
 		SetTime(m_pTime->Get());		// 時間の設定
 	}
 
 	if (m_pPlayer->GetPos().y < -100.0f)
 	{// 落下死
-		GetPlayer()->SetState(CPlayer::STATE_DEATH);
-		CManager::GetInstance()->AddCountDeath(CManager::GetMode());			// 死亡回数をカウント
-		CRenderer::GetFade()->Set(CScene::MODE_GAME);							// リザルト画面へ移動
-		//Reset();	// リセット
-		SetTime(m_pTime->Get());		// 時間の設定
+		m_pPlayer->Death();
 	}
 
 	if (m_bStateReady == false)

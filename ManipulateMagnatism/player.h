@@ -75,6 +75,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void Update(void);
 	void Draw(void);
 
+	void Death(void);
+
 	void CollisionObjX(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
 	void CollisionEnemy(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
 

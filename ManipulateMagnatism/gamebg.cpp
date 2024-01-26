@@ -89,10 +89,10 @@ HRESULT CGameBg::Init(D3DXVECTOR3 pos, ETex tex)
 	else
 	{
 		m_nIdxTexture = CManager::GetInstance()->GetTexture()->Regist("data\\TEXTURE\\game000.png");				// テクスチャの設定
-		SetSize(SCREEN_WIDTH * 0.6f, SCREEN_HEIGHT * 0.6f);														// サイズの設定
+		SetSize(SCREEN_WIDTH * 1.0f, SCREEN_HEIGHT * 1.0f);														// サイズの設定
 	
 		// オブジェクト2Dの初期化処理
-		CObjectBillboard::Init(D3DXVECTOR3(pos.x, pos.y, pos.z));
+		CObjectBillboard::Init(D3DXVECTOR3(m_pos.x, CManager::GetInstance()->GetCamera()->GetPosR().y, CManager::GetInstance()->GetCamera()->GetPosR().z));
 	}
 
 	return S_OK;
