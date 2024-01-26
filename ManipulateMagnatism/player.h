@@ -95,6 +95,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	EState GetState(void) { return m_state; }
 	void SetMotion(MOTIONTYPE type);
 	void SetPosShadow(void);
+	bool GetMagnet(void) { return m_bMagnet; }
 
 private:	// 自分のみアクセス可能 [アクセス指定子]
 	D3DXVECTOR3 m_pos;						// 位置
@@ -117,6 +118,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	bool m_bInvincible;						// 無敵状態かどうか
 	int m_nInvincibleCounter;				// 無敵状態カウンター
 	bool m_bDisp;							// 画面に表示するか
+	bool m_bMagnet;							// 磁力切り替え
 
 	EState m_state;							// 状態
 

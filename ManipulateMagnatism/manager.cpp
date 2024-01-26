@@ -46,7 +46,7 @@ CScene * CManager::m_pScene = NULL;					// シーンクラスのポインタ
 HWND CManager::m_hWnd = NULL;						// ウインドウ保存用
 
 CScene::MODE CScene::m_modeOld = CScene::MODE_TITLE;	// 前回の画面モード
-CScene::MODE CManager::m_mode = CScene::MODE_GAME;		// 現在の画面モード
+CScene::MODE CManager::m_mode = CScene::MODE_TITLE;		// 現在の画面モード
 int CScene::m_nTime = 0;								// タイム
 
 //***********************************************************

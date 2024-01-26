@@ -76,6 +76,7 @@ CPlayer::CPlayer() : CObject(4)
 	m_nInvincibleCounter = 0;
 	m_posShadow = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_bDisp = true;
+	m_bMagnet = true;
 }
 
 //===============================================
@@ -106,6 +107,7 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_nInvincibleCounter = 0;
 	m_posShadow = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_bDisp = true;
+	m_bMagnet = true;
 }
 
 //===============================================
@@ -460,6 +462,11 @@ void CPlayer::Update(void)
 		m_pMotion->Update();
 	}
 
+	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_RETURN) == true)
+	{
+		m_bMagnet = m_bMagnet ? false : true;
+	}
+
 	// 地形との当たり判定
 	CMagnet::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 	if (CObjectX::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin) == true)
@@ -477,8 +484,7 @@ void CPlayer::Update(void)
 	// デバッグ表示
 	CManager::GetInstance()->GetDebugProc()->Print(" 移動          ：A D\n");
 	CManager::GetInstance()->GetDebugProc()->Print(" ジャンプ      ：SPACE\n");
-	CManager::GetInstance()->GetDebugProc()->Print(" 空中攻撃      ：ENTER\n");
-	CManager::GetInstance()->GetDebugProc()->Print(" ヒップドロップ：S\n");
+	CManager::GetInstance()->GetDebugProc()->Print(" 磁力切り替え  ：ENTER\n");
 	CManager::GetInstance()->GetDebugProc()->Print(" リザルトへ    ：BACKSPACE\n\n");
 
 	CManager::GetInstance()->GetDebugProc()->Print(" プレイヤーの位置：（%f, %f, %f）\n", m_pos.x, m_pos.y, m_pos.z);

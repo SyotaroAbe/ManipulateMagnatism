@@ -156,7 +156,7 @@ void CGame::Update(void)
 	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_BACKSPACE) == true
 		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_BACK, 0) == true)
 	{// BackSpace
-		CRenderer::GetFade()->Set(CScene::MODE_BOSS);		// リザルト画面へ移動
+		CRenderer::GetFade()->Set(CScene::MODE_RESULT);		// リザルト画面へ移動
 		SetTime(m_pTime->Get());		// 時間の設定
 	}
 #endif
