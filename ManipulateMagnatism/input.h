@@ -65,6 +65,38 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 };
 
 //=========================================================
+// マウス入力クラス
+//=========================================================
+class CInputMouse : public CInput
+{
+public:		// 誰でもアクセス可能 [アクセス指定子]
+	CInputMouse(); 		   // デフォルトコンストラクタ
+	~CInputMouse();		   // デストラクタ
+
+	HRESULT Init(HINSTANCE hInstance, HWND hWnd);
+	void Uninit(void);
+	void Update(void);
+
+	bool GetPress(int nKey);
+	bool GetTrigger(int nKey);
+	bool GetRelease(int nKey);
+	bool GetRepeat(int nKey);
+
+private:	// 自分のみアクセス可能 [アクセス指定子]
+	BYTE m_aKeyState[NUM_KEY_MAX];			// プレスの情報
+	BYTE m_aKeyStateTrigger[NUM_KEY_MAX];	// トリガーの情報
+	BYTE m_aKeyStateRelease[NUM_KEY_MAX];	// リリースの情報
+	BYTE m_aKeyStateRepeat[NUM_KEY_MAX];	// リピートの情報
+
+//HRESULT InitMouse(HINSTANCE hInstance, HWND hWnd);
+//void UninitMouse(void);
+//void UpdateMouse(void);
+////bool GetMousePress(int nKey);
+//void GetMouseDB(void);
+
+};
+
+//=========================================================
 // ゲームパッド入力クラス
 //=========================================================
 class CInputGamePad : public CInput
@@ -119,12 +151,5 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	XINPUT_STATE m_aStateRelease[NUM_PLAYER];	// リリースの情報
 	XINPUT_STATE m_aStateRepeat[NUM_PLAYER];	// リピートの情報
 };
-
-////マウス
-//HRESULT InitMouse(HINSTANCE hInstance, HWND hWnd);
-//void UninitMouse(void);
-//void UpdateMouse(void);
-////bool GetMousePress(int nKey);
-//void GetMouseDB(void);
 
 #endif

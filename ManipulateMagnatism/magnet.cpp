@@ -268,7 +268,7 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 						vecDiffDelete.y = pPos->y - pos.y;
 						vecDiffDelete.z = pPos->z - pos.z;
 						fLenth = D3DXVec3Length(&vecDiffDelete);
-						fLenth = 210.0f - fLenth;
+						fLenth = 220.0f - fLenth;
 
 						//CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
 						if (CGame::GetPlayer()->GetMagnet() == true)
@@ -277,7 +277,7 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 						}
 						else
 						{// ˆø‚«Šñ‚¹
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth));
+							//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth));
 						}
 					}
 
