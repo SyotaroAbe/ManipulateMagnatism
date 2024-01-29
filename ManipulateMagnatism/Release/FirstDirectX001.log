@@ -1,25 +1,6 @@
-﻿  boss.cpp
-  bossBattle.cpp
-  bullet.cpp
-  camera.cpp
-  debugproc.cpp
-  enemy.cpp
-  game.cpp
-  gamebg.cpp
-  input.cpp
-  logo.cpp
-  magnet.cpp
-  manager.cpp
-  meshfield.cpp
-  objectX.cpp
-  pause.cpp
-  player.cpp
-  ranking.cpp
-  result.cpp
-  title.cpp
-  tutorial.cpp
+﻿  item.cpp
   コード生成しています。
-  0 of 598 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  0 of 604 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。

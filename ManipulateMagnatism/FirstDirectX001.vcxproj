@@ -169,6 +169,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gamebg.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="item.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="logo.cpp" />
     <ClCompile Include="magnet.cpp" />
@@ -221,6 +222,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gamebg.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="item.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="logo.h" />
     <ClInclude Include="magnet.h" />

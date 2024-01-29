@@ -171,6 +171,9 @@
     <ClCompile Include="number.cpp">
       <Filter>ソース ファイル\number</Filter>
     </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -313,6 +316,9 @@
     </ClInclude>
     <ClInclude Include="number.h">
       <Filter>ヘッダー ファイル\number</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

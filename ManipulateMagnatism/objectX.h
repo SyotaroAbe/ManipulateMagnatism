@@ -32,6 +32,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 		MODEL_NORMAL,			// 通常床
 		MODEL_NORMALWIDE,		// 通常床
 		MODEL_DAMAGE,			// ダメージ床
+		MODEL_ITEM,				// アイテム
 		MODEL_MAX
 	}MODEL;
 

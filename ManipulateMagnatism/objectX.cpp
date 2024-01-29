@@ -75,6 +75,7 @@ void CObjectX::Load(HWND hWnd)
 	m_aIdxXFile[MODEL_NORMAL] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\boxNormal000.x");
 	m_aIdxXFile[MODEL_NORMALWIDE] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\boxNormal001.x");
 	m_aIdxXFile[MODEL_DAMAGE] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\boxDamage.x");
+	m_aIdxXFile[MODEL_ITEM] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\chair.x");
 
 	FILE *pFile = NULL;
 
