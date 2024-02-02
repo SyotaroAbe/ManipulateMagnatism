@@ -37,6 +37,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	D3DXVECTOR3 GetPosOld(void) { return m_posOld; };
 	D3DXVECTOR3 GetRot(void) { return m_rot; }
 	void SetMove(const D3DXVECTOR3 move);
+	D3DXVECTOR3 GetMove(void) { return m_move; }
 	void SetSize(const float fSizeX, const float fSizeZ);
 	void SetSize(D3DXVECTOR3 size);
 	D3DXVECTOR3 GetSize(void) { return D3DXVECTOR3(m_fSizeX, 0.0f, m_fSizeZ); }

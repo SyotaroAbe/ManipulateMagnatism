@@ -18,6 +18,7 @@
 #include "bossBattle.h"
 #include "tutorial.h"
 #include "magnet.h"
+#include "item.h"
 
 //===============================================
 // 静的メンバ変数
@@ -228,6 +229,10 @@ void CObjectX::ModelSet(FILE *pFile)
 			{
 				CMagnet::Create(pos, rot, type, 3);
 			}
+			else if (type == MODEL_ITEM)
+			{
+				CItem::Create(pos, rot, type, 3);
+			}
 			else
 			{
 				CObjectX::Create(pos, rot, type, 3);
@@ -327,6 +332,16 @@ void CObjectX::Update(void)
 			pObject = pObjectNext;		// 次のオブジェクトを代入
 		}
 	}
+
+	// 位置を更新
+	m_pos += m_move;
+
+	// 3Dポリゴンとの当たり判定
+	//m_pos.y = CManager::GetObject3D()->CollisionVec(m_pos);
+
+	// 移動量を更新（減衰させる）
+	m_move.x += (0.0f - m_move.x) * 0.07f;
+	m_move.z += (0.0f - m_move.z) * 0.07f;
 
 	//CollisionModel(&playerPos, &playerPosOld, 0, pObj, true);
 
@@ -456,17 +471,10 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 						if (CManager::GetMode() == CScene::MODE_GAME)
 						{
 							CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, 0.0f, CGame::GetPlayer()->GetMove().z));
 						}
 						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 						{
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-							CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
-						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-							CBossBattle::GetPlayer()->SetMove(D3DXVECTOR3(CBossBattle::GetPlayer()->GetMove().x, 0.0f, CBossBattle::GetPlayer()->GetMove().z));
 						}
 
 						//if (pObject->GetType() == CObject::TYPE_BOXNORMAL)
@@ -478,10 +486,6 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 							{
 								CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
 							}
 						//}
 						//else

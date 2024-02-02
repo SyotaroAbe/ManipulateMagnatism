@@ -234,14 +234,11 @@ CInputGamePad::~CInputGamePad()
 //=======================================================================
 HRESULT CInputGamePad::Init(HINSTANCE hInstance, HWND hWnd)
 {
-	// 変数宣言
-	int nCntPad;
-
 	// XInputのステート(使う状態)
 	XInputEnable(true);
 
 	// メモリの初期化(プレイヤー分)
-	for (nCntPad = 0; nCntPad < NUM_PLAYER; nCntPad++)
+	for (int nCntPad = 0; nCntPad < NUM_PLAYER; nCntPad++)
 	{
 		memset(&m_aState[nCntPad], 0, sizeof(XINPUT_STATE));
 		memset(&m_aStateTrigger[nCntPad], 0, sizeof(XINPUT_STATE));
@@ -265,12 +262,9 @@ void CInputGamePad::Uninit(void)
 //=======================================================================
 void CInputGamePad::Update(void)
 {
-	// 変数宣言
-	int nCntPad;
-
 	XINPUT_STATE aGamePadState;			// ゲームパッドの入力情報
 
-	for (nCntPad = 0; nCntPad < NUM_PLAYER; nCntPad++)
+	for (int nCntPad = 0; nCntPad < NUM_PLAYER; nCntPad++)
 	{
 		// 入力デバイスからデータを取得
 		if (XInputGetState(nCntPad, &aGamePadState) == ERROR_SUCCESS)

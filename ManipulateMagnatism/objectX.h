@@ -56,6 +56,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void SetRot(const D3DXVECTOR3 rot);
 	D3DXVECTOR3 GetRot(void) { return m_rot; }
 	void SetMove(const D3DXVECTOR3 move);
+	D3DXVECTOR3 GetMove(void) { return m_move; }
 	void SetSize(D3DXVECTOR3 size);
 	D3DXVECTOR3 GetSize(void);
 	void SetSizeMin(D3DXVECTOR3 size);

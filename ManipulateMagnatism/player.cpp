@@ -29,6 +29,7 @@
 #include "renderer.h"
 #include "fade.h"
 #include "time.h"
+#include "item.h"
 
 //===============================================
 // マクロ定義
@@ -77,6 +78,7 @@ CPlayer::CPlayer() : CObject(4)
 	m_posShadow = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_bDisp = true;
 	m_bMagnet = true;
+	m_bMagnetOld = true;
 }
 
 //===============================================
@@ -301,6 +303,7 @@ void CPlayer::Update(void)
 
 	// 前回の位置を保存
 	m_posOld = m_pos;
+	m_bMagnetOld = m_bMagnet;
 
 	if (m_state != STATE_CLEAR)
 	{
@@ -462,13 +465,15 @@ void CPlayer::Update(void)
 		m_pMotion->Update();
 	}
 
-	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_RETURN) == true)
+	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_RETURN) == true
+		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_LB, 0)
+		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_RB, 0))
 	{
 		m_bMagnet = m_bMagnet ? false : true;
 	}
 
 	// 地形との当たり判定
-	CMagnet::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+	CItem::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 	if (CObjectX::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin) == true)
 	{// 着地している
 		SetJump(false);			// ジャンプフラグをリセット
@@ -477,6 +482,7 @@ void CPlayer::Update(void)
 	{
 		m_bJump = true;
 	}
+	CMagnet::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 
 	// 影の位置の設定
 	SetPosShadow();
@@ -525,13 +531,13 @@ void CPlayer::Draw(void)
 		for (int nCntModel = 0; nCntModel < m_nNumModel; nCntModel++)
 		{
 			// モデルの描画処理
-			if (m_state != STATE_DAMAGE)
+			if (m_bMagnet != false)
 			{
-				m_apModel[nCntModel]->Draw();
+				m_apModel[nCntModel]->SetCol(D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f));
 			}
 			else
 			{
-				m_apModel[nCntModel]->SetCol(D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f));
+				m_apModel[nCntModel]->SetCol(D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
 			}
 
 			// モデルの影の描画処理

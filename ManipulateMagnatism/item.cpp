@@ -84,14 +84,7 @@ CItem *CItem::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, MODEL type, int nPriority
 	pObjX = new CItem(nPriority);
 
 	// 種類の設定
-	if (type == MODEL_DAMAGE)
-	{
-		pObjX->SetType(TYPE_BOXDAMAGE);
-	}
-	else
-	{
-		pObjX->SetType(TYPE_BOXNORMAL);
-	}
+	pObjX->SetType(TYPE_ITEM);
 
 	// モデルの設定
 	pObjX->SetModel(type);
@@ -167,6 +160,8 @@ void CItem::Update(void)
 	// 当たり判定
 	//CGame::GetPlayer()->CollisionObjX(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 	//CGame::GetEnemy()->CollisionObjX(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+
+	CObjectX::Update();
 }
 
 //===============================================
@@ -249,8 +244,8 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 					{
 						// プレイヤーとブロックの距離や向きを計算し逆向きに飛ばす
 						D3DXVECTOR3 vecDiff;
-						vecDiff.z = pPos->z - pos.z;
-						vecDiff.y = pPos->y - pos.y;
+						vecDiff.z = pos.z - pPos->z;
+						vecDiff.y = pos.y - pPos->y;
 
 						D3DXVec3Normalize(&vecDiff, &vecDiff);
 						//vecDiff *= 0.08f;
@@ -260,16 +255,16 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 
 						// プレイヤーまでの距離を計算
 						D3DXVECTOR3 vecDiffDelete;
-						vecDiffDelete.x = pPos->x - pos.x;
-						vecDiffDelete.y = pPos->y - pos.y;
-						vecDiffDelete.z = pPos->z - pos.z;
+						vecDiffDelete.x = pos.x - pPos->x;
+						vecDiffDelete.y = pos.y - pPos->y;
+						vecDiffDelete.z = pos.z - pPos->z;
 						fLenth = D3DXVec3Length(&vecDiffDelete);
 						fLenth = 220.0f - fLenth;
 
 						//CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
 						if (CGame::GetPlayer()->GetMagnet() == true)
 						{// 反発
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
 						}
 						else
 						{// 引き寄せ
