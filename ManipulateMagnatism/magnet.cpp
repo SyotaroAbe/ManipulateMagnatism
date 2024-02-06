@@ -169,7 +169,7 @@ void CMagnet::Update(void)
 	//CollisionModel(&playerPos, &playerPosOld, 0, pObj, true);
 
 	// 当たり判定
-	//CGame::GetPlayer()->CollisionObjX(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+	//pPlayer->CollisionObjX(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 	//CGame::GetEnemy()->CollisionObjX(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 }
 
@@ -217,38 +217,41 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 	float fAngleDist = 0.0f;
 	D3DXVECTOR3 vecDiff = {};
 
-	for (int nCntPriority = 0; nCntPriority < PRIORITY_MAX; nCntPriority++)
-	{
-		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
-		
-		while (pObject != NULL)
-		{// 使用されている
-			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
-			CObject::TYPE type = pObject->GetType();		// 種類を取得
-			D3DXVECTOR3 pos = pObject->GetPos();			// 位置
-			D3DXVECTOR3 posOld = pObject->GetPosOld();		// 前回の位置
-			D3DXVECTOR3 sizeMax = pObject->GetSize();		// 最大サイズ
-			D3DXVECTOR3 sizeMin = pObject->GetSizeMin();	// 最小サイズ
+	CPlayer* pPlayer = nullptr;
 
-			if (type == CObject::TYPE_BOXDAMAGE)
-			{// プレイヤー
-				if (pos.x + sizeMin.x - vtxMax.x <= pPos->x && pos.x + sizeMax.x - vtxMin.x >= pPos->x
-					&& pos.z + sizeMin.z - LENTH_MAGNET <= pPos->z - vtxMin.z && pos.z + sizeMax.z + LENTH_MAGNET >= pPos->z + vtxMin.z
-					&& pos.y + sizeMin.y - LENTH_MAGNET <= pPos->y + vtxMax.y && pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y)
-				{// 範囲内にある
-					CPlayer::EState state = CPlayer::STATE_NONE;
+	//pPlayer = CPlayer::GetInstance();
 
-					if (CManager::GetMode() == CScene::MODE_GAME)
-					{
-						state = CGame::GetPlayer()->GetState();
-					}
-					else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					{
-						state = CTutorial::GetPlayer()->GetState();
-					}
+	//if (pPlayer != nullptr)
+	//{
+		for (int nCntPriority = 0; nCntPriority < PRIORITY_MAX; nCntPriority++)
+		{
+			CObject* pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-					if (CManager::GetMode() == CScene::MODE_GAME)
-					{
+			while (pObject != NULL)
+			{// 使用されている
+				CObject* pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
+				CObject::TYPE type = pObject->GetType();		// 種類を取得
+				D3DXVECTOR3 pos = pObject->GetPos();			// 位置
+				D3DXVECTOR3 posOld = pObject->GetPosOld();		// 前回の位置
+				D3DXVECTOR3 sizeMax = pObject->GetSize();		// 最大サイズ
+				D3DXVECTOR3 sizeMin = pObject->GetSizeMin();	// 最小サイズ
+
+				if (type == CObject::TYPE_BOXDAMAGE)
+				{// プレイヤー
+					if (pos.x + sizeMin.x - vtxMax.x <= pPos->x && pos.x + sizeMax.x - vtxMin.x >= pPos->x
+						&& pos.z + sizeMin.z - LENTH_MAGNET <= pPos->z - vtxMin.z && pos.z + sizeMax.z + LENTH_MAGNET >= pPos->z + vtxMin.z
+						&& pos.y + sizeMin.y - LENTH_MAGNET <= pPos->y + vtxMax.y && pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y)
+					{// 範囲内にある
+						CPlayer::EState state = CPlayer::STATE_NONE;
+						if (CManager::GetMode() == CScene::MODE_GAME)
+						{
+							state = CGame::GetPlayer()->GetState();
+						}
+						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+						{
+							state = CTutorial::GetPlayer()->GetState();
+						}
+
 						// プレイヤーとブロックの距離や向きを計算し逆向きに飛ばす
 						vecDiff.z = pPos->z - pos.z;
 						vecDiff.y = pPos->y - pos.y;
@@ -264,154 +267,156 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 						vecDiff.y = pPos->y - pos.y;
 						vecDiff.z = pPos->z - pos.z;
 						fLenth = D3DXVec3Length(&vecDiff);
-						fLenth = 220.0f - fLenth;
+						//fLenth = 200.0f - fLenth;
 
-						//CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-						if (CGame::GetPlayer()->GetMagnet() == true)
+						if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
+							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
 						{// 反発
-							//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
+							//pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
 						}
-						else
+
+						if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
+							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
+						{// 反発
+							if (pos.z + sizeMin.z <= pPos->z
+								&& pos.z + sizeMax.z >= pPos->z)
+							{// 上下から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + (vecDiff.y * 0.02f), CGame::GetPlayer()->GetMove().z));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y + (vecDiff.y * 0.02f), CTutorial::GetPlayer()->GetMove().z));
+								}
+							}
+							else if (pos.z + sizeMax.z >= pPos->z)
+							{// 右から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CTutorial::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
+								}
+							}
+							else if (pos.z + sizeMin.z <= pPos->z)
+							{// 左から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CTutorial::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
+								}
+							}
+
+							//if (pPlayer->GetMagnet() == true)
+							//{
+							//	if (pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y
+							//		&& posOld.y + sizeMax.y + LENTH_MAGNET <= pPosOld->y + vtxMin.y)
+							//	{
+							//		pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, 1.0f, pPlayer->GetMove().z));
+							//	}
+							//	else if (pPlayer->GetMagnet() == true && pPlayer->GetMagnetOld() == false)
+							//	{
+							//		if (pos.y + sizeMax.y <= pPos->y + vtxMin.y
+							//			&& pos.z + sizeMin.z <= pPos->z
+							//			&& pos.z + sizeMax.z >= pPos->z)
+							//		{// 真上から
+							//			pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, pPlayer->GetMove().y + fLenth * 0.3f, pPlayer->GetMove().z));
+							//		}
+							//		else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
+							//			&& pos.z + sizeMax.z >= pPos->z)
+							//		{// 右斜めから
+							//			pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, pPlayer->GetMove().y + vecDiff.y * 0.04f, pPlayer->GetMove().z + vecDiff.z * 0.04f));
+							//		}
+							//		else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
+							//			&& pos.z + sizeMin.z <= pPos->z)
+							//		{// 左斜めから
+							//			pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, pPlayer->GetMove().y + vecDiff.y * 0.04f, pPlayer->GetMove().z + vecDiff.z * 0.04f));
+							//		}
+							//	}
+							//}
+						}
+						else if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == false)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == false))
 						{// 引き寄せ
-							//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth));
+							if (pos.z + sizeMin.z <= pPos->z
+								&& pos.z + sizeMax.z >= pPos->z)
+							{// 上下から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y - (vecDiff.y * 0.02f), CTutorial::GetPlayer()->GetMove().z));
+								}
+							}
+							else if (pos.z + sizeMax.z >= pPos->z)
+							{// 右から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y - vecDiff.y * 0.04f, CTutorial::GetPlayer()->GetMove().z - vecDiff.z * 0.04f));
+								}
+							}
+							else if (pos.z + sizeMin.z <= pPos->z)
+							{// 左から
+								if (CManager::GetMode() == CScene::MODE_GAME)
+								{
+									CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f));
+								}
+								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+								{
+									CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y - vecDiff.y * 0.04f, CTutorial::GetPlayer()->GetMove().z - vecDiff.z * 0.04f));
+								}
+							}
 						}
-					}
+						D3DXVECTOR3 move = {};
 
-					if (CGame::GetPlayer()->GetMagnet() == true)
-					{// 反発
-						if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
-							&& pos.z + sizeMin.z <= pPos->z
-							&& pos.z + sizeMax.z >= pPos->z)
-						{// 真上から
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + (vecDiff.y * 0.02f), CGame::GetPlayer()->GetMove().z));
-						}
-						else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
-							&& pos.z + sizeMax.z >= pPos->z)
-						{// 右斜めから
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
-						}
-						else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
-							&& pos.z + sizeMin.z <= pPos->z)
-						{// 左斜めから
-							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
-						}
+						if (CManager::GetMode() == CScene::MODE_GAME)
+						{
+							move = CGame::GetPlayer()->GetMove();
 
-						//if (CGame::GetPlayer()->GetMagnet() == true)
-						//{
-						//	if (pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y
-						//		&& posOld.y + sizeMax.y + LENTH_MAGNET <= pPosOld->y + vtxMin.y)
-						//	{
-						//		CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, 1.0f, CGame::GetPlayer()->GetMove().z));
-						//	}
-						//	else if (CGame::GetPlayer()->GetMagnet() == true && CGame::GetPlayer()->GetMagnetOld() == false)
-						//	{
-						//		if (pos.y + sizeMax.y <= pPos->y + vtxMin.y
-						//			&& pos.z + sizeMin.z <= pPos->z
-						//			&& pos.z + sizeMax.z >= pPos->z)
-						//		{// 真上から
-						//			CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + fLenth * 0.3f, CGame::GetPlayer()->GetMove().z));
-						//		}
-						//		else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
-						//			&& pos.z + sizeMax.z >= pPos->z)
-						//		{// 右斜めから
-						//			CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
-						//		}
-						//		else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y
-						//			&& pos.z + sizeMin.z <= pPos->z)
-						//		{// 左斜めから
-						//			CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y + vecDiff.y * 0.04f, CGame::GetPlayer()->GetMove().z + vecDiff.z * 0.04f));
-						//		}
-						//	}
-						//}
+							if (move.y >= 25.0f)
+							{
+								move.y = 25.0f;
+								CGame::GetPlayer()->SetMove(move);
+							}
+							if (move.z >= 25.0f)
+							{
+								move.z = 25.0f;
+								CGame::GetPlayer()->SetMove(move);
+							}
+						}
+						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+						{
+							move = CTutorial::GetPlayer()->GetMove();
 
-						else if (posOld.y + sizeMax.y <= pPosOld->y + vtxMin.y)
-						{// 上からめり込んだ
-							// 上にのせる
-							if (CManager::GetMode() == CScene::MODE_GAME)
+							if (move.y >= 25.0f)
 							{
-								// 一瞬重力の方が強いが磁力で浮く
-								//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
+								move.y = 25.0f;
+								CTutorial::GetPlayer()->SetMove(move);
 							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+							if (move.z >= 25.0f)
 							{
-								//CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-								CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
-							}
-
-							if (CManager::GetMode() == CScene::MODE_GAME)
-							{
-								CGame::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-							{
-								CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-							bLand = true;
-						}
-						else if (posOld.y + sizeMin.y >= pPosOld->y + vtxMax.y
-							&& pos.y + sizeMin.y <= pPos->y + vtxMax.y)
-						{// 下からめり込んだ
-							// 下に戻す
-							if (CManager::GetMode() == CScene::MODE_GAME)
-							{
-								CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-								CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, 0.0f, CGame::GetPlayer()->GetMove().z));
-							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-							{
-								CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-								CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
-							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-								CBossBattle::GetPlayer()->SetMove(D3DXVECTOR3(CBossBattle::GetPlayer()->GetMove().x, 0.0f, CBossBattle::GetPlayer()->GetMove().z));
-							}
-						}
-						else if (posOld.z + sizeMin.z >= pPosOld->z - vtxMin.z
-							&& pos.z + sizeMin.z <= pPos->z - vtxMin.z)
-						{// 左から右にめり込んだ
-							// 位置を戻す
-							if (CManager::GetMode() == CScene::MODE_GAME)
-							{
-								CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-							{
-								CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-							}
-						}
-						else if (posOld.z + sizeMax.z <= pPosOld->z + vtxMin.z
-							&& pos.z + sizeMax.z >= pPos->z + vtxMin.z)
-						{// 右から左にめり込んだ
-							// 位置を戻す
-							if (CManager::GetMode() == CScene::MODE_GAME)
-							{
-								CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-							{
-								CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
+								move.z = 25.0f;
+								CTutorial::GetPlayer()->SetMove(move);
 							}
 						}
 					}
 				}
+				pObject = pObjectNext;		// 次のオブジェクトを代入
 			}
-			pObject = pObjectNext;		// 次のオブジェクトを代入
 		}
-	}
+	//}
 	CManager::GetInstance()->GetDebugProc()->Print(" プレイヤーの移動距離：%f\n", fLenth);
 
 	return bLand;
@@ -457,7 +462,7 @@ bool CMagnet::CollisionEnemy(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 					{// 下からめり込んだ
 						// 下に戻す
 						pPos->y = posOld.y - vtxMax.y + sizeMin.y;
-						//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, 0.0f, CGame::GetPlayer()->GetMove().z));
+						//pPlayer->SetMove(D3DXVECTOR3(pPlayer->GetMove().x, 0.0f, pPlayer->GetMove().z));
 					}
 					else if (posOld.z + sizeMin.z >= pPosOld->z - vtxMin.z
 						&& pos.z + sizeMin.z <= pPos->z - vtxMin.z)

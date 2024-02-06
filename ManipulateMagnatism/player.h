@@ -69,6 +69,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	};
 
 	static CPlayer *Create(D3DXVECTOR3 pos, int nPriority = 3);
+	static CPlayer* GetInstance(void);
 
 	HRESULT Init(D3DXVECTOR3 pos);
 	void Uninit(void);
@@ -99,6 +100,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	bool GetMagnetOld(void) { return m_bMagnetOld; }
 
 private:	// 自分のみアクセス可能 [アクセス指定子]
+	static CPlayer* m_pPlayer;				// プレイヤークラスのポインタ
 	D3DXVECTOR3 m_pos;						// 位置
 	D3DXVECTOR3 m_posOld;					// 前回の位置
 	D3DXVECTOR3 m_rot;						// 向き
@@ -109,6 +111,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	D3DXVECTOR3 m_vtxMin;					// モデルの最小値
 	D3DXVECTOR3 m_posShadow;				// 影の位置
 
+	static int m_nPriority;
 	float m_fSpeed;							// 移動速度変更用
 	bool m_bJump;							// ジャンプしたかどうか
 	float m_fLenthCamera;					// カメラの距離

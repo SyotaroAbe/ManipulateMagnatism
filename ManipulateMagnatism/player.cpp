@@ -51,6 +51,12 @@
 #define COUNT_PARTICLE		(25)		// パーティクル発生時間
 
 //===============================================
+// 静的メンバ変数
+//===============================================
+CPlayer* CPlayer::m_pPlayer = nullptr;				// プレイヤークラスのポインタ
+int CPlayer::m_nPriority = 0;
+
+//===============================================
 // コンストラクタ
 //===============================================
 CPlayer::CPlayer() : CObject(4)
@@ -126,6 +132,7 @@ CPlayer::~CPlayer()
 CPlayer *CPlayer::Create(D3DXVECTOR3 pos, int nPriority)
 {
 	CPlayer *pPlayer;
+	m_nPriority = nPriority;
 
 	// プレイヤーの生成
 	pPlayer = new CPlayer(nPriority);
@@ -288,6 +295,12 @@ void CPlayer::Uninit(void)
 	}
 
 	this->Release();
+
+	//if (m_pPlayer != NULL)
+	//{
+	//	delete m_pPlayer;
+	//	m_pPlayer = NULL;
+	//}
 }
 
 //===============================================
@@ -447,8 +460,8 @@ void CPlayer::Update(void)
 	//}
 
 	// チュートリアル画面の画面範囲設定
-	//if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-	//{
+	if (CManager::GetMode() == CScene::MODE_GAME)
+	{
 		if (m_pos.z < -700.0f)
 		{
 			m_pos.z = -700.0f;
@@ -457,7 +470,7 @@ void CPlayer::Update(void)
 		{
 			m_pos.z = 800.0f;
 		}
-	//}
+	}
 
 	// モーションの更新処理
 	if (m_pMotion != NULL)
@@ -473,7 +486,7 @@ void CPlayer::Update(void)
 	}
 
 	// 地形との当たり判定
-	CItem::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+	//CItem::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
 	if (CObjectX::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin) == true)
 	{// 着地している
 		SetJump(false);			// ジャンプフラグをリセット
@@ -533,11 +546,11 @@ void CPlayer::Draw(void)
 			// モデルの描画処理
 			if (m_bMagnet != false)
 			{
-				m_apModel[nCntModel]->SetCol(D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f));
+				m_apModel[nCntModel]->SetCol(D3DXCOLOR(1.0f, 0.1f, 0.1f, 1.0f));
 			}
 			else
 			{
-				m_apModel[nCntModel]->SetCol(D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f));
+				m_apModel[nCntModel]->SetCol(D3DXCOLOR(0.1f, 0.1f, 1.0f, 1.0f));
 			}
 
 			// モデルの影の描画処理
@@ -749,5 +762,20 @@ void CPlayer::SetPosShadow(void)
 			}
 			pObject = pObjectNext;		// 次のオブジェクトを代入
 		}
+	}
+}
+
+//===============================================
+// シングルトン
+//===============================================
+CPlayer* CPlayer::GetInstance(void)
+{
+	if (m_pPlayer == NULL)
+	{
+		return m_pPlayer = new CPlayer(m_nPriority);
+	}
+	else
+	{
+		return m_pPlayer;
 	}
 }

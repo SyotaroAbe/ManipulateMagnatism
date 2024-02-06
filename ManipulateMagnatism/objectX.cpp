@@ -477,32 +477,14 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
 						}
 
-						//if (pObject->GetType() == CObject::TYPE_BOXNORMAL)
-						//{
-							if (CManager::GetMode() == CScene::MODE_GAME)
-							{
-								CGame::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-							else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-							{
-								CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-						//}
-						//else
-						//{
-						//	if (CManager::GetMode() == CScene::MODE_GAME)
-						//	{
-						//		CGame::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-						//	{
-						//		CTutorial::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//	else
-						//	{
-						//		CBossBattle::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//}
+						if (CManager::GetMode() == CScene::MODE_GAME)
+						{
+							CGame::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
+						}
+						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+						{
+							CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
+						}
 
 						bLand = true;
 					}
@@ -520,30 +502,6 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
 							CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
 						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-							CBossBattle::GetPlayer()->SetMove(D3DXVECTOR3(CBossBattle::GetPlayer()->GetMove().x, 0.0f, CBossBattle::GetPlayer()->GetMove().z));
-						}
-
-						if (pObject->GetType() == CObject::TYPE_BOXDAMAGE)
-						{
-							if (state != CPlayer::STATE_DAMAGE)
-							{// “–‚½‚Á‚½
-								if (CManager::GetMode() == CScene::MODE_GAME)
-								{
-									CGame::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-								{
-									CTutorial::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else
-								{
-									CBossBattle::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-							}
-						}
 					}
 					else if (posOld.z + sizeMin.z >= pPosOld->z - vtxMin.z
 						&& pos.z + sizeMin.z <= pPos->z - vtxMin.z)
@@ -551,34 +509,13 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 						// ˆÊ’u‚ð–ß‚·
 						if (CManager::GetMode() == CScene::MODE_GAME)
 						{
-							CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
+							CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z - 2.0f));
+							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y, 0.0f));
 						}
 						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 						{
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-						}
-
-						if (pObject->GetType() == CObject::TYPE_BOXDAMAGE)
-						{
-							if (state != CPlayer::STATE_DAMAGE)
-							{// “–‚½‚Á‚½
-								if (CManager::GetMode() == CScene::MODE_GAME)
-								{
-									CGame::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-								{
-									CTutorial::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else
-								{
-									CBossBattle::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-							}
+							CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y, 0.0f));
 						}
 					}
 					else if (posOld.z + sizeMax.z <= pPosOld->z + vtxMin.z
@@ -588,33 +525,12 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 						if (CManager::GetMode() == CScene::MODE_GAME)
 						{
 							CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
+							CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, CGame::GetPlayer()->GetMove().y, 0.0f));
 						}
 						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 						{
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-						}
-
-						if (pObject->GetType() == CObject::TYPE_BOXDAMAGE)
-						{
-							if (state != CPlayer::STATE_DAMAGE)
-							{// “–‚½‚Á‚½
-								if (CManager::GetMode() == CScene::MODE_GAME)
-								{
-									CGame::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-								{
-									CTutorial::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-								else
-								{
-									CBossBattle::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-								}
-							}
+							CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, CTutorial::GetPlayer()->GetMove().y, 0.0f));
 						}
 					}
 				}

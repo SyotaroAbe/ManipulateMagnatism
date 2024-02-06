@@ -1,0 +1,1211 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "列挙型 'CObject::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/object.h"
+                },
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 23,
+                  "endLine": 74,
+                  "endColumn": 30
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?GetType@CObject@@QAE?AW4TYPE@1@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "列挙型 'CNumber::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.h"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 23,
+                  "endLine": 53,
+                  "endColumn": 30
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?GetType@CNumber@@QAE?AW4TYPE@1@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "列挙型 'CScene::MODE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/manager.h"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 33,
+                  "endLine": 57,
+                  "endColumn": 40
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?GetModeOld@CScene@@SA?AW4MODE@1@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CNumber::m_type' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.cpp"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 10,
+                  "endLine": 18,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CNumber@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "CNumber::m_type"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CNumber::m_pObject2D' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.cpp"
+                },
+                "region": {
+                  "startLine": 18,
+                  "startColumn": 10,
+                  "endLine": 18,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CNumber@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "CNumber::m_pObject2D"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CNumber::m_type' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.cpp"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 10,
+                  "endLine": 28,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CNumber@@QAE@H@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "CNumber::m_type"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'CNumber::m_pObject2D' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.cpp"
+                },
+                "region": {
+                  "startLine": 28,
+                  "startColumn": 10,
+                  "endLine": 28,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0CNumber@@QAE@H@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "CNumber::m_pObject2D"
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30148.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x0052D1C0 -allChunksReserved -il C:\\Users\\student\\AppData\\Local\\Temp\\_CL_4655bbe1ast -typedil -f number.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930148 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -GF -Og -Ot -Oi -ltcg -DCODE_ANALYSIS -DWIN32 -DNDEBUG -D_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_MBCS -EHs -D_CPPUNWIND -EHc -MT -clrNoPureCRT -D_MT -GS -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -Yuprecompile.h -FpRelease\\FirstDirectX001.pch -FoRelease\\number.obj -FdRelease\\vc142.pdb -external:W 3 -Gd -FI precompile.h -analyze:projectdirectory C:\\Users\\student\\Desktop\\magnet\\manipulateMagnatism\\ManipulateMagnatism -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft DirectX SDK (June 2010)\\Include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/manager.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "24ba7fb0326b945335bb2c8e02da98fc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/object.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "35e173592e8a62637d82f35765d6b401"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/game.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "3c0d4897db682f7450a4b5d4ad7e17c1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/fileload.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "f0aefc8974714a2648d1336dd2e89d52"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/bossBattle.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e9a71a789e4064c22f129825273f236c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "686bc479a6e7c2ebe77e8f7ab93ff284"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/manager.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "6e0360a5f4099c54e2afa9795534da1e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/precompile.h"
+          },
+          "hashes": {
+            "md5": "e0b49c25f132849e1abeef7f29651da8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/rpcsal.h"
+          },
+          "hashes": {
+            "md5": "fec1415e1273d783e79090571a83934e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9.h"
+          },
+          "hashes": {
+            "md5": "d296189c1d761aa0e1c2daf3b8b592b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9.h"
+          },
+          "hashes": {
+            "md5": "05da735f3db2fe7524da8988539ced99"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9types.h"
+          },
+          "hashes": {
+            "md5": "8e48f8449e75f4f6035595516c31ec58"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9caps.h"
+          },
+          "hashes": {
+            "md5": "2cf8710501d6c3aed8ebf7042df8bb21"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9math.h"
+          },
+          "hashes": {
+            "md5": "deec5e74fb66ffca6cb49f5e225983bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9math.inl"
+          },
+          "hashes": {
+            "md5": "ca4ba28fa34ec97fd50fc5b184687363"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9core.h"
+          },
+          "hashes": {
+            "md5": "39a4bd98e0e9d22ba9d51dac286662b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9xof.h"
+          },
+          "hashes": {
+            "md5": "b338de250ff8747b0fac4a0f567a7d3c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9mesh.h"
+          },
+          "hashes": {
+            "md5": "2de6f4320e7eb78f536e29bf27bc3445"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9shader.h"
+          },
+          "hashes": {
+            "md5": "fc510418305749392ea05d614300b074"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9effect.h"
+          },
+          "hashes": {
+            "md5": "d23677a843bbc1588ee1da62b56a5ccc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9tex.h"
+          },
+          "hashes": {
+            "md5": "cbf7dc6a3522b1509ade6278f8ff00c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9shape.h"
+          },
+          "hashes": {
+            "md5": "de5f515b74b8472c5283d840c8327143"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9anim.h"
+          },
+          "hashes": {
+            "md5": "3c2501eaff09346d6c30086d8eb2c6c9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/dinput.h"
+          },
+          "hashes": {
+            "md5": "0dc2c3292f622f1ff6952a163ed336cc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/xaudio2.h"
+          },
+          "hashes": {
+            "md5": "4deebda0b9b93a82c3261ddcb05ca3d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/comdecl.h"
+          },
+          "hashes": {
+            "md5": "271986a1edef3caf60e11421084ad7e4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/audiodefs.h"
+          },
+          "hashes": {
+            "md5": "b1193233b8a749ef595068db46c36597"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/xma2defs.h"
+          },
+          "hashes": {
+            "md5": "ac52f34c6881192422740d08358ca636"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/main.h"
+          },
+          "hashes": {
+            "md5": "7b96b7c0c22ca3d23b7c0d35c601030e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/renderer.h"
+          },
+          "hashes": {
+            "md5": "910ddaa0486551f0e109eda6b2388df0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/input.h"
+          },
+          "hashes": {
+            "md5": "6a692e80cc84b52563c1ab3c5ad5a01c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/xinput.h"
+          },
+          "hashes": {
+            "md5": "5eec771aadf59d7166e9795821eaab10"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/debugproc.h"
+          },
+          "hashes": {
+            "md5": "3f60f7ab6991e001f1451fcbace9af56"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/sound.h"
+          },
+          "hashes": {
+            "md5": "02f0499e75f003bd9d9461d80ae14f32"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/camera.h"
+          },
+          "hashes": {
+            "md5": "c6c062d147f02f57cf616b4837cfcc6f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/light.h"
+          },
+          "hashes": {
+            "md5": "b1c19b4967b678374fb859b72da1d4f0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/object3d.h"
+          },
+          "hashes": {
+            "md5": "bda6c6381ce010ef9f9632913f3f9b82"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/objectbillboard.h"
+          },
+          "hashes": {
+            "md5": "e503382f91f9bdf669fec7d895e8b4f9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/objectx.h"
+          },
+          "hashes": {
+            "md5": "a27807040f95d3ff6d05f81ee5622bc6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/xfile.h"
+          },
+          "hashes": {
+            "md5": "3aba0e278137eec75b30ac809012fc1d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/texture.h"
+          },
+          "hashes": {
+            "md5": "193c85e23f30ff8db29dec06ae60aff9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/title.h"
+          },
+          "hashes": {
+            "md5": "47dde16d7801ad34a95f441b1cd14670"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/result.h"
+          },
+          "hashes": {
+            "md5": "0b0e4087ee30013bac1bf343b954958d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/tutorial.h"
+          },
+          "hashes": {
+            "md5": "b3261684456ad5751bb61c393b9db326"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/meshfield.h"
+          },
+          "hashes": {
+            "md5": "d97b228639ec9a8a453e5ba25a112679"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/objectmesh.h"
+          },
+          "hashes": {
+            "md5": "3807d599cc028cfcab941477d08e21a6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/motion.h"
+          },
+          "hashes": {
+            "md5": "cefed39e462ab8688f8fdde69c9e6939"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/time.h"
+          },
+          "hashes": {
+            "md5": "27ede44540256815c7a4d00e2ca283a6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/ranking.h"
+          },
+          "hashes": {
+            "md5": "4d26a76b46e3fd7ffc02e8fb066737dc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/score.h"
+          },
+          "hashes": {
+            "md5": "6a4279ada15c60e835201770456e79f6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/main.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "593df8df4110a1d7597ac74089af8488"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/player.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e32a8647c7cd623637527c5d71733d2c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/magnet.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "af9f63981acb9ba0caa05202edf7e89c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/magnet.h"
+          },
+          "hashes": {
+            "md5": "c89a3af8a0b7baac0e6de6ffa3129a13"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/enemy.h"
+          },
+          "hashes": {
+            "md5": "c4abc44df6080e9f0603ac34dbf4afd2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/logo.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "f150af324816ee8dcfc0f85247ef1123"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/logo.h"
+          },
+          "hashes": {
+            "md5": "32b6bf9eebcd511fac11d387367e4aae"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/object2d.h"
+          },
+          "hashes": {
+            "md5": "2d95bf01af9145912c62c3b477c308cd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/light.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "33101fee255b4f0184beb3766779f1e8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/item.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "adbe76cac00fef351cd1e246c0f9bc58"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/item.h"
+          },
+          "hashes": {
+            "md5": "36b7ce96f7c09d35377363754750d8ee"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/input.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "64e3b629c4c9a738ecd7ed336ce65a7d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/gamebg.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "83c8aa7ff43b77c688280c75d0cfa92a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/gamebg.h"
+          },
+          "hashes": {
+            "md5": "0b01c0255ead00c73ae00f951495fcd4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/fade.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "33f9fc34251fed1fd830f074c14b3fc5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/game.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "3cc9b6a067c9c0d4b3c3046597c5877a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/pause.h"
+          },
+          "hashes": {
+            "md5": "8c6e55ad5b4db80d69f253bf7a4be731"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/fileload.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "872dd2af8c7f6bc08e6e10cbce9f2772"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/fade.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "c62ed048d1bab34d377c94f31f14d87b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/enemy.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "1bd75e278ef2f623a7ddcda01653af74"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/particle.h"
+          },
+          "hashes": {
+            "md5": "c4f95c713060ca864b4ae5a3f26a14fb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/effect.h"
+          },
+          "hashes": {
+            "md5": "84e7d2924fa85037b1d9975d8852b6bf"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/model.h"
+          },
+          "hashes": {
+            "md5": "f4e48d998db8eac3052c752d92832a65"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/shadow.h"
+          },
+          "hashes": {
+            "md5": "5cb57d0360cebe3190eee2753dae31b1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/effect.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "48859d8d649d6edcae50d15479dc5d4f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/debugproc.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "59c687458125148496f6d5476b9e4caa"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/clear.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "ea3c47337b0681318ef05ce16cd075c3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/clear.h"
+          },
+          "hashes": {
+            "md5": "6f4a9dfc614a30efe15187630e9cff6b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/boss.h"
+          },
+          "hashes": {
+            "md5": "2208adba1363e62496768a1a49f6f6e7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/camera.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "24c593cc0b566f9968ce0df02d3a44a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/bullet.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "88d567fea6cd088c9387e101f870ea9a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/bullet.h"
+          },
+          "hashes": {
+            "md5": "022b2c28a2d047c4250f56205b215c24"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/bossbattle.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "269ace8161aa6e731226964fe853b724"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/boss.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "0463fa1be1dbcc8ab0a6d5119e215e52"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/bg.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "2930858b082f480114abba851b84b49e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/bg.h"
+          },
+          "hashes": {
+            "md5": "0f4c436f969f5a4df27ee220b72c859f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/shadow.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "ac0889db6f123d698346f8f31675a9ca"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/result.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "1e34995900c36dd77fafd6bc3d0cb23c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/rankin.h"
+          },
+          "hashes": {
+            "md5": "181f558e8c015b86c82de3491980d680"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/renderer.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "d7854f7ce364fd26c8cc1faf97367354"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/ranking.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "072b008d049cfcb06e31c15a0d8afba1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/rankin.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "734c8f300b223ee1c09470c3fa060c77"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/pressenter.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "e96fd56f2225a39bad1232be14a9d115"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/pressenter.h"
+          },
+          "hashes": {
+            "md5": "887f9eb4d763d029b30509dc1ab9b949"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/player.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "d05b77873064b7de553321ceeef1946a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/pause.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "61a25718d81db3d00eb777bcfd4d08e7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/particle.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "034ba0757be69e6e957f8dbbeb051945"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/objectX.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "b791407c34c13b109a74b2fde8bdfb3f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/objectMesh.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e6de949404a5599c57bbb31af14a5705"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/objectbillboard.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "89efff3064e44e80723a83009d6e0920"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/object3D.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "1099f7f8ba060f7a2c88f24ee65f5fd3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/magnet/manipulatemagnatism/manipulatemagnatism/object2d.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "2a734a4d2241a2b940264bb22cea6022"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/object.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e48aeeb1bacddf5e3b832728d5f9aecb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/magnet/manipulateMagnatism/ManipulateMagnatism/number.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "b92573d15c2771ed0957a9c1ccd78358"
+          }
+        }
+      ]
+    }
+  ]
+}

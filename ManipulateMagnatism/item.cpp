@@ -155,6 +155,8 @@ void CItem::Update(void)
 		}
 	}
 
+	//CObjectX::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+
 	//CollisionModel(&playerPos, &playerPosOld, 0, pObj, true);
 
 	// 当たり判定
@@ -235,10 +237,6 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 					{
 						state = CTutorial::GetPlayer()->GetState();
 					}
-					else
-					{
-						state = CBossBattle::GetPlayer()->GetState();
-					}
 
 					if (CManager::GetMode() == CScene::MODE_GAME)
 					{
@@ -262,13 +260,14 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 						fLenth = 220.0f - fLenth;
 
 						//CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-						if (CGame::GetPlayer()->GetMagnet() == true)
+						if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
+							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
 						{// 反発
 							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth));
 						}
 						else
 						{// 引き寄せ
-							//CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth));
 						}
 					}
 
@@ -295,26 +294,6 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 							{
 								CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
 							}
-							else
-							{
-								CBossBattle::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-							}
-						//}
-						//else
-						//{
-						//	if (CManager::GetMode() == CScene::MODE_GAME)
-						//	{
-						//		CGame::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-						//	{
-						//		CTutorial::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//	else
-						//	{
-						//		CBossBattle::GetPlayer()->SetState(CPlayer::STATE_DAMAGE);
-						//	}
-						//}
 
 						bLand = true;
 					}
@@ -332,11 +311,6 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
 							CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
 						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-							CBossBattle::GetPlayer()->SetMove(D3DXVECTOR3(CBossBattle::GetPlayer()->GetMove().x, 0.0f, CBossBattle::GetPlayer()->GetMove().z));
-						}
 					}
 					else if (posOld.z + sizeMin.z >= pPosOld->z - vtxMin.z
 						&& pos.z + sizeMin.z <= pPos->z - vtxMin.z)
@@ -349,10 +323,6 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 						else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 						{
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
 						}
 					}
 					else if (posOld.z + sizeMax.z <= pPosOld->z + vtxMin.z
@@ -367,17 +337,12 @@ bool CItem::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 
 						{
 							CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
 						}
-						else
-						{
-							CBossBattle::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-						}
 					}
 				}
 			}
 			pObject = pObjectNext;		// 次のオブジェクトを代入
 		}
 	}
-	CManager::GetInstance()->GetDebugProc()->Print(" プレイヤーの移動距離：%f\n", fLenth);
 
 	return bLand;
 }

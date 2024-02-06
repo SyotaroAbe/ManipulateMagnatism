@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>object.h</FILENAME>
+      <LINE>74</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CObject::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CObject::GetType</FUNCTION>
+    <DECORATED>?GetType@CObject@@QAE?AW4TYPE@1@XZ</DECORATED>
+    <FUNCLINE>74</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>particle.cpp</FILENAME>
+      <LINE>19</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>変数 'CParticle::m_type' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。</DESCRIPTION>
+    <FUNCTION>CParticle::{ctor}</FUNCTION>
+    <DECORATED>??0CParticle@@QAE@XZ</DECORATED>
+    <FUNCLINE>19</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CParticle::m_type</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>particle.cpp</FILENAME>
+      <LINE>22</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CEffect::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CParticle::{ctor}</FUNCTION>
+    <DECORATED>??0CParticle@@QAE@XZ</DECORATED>
+    <FUNCLINE>19</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>particle.cpp</FILENAME>
+      <LINE>109</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CParticle::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CParticle::Set</FUNCTION>
+    <DECORATED>?Set@CParticle@@QAEXUD3DXVECTOR3@@W4TYPE@1@@Z</DECORATED>
+    <FUNCLINE>109</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

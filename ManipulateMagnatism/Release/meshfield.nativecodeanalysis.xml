@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>object.h</FILENAME>
+      <LINE>74</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CObject::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CObject::GetType</FUNCTION>
+    <DECORATED>?GetType@CObject@@QAE?AW4TYPE@1@XZ</DECORATED>
+    <FUNCLINE>74</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>manager.h</FILENAME>
+      <LINE>57</LINE>
+      <COLUMN>32</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CScene::MODE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CScene::GetModeOld</FUNCTION>
+    <DECORATED>?GetModeOld@CScene@@SA?AW4MODE@1@XZ</DECORATED>
+    <FUNCLINE>57</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>game.h</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>24</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CGame::STATE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CGame::GetState</FUNCTION>
+    <DECORATED>?GetState@CGame@@QAE?AW4STATE@1@XZ</DECORATED>
+    <FUNCLINE>68</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

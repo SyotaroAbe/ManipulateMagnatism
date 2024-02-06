@@ -1,7 +1,109 @@
-﻿  player.cpp
+﻿  precompile.cpp
+  bg.cpp
+  boss.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\boss.cpp(110,23): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\boss.cpp(165,21): warning C4457: 'pos' を宣言すると、関数パラメーターが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\boss.cpp(140,33): message : 'pos' の宣言を確認してください
+  bossBattle.cpp
+  bullet.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\bullet.cpp(69,47): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  camera.cpp
+  clear.cpp
+  debugproc.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\debugproc.cpp(81,18): warning C4189: 'pInputKeyboard': ローカル変数が初期化されましたが、参照されていません
+  effect.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\effect.cpp(64,81): warning C4100: 'type': 引数は関数の本体部で 1 度も参照されません。
+  enemy.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\enemy.cpp(100,24): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\enemy.cpp(152,21): warning C4457: 'pos' を宣言すると、関数パラメーターが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\enemy.cpp(130,34): message : 'pos' の宣言を確認してください
+  fade.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fade.cpp(39,49): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  fileload.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(144,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(173,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(218,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(268,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(299,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+  game.cpp
+  gamebg.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\gamebg.cpp(55,57): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  input.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\input.cpp(38,48): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\input.cpp(235,55): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\input.cpp(235,39): warning C4100: 'hInstance': 引数は関数の本体部で 1 度も参照されません。
+  item.cpp
+  light.cpp
+  logo.cpp
+  magnet.cpp
+  main.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\main.cpp(33,72): warning C4100: 'IpCmdLine': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\main.cpp(33,51): warning C4100: 'hInstancePrev': 引数は関数の本体部で 1 度も参照されません。
+  manager.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\manager.cpp(173,27): warning C4100: 'mode': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\manager.cpp(215,61): warning C4100: 'bWindow': 引数は関数の本体部で 1 度も参照されません。
+  コンパイル中...
+  meshfield.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshfield.cpp(179,6): warning C4189: 'nNumYRand': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshfield.cpp(178,6): warning C4189: 'nNumXRand': ローカル変数が初期化されましたが、参照されていません
+  meshwall.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshwall.cpp(46,59): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshwall.cpp(136,59): warning C4100: 'type': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshwall.cpp(143,6): warning C4189: 'nNumYRand': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\meshwall.cpp(142,6): warning C4189: 'nNumXRand': ローカル変数が初期化されましたが、参照されていません
+  model.cpp
+  motion.cpp
+  number.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\number.cpp(28,22): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  object.cpp
+  object2D.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(208,50): warning C4458: 'm_fSizeX' を宣言すると、クラス メンバーが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.h(63,8): message : 'CObject2D::m_fSizeX' の宣言を確認してください
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(208,66): warning C4458: 'm_fSizeY' を宣言すると、クラス メンバーが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.h(64,8): message : 'CObject2D::m_fSizeY' の宣言を確認してください
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(247,44): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(291,62): warning C4100: 'nSpeed': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(291,47): warning C4100: 'nPatternY': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object2D.cpp(291,32): warning C4100: 'nPatternX': 引数は関数の本体部で 1 度も参照されません。
+  object3D.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\object3D.cpp(91,37): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+  objectBillboard.cpp
+  objectMesh.cpp
+  objectX.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\objectX.cpp(204,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
+  particle.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\particle.cpp(41,34): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  pause.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\pause.cpp(48,20): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\pause.cpp(73,28): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\pause.cpp(92,14): warning C4458: 'm_apTextureData' を宣言すると、クラス メンバーが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\pause.h(61,21): message : 'CPause::m_apTextureData' の宣言を確認してください
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\pause.cpp(89,34): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+  player.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(178,21): warning C4457: 'pos' を宣言すると、関数パラメーターが隠蔽されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(148,35): message : 'pos' の宣言を確認してください
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(612,43): warning C4100: 'pPos': 引数は関数の本体部で 1 度も参照されません。
+  pressenter.cpp
+  rankIn.cpp
+  ranking.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\ranking.cpp(55,24): warning C4100: 'nPriority': 引数は関数の本体部で 1 度も参照されません。
+  renderer.cpp
+  result.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\result.cpp(49,28): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+  shadow.cpp
+  コンパイル中...
+  sound.cpp
+  texture.cpp
+  time.cpp
+  title.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\title.cpp(52,27): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
+  tutorial.cpp
+  xfile.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\xfile.cpp(158,20): warning C4189: 'pDevice': ローカル変数が初期化されましたが、参照されていません
   コード生成しています。
-  1 of 615 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    74 functions had inline decision re-evaluated but remain unchanged
+  Compiler switch has changed, fall back to full compilation.
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\fileload.cpp(183): warning C4701: 初期化されていない可能性のあるローカル変数 'nIdx' が使用されます
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\objectX.cpp(228): warning C4701: 初期化されていない可能性のあるローカル変数 'type' が使用されます
+  All 615 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   FirstDirectX001.vcxproj -> C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\FirstDirectX001.exe

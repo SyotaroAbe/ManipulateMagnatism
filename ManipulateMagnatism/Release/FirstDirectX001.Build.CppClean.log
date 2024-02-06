@@ -1,62 +1,4 @@
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\vc140.pdb
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\meshfield.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\garbage.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\bg.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\player.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\object3d.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\object2d.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\manager.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\item.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\fileload.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\camera.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\block.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\objectx.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\object.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\motion.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\model.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\fileload0.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\meshwall.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\main.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\light.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\input.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\explosion.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\enemy.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\effect.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\debugproc.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\bullet.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\time.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\texture.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\sound.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\shadow.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\score.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\renderer.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\particle.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\objectmesh.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\objectbillboard.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\number.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\multibg.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\xfile.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\edit.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\target.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\rockon.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\dumpster.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\game.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\title.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\result.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\pause.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\uigage.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\ui.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\fade.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\uitarget.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\firstdirectx001.pch
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\precompile.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\ranking.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\rankin.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\tutorial.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\release\uioperation.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.pch
 c:\users\student\desktop\piraner\prinny\piraner\release\vc140.pdb
-c:\users\student\desktop\piraner\prinny\piraner\release\precompile.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\object3d.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\object2d.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\object.obj
@@ -91,42 +33,82 @@ c:\users\student\desktop\piraner\prinny\piraner\release\particle.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\objectx.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\objectmesh.obj
 c:\users\student\desktop\piraner\prinny\piraner\release\objectbillboard.obj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\firstdirectx001.exe
-c:\users\student\documents\visual studio 2015\projects\polygon++003\firstdirectx001.ipdb
-c:\users\student\documents\visual studio 2015\projects\polygon++003\firstdirectx001.iobj
-c:\users\student\documents\visual studio 2015\projects\polygon++003\firstdirectx001.pdb
+c:\users\student\desktop\piraner\prinny\piraner\release\bullet.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\logo.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\gamebg.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\clear.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\bossbattle.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\boss.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\time.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\pressenter.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.pch
+c:\users\student\desktop\piraner\prinny\piraner\release\precompile.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\ranking.obj
+c:\users\student\desktop\piraner\prinny\piraner\release\rankin.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.pch
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\vc142.pdb
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\precompile.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\meshfield.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\manager.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\main.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\magnet.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\logo.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\light.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\input.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\gamebg.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\game.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\fileload.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\fade.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\enemy.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\effect.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\debugproc.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\clear.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\camera.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\bullet.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\bossbattle.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\boss.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\bg.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\sound.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\shadow.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\result.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\renderer.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\ranking.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\rankin.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\pressenter.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\player.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\pause.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\particle.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\objectx.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\objectmesh.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\objectbillboard.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\object3d.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\object2d.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\object.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\number.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\motion.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\model.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\meshwall.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\xfile.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\tutorial.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\title.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\time.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\texture.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\item.obj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\firstdirectx001.ipdb
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\firstdirectx001.iobj
 c:\users\student\desktop\piraner\prinny\piraner\firstdirectx001.exe
 c:\users\student\desktop\piraner\prinny\piraner\firstdirectx001.ipdb
 c:\users\student\desktop\piraner\prinny\piraner\firstdirectx001.iobj
 c:\users\student\desktop\piraner\prinny\piraner\firstdirectx001.pdb
-c:\users\student\desktop\piraner\prinny\piraner\release\block.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\bullet.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\dumpster.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\edit.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\explosion.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\fever.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\fileload0.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\gagefull.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\garbage.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\hint.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\item.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\justdust.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\logo.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\multibg.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\pressenter.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\rankin.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\ranking.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\rockon.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\score.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\target.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\time.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\ui.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\uigage.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\uioperation.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\uitarget.obj
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\cl.command.1.tlog
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\cl.read.1.tlog
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\cl.write.1.tlog
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\link.command.1.tlog
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\link.read.1.tlog
-c:\users\student\desktop\piraner\prinny\piraner\release\firstdirectx001.tlog\link.write.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\firstdirectx001.exe
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.ipdb
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.iobj
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\firstdirectx001.pdb
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\vc140.pdb
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\cl.command.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\cl.read.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\cl.write.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\firstdirectx001.write.1u.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\link.command.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\link.read.1.tlog
+c:\users\student\desktop\magnet\manipulatemagnatism\manipulatemagnatism\release\firstdirectx001.tlog\link.write.1.tlog

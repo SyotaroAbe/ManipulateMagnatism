@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>input.cpp</FILENAME>
+      <LINE>293</LINE>
+      <COLUMN>20</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CInputGamePad::JOYKEY' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CInputGamePad::GetPress</FUNCTION>
+    <DECORATED>?GetPress@CInputGamePad@@QAE_NW4JOYKEY@1@H@Z</DECORATED>
+    <FUNCLINE>293</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

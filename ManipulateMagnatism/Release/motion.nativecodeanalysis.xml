@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>manager.h</FILENAME>
+      <LINE>57</LINE>
+      <COLUMN>32</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CScene::MODE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CScene::GetModeOld</FUNCTION>
+    <DECORATED>?GetModeOld@CScene@@SA?AW4MODE@1@XZ</DECORATED>
+    <FUNCLINE>57</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>object.h</FILENAME>
+      <LINE>74</LINE>
+      <COLUMN>22</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CObject::TYPE' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CObject::GetType</FUNCTION>
+    <DECORATED>?GetType@CObject@@QAE?AW4TYPE@1@XZ</DECORATED>
+    <FUNCLINE>74</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>motion.cpp</FILENAME>
+      <LINE>20</LINE>
+      <COLUMN>19</COLUMN>
+    </SFA>
+    <DEFECTCODE>6201</DEFECTCODE>
+    <DESCRIPTION>インデックス '15' は、有効なインデックスの範囲 '0' から '14' (スタックが割り当てられた可能性のあるバッファー 'this-&gt;m_aInfo') を超えています。</DESCRIPTION>
+    <FUNCTION>CMotion::{ctor}</FUNCTION>
+    <DECORATED>??0CMotion@@QAE@XZ</DECORATED>
+    <FUNCLINE>17</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>motion.cpp</FILENAME>
+      <LINE>20</LINE>
+      <COLUMN>19</COLUMN>
+    </SFA>
+    <DEFECTCODE>6385</DEFECTCODE>
+    <DESCRIPTION>'this-&gt;m_aInfo' から無効なデータを読み取っています: 読み取り可能なサイズは '72420' バイトですが、'77248' バイトを読み取る可能性があります。</DESCRIPTION>
+    <FUNCTION>CMotion::{ctor}</FUNCTION>
+    <DECORATED>??0CMotion@@QAE@XZ</DECORATED>
+    <FUNCLINE>17</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+        <FILENAME>motion.cpp</FILENAME>
+        <LINE>20</LINE>
+        <COLUMN>19</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'this-&gt;m_aInfo[15]' からの読み取りは無効です (読み取り可能な範囲は 0 から 14 まで)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>motion.cpp</FILENAME>
+      <LINE>17</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>変数 'CMotion::m_aInfo' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。</DESCRIPTION>
+    <FUNCTION>CMotion::{ctor}</FUNCTION>
+    <DECORATED>??0CMotion@@QAE@XZ</DECORATED>
+    <FUNCLINE>17</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>CMotion::m_aInfo</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

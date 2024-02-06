@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>sound.cpp</FILENAME>
+      <LINE>56</LINE>
+      <COLUMN>15</COLUMN>
+    </SFA>
+    <DEFECTCODE>6031</DEFECTCODE>
+    <DESCRIPTION>戻り値が無視されました: 'CoInitializeEx'</DESCRIPTION>
+    <FUNCTION>CSound::Init</FUNCTION>
+    <DECORATED>?Init@CSound@@QAEJPAUHWND__@@@Z</DECORATED>
+    <FUNCLINE>51</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\</FILEPATH>
+      <FILENAME>sound.cpp</FILENAME>
+      <LINE>230</LINE>
+      <COLUMN>16</COLUMN>
+    </SFA>
+    <DEFECTCODE>26812</DEFECTCODE>
+    <DESCRIPTION>列挙型 'CSound::LABEL' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。</DESCRIPTION>
+    <FUNCTION>CSound::Play</FUNCTION>
+    <DECORATED>?Play@CSound@@QAEJW4LABEL@1@@Z</DECORATED>
+    <FUNCLINE>230</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
