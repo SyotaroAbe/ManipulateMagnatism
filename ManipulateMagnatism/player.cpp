@@ -471,6 +471,17 @@ void CPlayer::Update(void)
 			m_pos.z = 800.0f;
 		}
 	}
+	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
+	{
+		if (m_pos.z < -500.0f)
+		{
+			m_pos.z = -500.0f;
+		}
+		if (m_pos.z > 600.0f)
+		{
+			m_pos.z = 600.0f;
+		}
+	}
 
 	// モーションの更新処理
 	if (m_pMotion != NULL)
@@ -486,16 +497,17 @@ void CPlayer::Update(void)
 	}
 
 	// 地形との当たり判定
-	//CItem::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
-	if (CObjectX::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin) == true)
+	CItem::CollisionItem(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin);
+	if (CObjectX::CollisionModel(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin) == true)
 	{// 着地している
+		SetState(STATE_NORMAL);
 		SetJump(false);			// ジャンプフラグをリセット
 	}
 	else
 	{
 		m_bJump = true;
 	}
-	CMagnet::CollisionModel(&m_pos, &m_posOld, m_vtxMax, m_vtxMin);
+	CMagnet::CollisionModel(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin);
 
 	// 影の位置の設定
 	SetPosShadow();

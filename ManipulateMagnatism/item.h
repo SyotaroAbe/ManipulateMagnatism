@@ -33,7 +33,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	virtual void Draw(void);
 
 	void DrawXFile(int nIdx, CXFile::COL col);
-	static bool CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
+	static bool CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
 
 protected:	// 派生クラスからもアクセスできる
 
