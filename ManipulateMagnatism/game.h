@@ -26,6 +26,7 @@ class CPause;
 class CEnemy;
 class CGameBg;
 class CTime;
+class CItem;
 
 //===============================================
 // ゲーム画面クラス
@@ -59,6 +60,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	static CEnemy *GetEnemy() { return m_pEnemy; }
 	static CGameBg *GetGameBg() { return m_pGameBg; }
 	static CTime *GetTime() { return m_pTime; }
+	static CItem* GetItem() { return m_pItem; }
 
 	static void SetEnablePause(const bool bPause);
 	static bool GetPauseState(void) { return m_bPause; }
@@ -75,6 +77,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	static CEnemy *m_pEnemy;						// 敵クラスのポインタ
 	static CGameBg *m_pGameBg;						// 背景クラスのポインタ
 	static CTime *m_pTime;							// タイムクラスのポインタ
+	static CItem* m_pItem;							// アイテムクラスのポインタ
 
 	static bool m_bStateReady;		// GAMSESTATE_READYかどうか
 	static bool m_bPause;			// 現在のポーズの状態

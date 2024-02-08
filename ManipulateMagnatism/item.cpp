@@ -25,7 +25,8 @@
 //===============================================
 namespace
 {
-	const float LENTH_MAGNET = 100.0f;		// 磁石が反応する距離
+	const float LENTH_PLAYER = 100.0f;		// アイテムが反応する距離
+	const float MAGNET_PLAYER = 20.0f;		// アイテムがプレイヤーとくっつく距離
 }
 
 //===============================================
@@ -153,6 +154,14 @@ void CItem::Update(void)
 		}
 	}
 
+	if (CManager::GetMode() == CScene::MODE_GAME)
+	{
+		if (CGame::GetPlayer()->GetPos() == m_pos)
+		{
+			m_bMagnet = true;
+		}
+	}
+
 	if (CollisionModel(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin) == true)
 	{
 		m_move.y = 0.0f;
@@ -229,8 +238,48 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 			if (type == CObject::TYPE_ITEM)
 			{
 				if (pos.x + sizeMin.x - vtxMax.x <= pPos->x && pos.x + sizeMax.x - vtxMin.x >= pPos->x
-					&& pos.z + sizeMin.z - LENTH_MAGNET <= pPos->z - vtxMin.z && pos.z + sizeMax.z + LENTH_MAGNET >= pPos->z + vtxMin.z
-					&& pos.y + sizeMin.y - LENTH_MAGNET <= pPos->y + vtxMax.y && pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y)
+					&& pos.z + sizeMin.z - MAGNET_PLAYER <= pPos->z - vtxMin.z && pos.z + sizeMax.z + MAGNET_PLAYER >= pPos->z + vtxMin.z
+					&& pos.y + sizeMin.y - MAGNET_PLAYER <= pPos->y + vtxMax.y && pos.y + sizeMax.y + MAGNET_PLAYER >= pPos->y + vtxMin.y)
+				{// 範囲内にある
+					if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
+					{// 反発
+						if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_A) == true
+							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLX(0) < 0)
+						{// 左キーが押された
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN) * 50.0f, cosf(D3DX_PI * ROT_DOWN) * 50.0f));
+						}
+						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_D) == true
+							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLX(0) > 0)
+						{// 右キーが押された
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP) * 50.0f, cosf(D3DX_PI * ROT_UP) * 50.0f));
+						}
+						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_W) == true
+							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLY(0) < 0)
+						{// 上キーが押された
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_RIGHT) * 50.0f, cosf(D3DX_PI * ROT_RIGHT) * 50.0f));
+						}
+						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_S) == true
+							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLY(0) > 0)
+						{// 下キーが押された
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_LEFT) * 50.0f, cosf(D3DX_PI * ROT_LEFT) * 50.0f));
+						}
+						else
+						{// プレイヤーの向いている方向
+							if (CManager::GetMode() == CScene::MODE_GAME)
+							{
+								pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + (1.0f * CGame::GetPlayer()->GetRot().y)) * 100.0f, cosf(D3DX_PI * ROT_UP) * 100.0f));
+							}
+						}
+					}
+					else
+					{// 引き寄せ
+						pObject->SetPos(D3DXVECTOR3(pPos->x, pPos->y, pPos->z));
+					}
+				}
+				else if (pos.x + sizeMin.x - vtxMax.x <= pPos->x && pos.x + sizeMax.x - vtxMin.x >= pPos->x
+					&& pos.z + sizeMin.z - LENTH_PLAYER <= pPos->z - vtxMin.z && pos.z + sizeMax.z + LENTH_PLAYER >= pPos->z + vtxMin.z
+					&& pos.y + sizeMin.y - LENTH_PLAYER <= pPos->y + vtxMax.y && pos.y + sizeMax.y + LENTH_PLAYER >= pPos->y + vtxMin.y)
 				{// 範囲内にある
 					CPlayer::EState state = CPlayer::STATE_NONE;
 
@@ -275,72 +324,6 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f));
 						}
 					}
-
-					//if (posOld.y + sizeMax.y + LENTH_MAGNET <= pPosOld->y + vtxMin.y
-					//	&& pos.y + sizeMax.y + LENTH_MAGNET >= pPos->y + vtxMin.y)
-					//{// 上からめり込んだ
-					//	// 上にのせる
-					//	if (CManager::GetMode() == CScene::MODE_GAME)
-					//	{
-					//	}
-					//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					//	{
-					//		//CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-					//		CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
-					//	}
-
-					//	if (CManager::GetMode() == CScene::MODE_GAME)
-					//	{
-					//		CGame::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-					//	}
-					//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					//	{
-					//		CTutorial::GetPlayer()->SetState(CPlayer::STATE_NORMAL);
-					//	}
-
-					//	bLand = true;
-					//}
-					//else if (posOld.y + sizeMin.y >= pPosOld->y + vtxMax.y
-					//	&& pos.y + sizeMin.y <= pPos->y + vtxMax.y)
-					//{// 下からめり込んだ
-					//	// 下に戻す
-					//	if (CManager::GetMode() == CScene::MODE_GAME)
-					//	{
-					//		CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-					//		CGame::GetPlayer()->SetMove(D3DXVECTOR3(CGame::GetPlayer()->GetMove().x, 0.0f, CGame::GetPlayer()->GetMove().z));
-					//	}
-					//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					//	{
-					//		CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMax.y + sizeMin.y, pPos->z));
-					//		CTutorial::GetPlayer()->SetMove(D3DXVECTOR3(CTutorial::GetPlayer()->GetMove().x, 0.0f, CTutorial::GetPlayer()->GetMove().z));
-					//	}
-					//}
-					//else if (posOld.z + sizeMin.z >= pPosOld->z - vtxMin.z
-					//	&& pos.z + sizeMin.z <= pPos->z - vtxMin.z)
-					//{// 左から右にめり込んだ
-					//	// 位置を戻す
-					//	if (CManager::GetMode() == CScene::MODE_GAME)
-					//	{
-					//		CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-					//	}
-					//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					//	{
-					//		CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z + vtxMin.z + sizeMin.z));
-					//	}
-					//}
-					//else if (posOld.z + sizeMax.z <= pPosOld->z + vtxMin.z
-					//	&& pos.z + sizeMax.z >= pPos->z + vtxMin.z)
-					//{// 右から左にめり込んだ
-					//	// 位置を戻す
-					//	if (CManager::GetMode() == CScene::MODE_GAME)
-					//	{
-					//		CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-					//	}
-					//	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-					//	{
-					//		CTutorial::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, pPos->y, posOld.z - vtxMin.z + sizeMax.z));
-					//	}
-					//}
 				}
 			}
 			pObject = pObjectNext;		// 次のオブジェクトを代入

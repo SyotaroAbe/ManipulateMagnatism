@@ -35,6 +35,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void DrawXFile(int nIdx, CXFile::COL col);
 	static bool CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
 
+	void SetMagnet(const bool bMagnet) { m_bMagnet = bMagnet; }
+
 protected:	// 派生クラスからもアクセスできる
 
 private:	// 自分のみアクセス可能 [アクセス指定子]
@@ -44,6 +46,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	D3DXVECTOR3 m_vtxMin;						// モデルの最小値
 	D3DXMATRIX m_mtxWorld;						// ワールドマトリックス
 	int m_nIdxShadow;							// 使用する影の番号
+	bool m_bMagnet;								// プレイヤーとくっついているか
 };
 
 #endif

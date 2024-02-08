@@ -30,6 +30,7 @@ CPause *CGame::m_pPause = NULL;							// ポーズクラスのポインタ
 CEnemy *CGame::m_pEnemy = NULL;							// 敵クラスのポインタ
 CGameBg *CGame::m_pGameBg = NULL;						// 背景クラスのポインタ
 CTime *CGame::m_pTime = NULL;							// タイムクラスのポインタ
+CItem* CGame::m_pItem = NULL;							// アイテムクラスのポインタ
 
 bool CGame::m_bPause = false;				// ポーズ状態
 bool CGame::m_bStateReady = false;			// GAMSESTATE_READYかどうか

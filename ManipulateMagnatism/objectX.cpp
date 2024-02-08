@@ -89,10 +89,6 @@ void CObjectX::Load(HWND hWnd)
 	{
 		pFile = fopen("data\\TXT\\tutorial.txt", "r");
 	}
-	else if (CManager::GetMode() == CScene::MODE_BOSS)
-	{
-		pFile = fopen("data\\TXT\\bossBattle.txt", "r");
-	}
 
 	if (pFile != NULL)
 	{// ì«Ç›çûÇ›ê¨å˜
