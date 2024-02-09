@@ -27,6 +27,7 @@ namespace
 {
 	const float LENTH_PLAYER = 100.0f;		// アイテムが反応する距離
 	const float MAGNET_PLAYER = 20.0f;		// アイテムがプレイヤーとくっつく距離
+	const float ITEM_SPEED = 135.0f;			// アイテムが飛ぶときのスピード
 }
 
 //===============================================
@@ -241,38 +242,39 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 					&& pos.z + sizeMin.z - MAGNET_PLAYER <= pPos->z - vtxMin.z && pos.z + sizeMax.z + MAGNET_PLAYER >= pPos->z + vtxMin.z
 					&& pos.y + sizeMin.y - MAGNET_PLAYER <= pPos->y + vtxMax.y && pos.y + sizeMax.y + MAGNET_PLAYER >= pPos->y + vtxMin.y)
 				{// 範囲内にある
-					if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
-						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
+					if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N))
 					{// 反発
 						if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_A) == true
 							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLX(0) < 0)
 						{// 左キーが押された
-							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN) * 50.0f, cosf(D3DX_PI * ROT_DOWN) * 50.0f));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN) * ITEM_SPEED, cosf(D3DX_PI * ROT_DOWN) * ITEM_SPEED));
 						}
 						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_D) == true
 							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLX(0) > 0)
 						{// 右キーが押された
-							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP) * 50.0f, cosf(D3DX_PI * ROT_UP) * 50.0f));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP) * ITEM_SPEED, cosf(D3DX_PI * ROT_UP) * ITEM_SPEED));
 						}
 						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_W) == true
 							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLY(0) < 0)
 						{// 上キーが押された
-							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_RIGHT) * 50.0f, cosf(D3DX_PI * ROT_RIGHT) * 50.0f));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_RIGHT) * ITEM_SPEED, cosf(D3DX_PI * ROT_RIGHT) * ITEM_SPEED));
 						}
 						else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_S) == true
 							|| CManager::GetInstance()->GetInputGamePad()->GetJoyStickLY(0) > 0)
 						{// 下キーが押された
-							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_LEFT) * 50.0f, cosf(D3DX_PI * ROT_LEFT) * 50.0f));
+							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_LEFT) * ITEM_SPEED, cosf(D3DX_PI * ROT_LEFT) * ITEM_SPEED));
 						}
 						else
 						{// プレイヤーの向いている方向
 							if (CManager::GetMode() == CScene::MODE_GAME)
 							{
-								pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + (1.0f * CGame::GetPlayer()->GetRot().y)) * 100.0f, cosf(D3DX_PI * ROT_UP) * 100.0f));
+								pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + (1.0f * CGame::GetPlayer()->GetRot().y)) * ITEM_SPEED, cosf(D3DX_PI * ROT_UP) * ITEM_SPEED));
 							}
 						}
 					}
-					else
+					else if((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S))
 					{// 引き寄せ
 						pObject->SetPos(D3DXVECTOR3(pPos->x, pPos->y, pPos->z));
 					}
@@ -314,12 +316,13 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 						fLenth = 220.0f - fLenth;
 
 						//CGame::GetPlayer()->SetPos(D3DXVECTOR3(pPos->x, posOld.y - vtxMin.y + sizeMax.y, pPos->z));
-						if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
-							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
+						if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N)
+							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N))
 						{// 反発
 							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_UP + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_UP + fAngleDist) * fLenth * 0.1f));
 						}
-						else
+						else if((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S)
+							|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S))
 						{// 引き寄せ
 							pObject->SetMove(D3DXVECTOR3(pObject->GetMove().x, sinf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f, cosf(D3DX_PI * ROT_DOWN + fAngleDist) * fLenth * 0.1f));
 						}
@@ -331,4 +334,40 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 	}
 
 	return bLand;
+}
+
+//===============================================
+// 敵との当たり判定
+//===============================================
+bool CItem::CollisionEnemy(D3DXVECTOR3* pPos, D3DXVECTOR3* pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin)
+{
+	bool bDeath = false;
+
+	for (int nCntPriority = 0; nCntPriority < PRIORITY_MAX; nCntPriority++)
+	{
+		CObject* pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
+
+		while (pObject != NULL)
+		{// 使用されている
+			CObject* pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
+			CObject::TYPE type = pObject->GetType();		// 種類を取得
+			D3DXVECTOR3 pos = pObject->GetPos();			// 位置
+			D3DXVECTOR3 posOld = pObject->GetPosOld();		// 前回の位置
+			D3DXVECTOR3 sizeMax = pObject->GetSize();		// 最大サイズ
+			D3DXVECTOR3 sizeMin = pObject->GetSizeMin();	// 最小サイズ
+
+			if (type == CObject::TYPE_ITEM)
+			{
+				if (pos.x + sizeMin.x - vtxMax.x <= pPos->x && pos.x + sizeMax.x - vtxMin.x >= pPos->x
+					&& pos.z + sizeMin.z <= pPos->z - vtxMin.z && pos.z + sizeMax.z >= pPos->z + vtxMin.z
+					&& pos.y + sizeMin.y <= pPos->y + vtxMax.y && pos.y + sizeMax.y >= pPos->y + vtxMin.y)
+				{// 範囲内にある
+					bDeath = true;
+				}
+			}
+			pObject = pObjectNext;		// 次のオブジェクトを代入
+		}
+	}
+
+	return bDeath;
 }

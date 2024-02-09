@@ -19,6 +19,7 @@
 #include "enemy.h"
 #include "gamebg.h"
 #include "time.h"
+#include "clear.h"
 
 //===============================================
 // 静的メンバ変数
@@ -31,10 +32,12 @@ CEnemy *CGame::m_pEnemy = NULL;							// 敵クラスのポインタ
 CGameBg *CGame::m_pGameBg = NULL;						// 背景クラスのポインタ
 CTime *CGame::m_pTime = NULL;							// タイムクラスのポインタ
 CItem* CGame::m_pItem = NULL;							// アイテムクラスのポインタ
+CClear* CGame::m_pClear = NULL;						// クリア表示クラスのポインタ
 
 bool CGame::m_bPause = false;				// ポーズ状態
 bool CGame::m_bStateReady = false;			// GAMSESTATE_READYかどうか
 bool CGame::m_bPauseCamera = false;			// ポーズ時のカメラ操作可能か
+bool CGame::m_bClear = false;			// クリアしているか
 
 //===============================================
 // コンストラクタ
@@ -63,6 +66,7 @@ HRESULT CGame::Init(HWND hWnd)
 	m_bPause = false;
 	m_bStateReady = true;		// 待機状態にする
 	m_bPauseCamera = false;
+	m_bClear = false;
 
 	m_hWnd = hWnd;		// HWND保存
 
@@ -73,7 +77,7 @@ HRESULT CGame::Init(HWND hWnd)
 	CObjectX::Load(hWnd);
 
 	// プレイヤーの生成
-	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 210.0f, -350.0f), 4);
+	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
 	
 	// 背景の生成
 	m_pGameBg = CGameBg::Create(D3DXVECTOR3(m_pPlayer->GetPos().x, 201.0f, CManager::GetInstance()->GetCamera()->GetPosR().z), CGameBg::TEX_GAME, 0);
@@ -83,6 +87,9 @@ HRESULT CGame::Init(HWND hWnd)
 
 	// タイムの生成
 	m_pTime = CTime::Create(5);
+
+	// クリア表示の生成
+	m_pClear = CClear::Create();
 
 	// ポーズの生成
 	m_pPause = CPause::Create(6);
@@ -105,6 +112,7 @@ void CGame::Uninit(void)
 	m_bPause = false;
 	m_bStateReady = true;		// 待機状態にする
 	m_bPauseCamera = false;
+	m_bClear = false;
 
 	// タイムの終了処理
 	if (m_pTime != NULL)
@@ -162,14 +170,15 @@ void CGame::Update(void)
 	}
 #endif
 
-	if (m_pPlayer->GetPos().z >= 800.0f)
+	if (m_pPlayer->GetPos().z >= 900.0f)
 	{// BackSpace
 		m_pPlayer->SetState(CPlayer::STATE_CLEAR);
-		CRenderer::GetFade()->Set(CScene::MODE_RESULT);		// リザルト画面へ移動
+		SetClear(true);
+		//CRenderer::GetFade()->Set(CScene::MODE_RESULT);		// リザルト画面へ移動
 		SetTime(m_pTime->Get());		// 時間の設定
 	}
 
-	if (m_pPlayer->GetPos().y < -100.0f)
+	if (m_pPlayer->GetPos().y < -400.0f)
 	{// 落下死
 		m_pPlayer->Death();
 	}
@@ -181,7 +190,10 @@ void CGame::Update(void)
 			// タイムの更新処理
 			if (m_pTime != NULL)
 			{
-				m_pTime->Update();
+				if (m_bClear == false)
+				{// クリアしていない
+					m_pTime->Update();
+				}
 			}
 		}
 	}

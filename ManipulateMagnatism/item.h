@@ -34,6 +34,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 
 	void DrawXFile(int nIdx, CXFile::COL col);
 	static bool CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
+	static bool CollisionEnemy(D3DXVECTOR3* pPos, D3DXVECTOR3* pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 vtxMax, D3DXVECTOR3 vtxMin);
 
 	void SetMagnet(const bool bMagnet) { m_bMagnet = bMagnet; }
 

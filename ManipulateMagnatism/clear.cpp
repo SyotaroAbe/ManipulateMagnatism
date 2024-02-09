@@ -9,7 +9,7 @@
 #include "manager.h"
 #include "texture.h"
 #include "boss.h"
-#include "bossBattle.h"
+#include "game.h"
 #include "renderer.h"
 #include "fade.h"
 #include "time.h"
@@ -105,14 +105,14 @@ void CClear::Uninit(void)
 //===============================================
 void CClear::Update(void)
 {
-	if (CBossBattle::GetBClear() == true)
+	if (CGame::GetBClear() == true)
 	{
 		// 位置補正処理
 		if (m_bEndAnim == false && CObject2D::RevisionPos(D3DXVECTOR3(620.0f, 350.0f, 0.0f), SPEED_MOVE, true) == true)
 		{// 位置補正終了
 			m_bEndAnim = true;		// アニメーション終了
 			CRenderer::GetFade()->Set(CScene::MODE_RESULT);		// リザルト画面へ移動
-			CScene::SetTime(CBossBattle::GetTime()->Get());		// 時間の設定
+			CScene::SetTime(CGame::GetTime()->Get());		// 時間の設定
 		}
 		else if (m_bEndAnim == true)
 		{

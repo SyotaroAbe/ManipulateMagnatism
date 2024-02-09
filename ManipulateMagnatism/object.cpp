@@ -222,8 +222,7 @@ void CObject::Reset()
 void CObject::UpdateAll()
 {
 	if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetStateReady() == false) 
-		|| (CManager::GetMode() == CScene::MODE_BOSS && CBossBattle::GetStateReady() == false)
-		|| (CManager::GetMode() != CScene::MODE_GAME && CManager::GetMode() != CScene::MODE_BOSS))
+		|| (CManager::GetMode() != CScene::MODE_GAME))
 	{// ë“ã@èÛë‘
 		for (int nCntPriority = 0; nCntPriority < PRIORITY_MAX; nCntPriority++)
 		{

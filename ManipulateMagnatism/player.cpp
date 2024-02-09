@@ -83,8 +83,8 @@ CPlayer::CPlayer() : CObject(4)
 	m_nInvincibleCounter = 0;
 	m_posShadow = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_bDisp = true;
-	m_bMagnet = true;
-	m_bMagnetOld = true;
+	m_magnet = EMAGNET_NONE;
+	m_magnetOld = EMAGNET_NONE;
 }
 
 //===============================================
@@ -115,7 +115,8 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_nInvincibleCounter = 0;
 	m_posShadow = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_bDisp = true;
-	m_bMagnet = true;
+	m_magnet = EMAGNET_NONE;
+	m_magnetOld = EMAGNET_NONE;
 }
 
 //===============================================
@@ -316,7 +317,7 @@ void CPlayer::Update(void)
 
 	// 前回の位置を保存
 	m_posOld = m_pos;
-	m_bMagnetOld = m_bMagnet;
+	m_magnetOld = m_magnet;
 
 	if (m_state != STATE_CLEAR)
 	{
@@ -462,13 +463,13 @@ void CPlayer::Update(void)
 	// チュートリアル画面の画面範囲設定
 	if (CManager::GetMode() == CScene::MODE_GAME)
 	{
-		if (m_pos.z < -700.0f)
+		if (m_pos.z < -650.0f)
 		{
-			m_pos.z = -700.0f;
+			m_pos.z = -650.0f;
 		}
-		if (m_pos.z > 800.0f)
+		if (m_pos.z > 900.0f)
 		{
-			m_pos.z = 800.0f;
+			m_pos.z = 900.0f;
 		}
 	}
 	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
@@ -493,7 +494,12 @@ void CPlayer::Update(void)
 		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_LB, 0)
 		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_RB, 0))
 	{
-		m_bMagnet = m_bMagnet ? false : true;
+		m_magnet++;
+
+		if (m_magnet >= EMAGNET_MAX)
+		{
+			m_magnet = EMAGNET_NONE;
+		}
 	}
 
 	// 地形との当たり判定
@@ -556,13 +562,19 @@ void CPlayer::Draw(void)
 		for (int nCntModel = 0; nCntModel < m_nNumModel; nCntModel++)
 		{
 			// モデルの描画処理
-			if (m_bMagnet != false)
+			switch (m_magnet)
 			{
+			case EMAGNET_NONE:
+				m_apModel[nCntModel]->Draw();
+				break;
+
+			case EMAGNET_N:
 				m_apModel[nCntModel]->SetCol(D3DXCOLOR(1.0f, 0.1f, 0.1f, 1.0f));
-			}
-			else
-			{
+				break;
+
+			case EMAGNET_S:
 				m_apModel[nCntModel]->SetCol(D3DXCOLOR(0.1f, 0.1f, 1.0f, 1.0f));
+				break;
 			}
 
 			// モデルの影の描画処理
@@ -584,6 +596,7 @@ void CPlayer::Death(void)
 
 	if (CManager::GetMode() == CScene::MODE_GAME)
 	{
+		CParticle::Create()->Set(m_pos, CParticle::TYPE_ENEMY);
 		int nTime = CGame::GetTime()->Get();
 		CGame::SetTime(nTime);		// 時間の設定
 	}

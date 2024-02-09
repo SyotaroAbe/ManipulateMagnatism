@@ -142,7 +142,6 @@ void CRenderer::Uninit(void)
 void CRenderer::Update(void)
 {
 	if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPauseState() == false) 
-		|| (CManager::GetMode() == CScene::MODE_BOSS && CBossBattle::GetPauseState() == false) 
 		|| CManager::GetMode() == CScene::MODE_TUTORIAL || CManager::GetMode() == CScene::MODE_TITLE)
 	{// ポーズ状態じゃない
 		// 全てのオブジェクトの更新処理

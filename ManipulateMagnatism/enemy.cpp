@@ -25,6 +25,7 @@
 #include "title.h"
 #include "objectX.h"
 #include "fileload.h"
+#include "item.h"
 
 //===============================================
 // マクロ定義
@@ -381,6 +382,12 @@ void CEnemy::Update(void)
 	else
 	{
 		m_bJump = true;
+	}
+
+	if (CItem::CollisionEnemy(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin) == true)
+	{// アイテムに当たった
+		CParticle::Create()->Set(m_pos, CParticle::TYPE_ENEMY);
+		Uninit();
 	}
 }
 

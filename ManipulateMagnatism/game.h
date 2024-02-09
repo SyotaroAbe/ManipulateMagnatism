@@ -27,6 +27,7 @@ class CEnemy;
 class CGameBg;
 class CTime;
 class CItem;
+class CClear;
 
 //===============================================
 // ゲーム画面クラス
@@ -61,6 +62,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	static CGameBg *GetGameBg() { return m_pGameBg; }
 	static CTime *GetTime() { return m_pTime; }
 	static CItem* GetItem() { return m_pItem; }
+	static CClear* GetClear() { return m_pClear; }
 
 	static void SetEnablePause(const bool bPause);
 	static bool GetPauseState(void) { return m_bPause; }
@@ -68,6 +70,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	static bool GetPauseCamera(void) { return m_bPauseCamera; }
 
 	STATE GetState(void) { return m_state; }
+	static void SetClear(bool bClear) { m_bClear = bClear; }
+	static bool GetBClear(void) { return m_bClear; }
 
 private:	// 自分のみアクセス可能 [アクセス指定子]
 	static CPlayer *m_pPlayer;						// プレイヤークラスのポインタ
@@ -78,10 +82,12 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	static CGameBg *m_pGameBg;						// 背景クラスのポインタ
 	static CTime *m_pTime;							// タイムクラスのポインタ
 	static CItem* m_pItem;							// アイテムクラスのポインタ
+	static CClear* m_pClear;						// クリア表示クラスのポインタ
 
 	static bool m_bStateReady;		// GAMSESTATE_READYかどうか
 	static bool m_bPause;			// 現在のポーズの状態
 	static bool m_bPauseCamera;		// ポーズ時のカメラ操作可能か
+	static bool m_bClear;			// クリアしているか
 	STATE m_state;					// ゲームの状態
 	int m_nCounterState;			// 状態管理カウンター
 	HWND m_hWnd;					// HWND保存用

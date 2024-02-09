@@ -62,8 +62,8 @@ CCamera::~CCamera()
 HRESULT CCamera::Init(void)
 {
 	// 値を初期化
-	m_posV = D3DXVECTOR3(1000.0f, 800.0f, 50.0f);
-	m_posR = D3DXVECTOR3(0.0f, 550.0f, 50.0f);
+	m_posV = D3DXVECTOR3(1000.0f, 600.0f, 100.0f);
+	m_posR = D3DXVECTOR3(0.0f, 350.0f, 100.0f);
 	m_vecU = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	m_posRDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posVDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -115,6 +115,58 @@ void CCamera::Update(void)
 
 			pObject = pObjectNext;		// 次のオブジェクトを代入
 		}
+	}
+
+	if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_Y) == true)
+	{
+		// 上移動
+		m_posV.y += MOVE_CAMERA;
+	}
+	else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_N) == true)
+	{
+		// 下移動
+		m_posV.y -= MOVE_CAMERA;
+	}
+
+	// 注視点操作
+	if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_T) == true)
+	{
+		// 上移動
+		m_posR.y += MOVE_CAMERA;
+	}
+	else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_B) == true)
+	{
+		// 下移動
+		m_posR.y -= MOVE_CAMERA;
+	}
+
+	if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_Y) == true)
+	{
+		// 上移動
+		m_posV.y += MOVE_CAMERA;
+	}
+	else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_N) == true)
+	{
+		// 下移動
+		m_posV.y -= MOVE_CAMERA;
+	}
+
+	if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_Q) == true)
+	{
+		// 上移動
+		m_rot.y += MOVE_CAMERA;
+	}
+	else if (CManager::GetInstance()->GetKeyboardInput()->GetPress(DIK_E) == true)
+	{
+		// 下移動
+		m_rot.y -= MOVE_CAMERA;
+	}
+
+	// カメラ位置リセット
+	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_F2) == true)
+	{
+		m_posV.y = HIGHT_CAMERA;
+		m_posR.y = 0.0f;
 	}
 
 	//if (CManager::GetMode() != CScene::MODE_TUTORIAL)
@@ -195,21 +247,30 @@ void CCamera::Set(void)
 	D3DXMatrixIdentity(&m_mtxProjection);
 
 	// プロジェクションマトリックスを作成
-	//if (CManager::GetMode() == CScene::MODE_TUTORIAL)
-	//{
-	//	D3DXMatrixOrthoLH(&m_mtxProjection,
-	//		(float)SCREEN_WIDTH,
-	//		(float)SCREEN_HEIGHT,
-	//		10.0f,
-	//		8000.0f);
-	//}
+	// 平行投影
+	if (CManager::GetMode() != CScene::MODE_TUTORIAL)
+	{
+		D3DXMatrixOrthoLH(&m_mtxProjection,
+			(float)SCREEN_WIDTH * 1.2f,
+			(float)SCREEN_HEIGHT * 1.2f,
+			10.0f,
+			10000.0f);
+	}
+	else /*if(CManager::GetMode() == CScene::MODE_GAME && CGame::GetPauseCamera() == false)*/
+	{
+		D3DXMatrixOrthoLH(&m_mtxProjection,
+			(float)SCREEN_WIDTH,
+			(float)SCREEN_HEIGHT,
+			10.0f,
+			10000.0f);
+	}
 	//else
 	//{
-		D3DXMatrixPerspectiveFovLH(&m_mtxProjection,
-			D3DXToRadian(45.0f),
-			(float)SCREEN_WIDTH / (float)SCREEN_HEIGHT,
-			10.0f,
-			8000.0f);
+	//	D3DXMatrixPerspectiveFovLH(&m_mtxProjection,
+	//		D3DXToRadian(45.0f),
+	//		(float)SCREEN_WIDTH / (float)SCREEN_HEIGHT,
+	//		10.0f,
+	//		8000.0f);
 	//}
 
 	// プロジェクションマトリックスの設定

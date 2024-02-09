@@ -169,7 +169,7 @@ void CBossBattle::Update(void)
 	if (m_pPlayer->GetPos().y < -200.0f)
 	{// 落下死
 		GetPlayer()->SetState(CPlayer::STATE_DEATH);
-		CRenderer::GetFade()->Set(CScene::MODE_BOSS);		// リザルト画面へ移動
+		//CRenderer::GetFade()->Set(CScene::MODE_BOSS);		// リザルト画面へ移動
 		SetTime(m_pTime->Get());		// 時間の設定
 	}
 

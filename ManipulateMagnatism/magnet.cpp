@@ -25,7 +25,7 @@
 //===============================================
 namespace
 {
-	const float LENTH_MAGNET = 100.0f;		// Ž¥Î‚ª”½‰ž‚·‚é‹——£
+	const float LENTH_MAGNET = 80.0f;		// Ž¥Î‚ª”½‰ž‚·‚é‹——£
 }
 
 //===============================================
@@ -263,8 +263,8 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 					fLenth = D3DXVec3Length(&vecDiff);
 					//fLenth = 200.0f - fLenth;
 
-					if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == true)
-						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == true))
+					if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_N))
 					{// ”½”­
 						if (pos.z + sizeMin.z <= pPos->z
 							&& pos.z + sizeMax.z >= pPos->z)
@@ -277,8 +277,8 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 							pMove->z += vecDiff.z * 0.04f;
 						}
 					}
-					else if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == false)
-						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == false))
+					else if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S)
+						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S))
 					{// ˆø‚«Šñ‚¹
 						if ((pos.z + sizeMin.z <= pPos->z && pos.z + sizeMax.z >= pPos->z)
 							|| pos.z + sizeMax.z >= pPos->z || pos.z + sizeMin.z <= pPos->z)

@@ -49,7 +49,15 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 		STATE_DEATH,		// 死亡
 		STATE_CLEAR,		// クリア
 		STATE_MAX
-	,};
+	};
+
+	enum EMagnet
+	{
+		EMAGNET_NONE = 0,	// なし
+		EMAGNET_N,			// N極（赤）
+		EMAGNET_S,			// S極（青）
+		EMAGNET_MAX
+	};
 
 	// モーションの種類
 	enum MOTIONTYPE
@@ -96,8 +104,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	EState GetState(void) { return m_state; }
 	void SetMotion(MOTIONTYPE type);
 	void SetPosShadow(void);
-	bool GetMagnet(void) { return m_bMagnet; }
-	bool GetMagnetOld(void) { return m_bMagnetOld; }
+	int GetMagnet(void) { return m_magnet; }
+	int GetMagnetOld(void) { return m_magnetOld; }
 
 private:	// 自分のみアクセス可能 [アクセス指定子]
 	static CPlayer* m_pPlayer;				// プレイヤークラスのポインタ
@@ -122,10 +130,10 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	bool m_bInvincible;						// 無敵状態かどうか
 	int m_nInvincibleCounter;				// 無敵状態カウンター
 	bool m_bDisp;							// 画面に表示するか
-	bool m_bMagnet;							// 磁力切り替え
-	bool m_bMagnetOld;						// 前回の磁力
 
 	EState m_state;							// 状態
+	int m_magnet;						// 磁力状態
+	int m_magnetOld;					// 前回の磁力状態
 
 	CModel *m_apModel[MAX_MODEL];			// モデル（パーツ）へのポインタ
 	int m_nNumModel;						// モデル（パーツ）の総数

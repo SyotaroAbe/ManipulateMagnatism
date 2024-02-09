@@ -22,7 +22,6 @@
 #include "tutorial.h"
 #include "meshfield.h"
 #include "fileload.h"
-#include "bossBattle.h"
 #include "game.h"
 #include "time.h"
 #include "result.h"
@@ -73,7 +72,7 @@ CScene::~CScene()
 //===============================================
 CScene *CScene::Create(HWND hWnd, MODE mode)
 {
-	CScene *pScene = NULL;
+	CScene *pScene = nullptr;
 	MODE sceneMode = CManager::GetMode();
 
 	// シーンの生成
@@ -113,10 +112,6 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 		pScene = new CGame;
 		break;
 
-	case MODE_BOSS:		// ボス戦
-		pScene = new CBossBattle;
-		break;
-
 	case MODE_RESULT:	// リザルト画面
 		pScene = new CResult;
 
@@ -144,15 +139,7 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 		{// ゲームからゲームへ
 			CGame::GetTime()->Set(m_nTime);
 		}
-		else if (sceneMode == MODE_BOSS && m_modeOld == MODE_GAME)
-		{// ゲームからボスへ
-			CBossBattle::GetTime()->Set(m_nTime);
-		}
-		else if (sceneMode == MODE_BOSS && m_modeOld == MODE_BOSS)
-		{// ボスからボスへ
-			CBossBattle::GetTime()->Set(m_nTime);
-		}
-		else if (sceneMode == CScene::MODE_RESULT && m_modeOld == CScene::MODE_BOSS)
+		else if (sceneMode == CScene::MODE_RESULT && m_modeOld == CScene::MODE_GAME)
 		{// 次のモードがリザルト
 			// ランキングの設定
 			CResult::GetRanking()->Add(m_nTime);
@@ -422,8 +409,7 @@ void CManager::Update(void)
 		m_pRenderer->Update();
 
 		if ((CManager::GetMode() == CScene::MODE_GAME && (CGame::GetPauseState() == false || CGame::GetPauseCamera() == true)
-			|| CManager::GetMode() == CScene::MODE_BOSS && (CBossBattle::GetPauseState() == false || CBossBattle::GetPauseCamera() == true))
-			|| CManager::GetMode() == CScene::MODE_TUTORIAL || CManager::GetMode() == CScene::MODE_TITLE)
+			|| CManager::GetMode() == CScene::MODE_TUTORIAL || CManager::GetMode() == CScene::MODE_TITLE))
 		{// ポーズ状態
 			// カメラの更新処理
 			m_pCamera->Update();
@@ -453,10 +439,6 @@ void CManager::Update(void)
 			if (m_mode == CScene::MODE_GAME)
 			{
 				m_pDebugProc->Print(" 現在のモード：ゲーム");
-			}
-			if (m_mode == CScene::MODE_BOSS)
-			{
-				m_pDebugProc->Print(" 現在のモード：ボス");
 			}
 			if (m_mode == CScene::MODE_RESULT)
 			{
@@ -515,10 +497,6 @@ void CManager::AddCountDeath(CScene::MODE mode)
 	{// ゲームモード中に死亡
 		m_nCntDeathGame++;
 	}
-	else if (mode == CScene::MODE_BOSS)
-	{// ボス戦中に死亡
-		m_nCntDeathBoss++;
-	}
 }
 
 //===============================================
@@ -552,11 +530,6 @@ void CManager::SetMode(CScene::MODE mode)
 
 	// シーンを代入
 	CScene *pScenePrev = m_pScene;
-
-	if (m_mode == CScene::MODE_BOSS && modeOld != CScene::MODE_GAME)
-	{// 次のモードがリザルト
-		//m_nTime = CGame::GetTime()->Get();
-	}
 
 	//if (mode == CScene::MODE_RESULT && modeOld != CScene::MODE_TITLE)
 	//{// 次のモードがリザルト
