@@ -28,9 +28,9 @@ int CObjectMesh::m_nIdxTexture = 0;						// 使用するテクスチャの番号
 CObjectMesh::CObjectMesh() : CObject(3)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
-	m_pldxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
+	m_pldxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -48,9 +48,9 @@ CObjectMesh::CObjectMesh() : CObject(3)
 CObjectMesh::CObjectMesh(int nPriority) : CObject(nPriority)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
-	m_pldxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
+	m_pldxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -116,7 +116,7 @@ HRESULT CObjectMesh::Init(D3DXVECTOR3 pos)
 		FVF_VERTEX_3D,
 		D3DPOOL_MANAGED,
 		&m_pVtxBuff,
-		NULL);
+		nullptr);
 
 	VERTEX_3D * pVtx;   // 頂点情報へのポインタ
 
@@ -178,7 +178,7 @@ HRESULT CObjectMesh::Init(D3DXVECTOR3 pos)
 		D3DFMT_INDEX16,
 		D3DPOOL_MANAGED,
 		&m_pldxBuff,
-		NULL);
+		nullptr);
 
 	WORD * pldx;	// インデックス情報へのポインタ
 
@@ -213,17 +213,17 @@ HRESULT CObjectMesh::Init(D3DXVECTOR3 pos)
 void CObjectMesh::Uninit(void)
 {
 	// 頂点バッファの破棄
-	if (m_pVtxBuff != NULL)
+	if (m_pVtxBuff != nullptr)
 	{
 		m_pVtxBuff->Release();
-		m_pVtxBuff = NULL;
+		m_pVtxBuff = nullptr;
 	}
 
 	// インデックスバッファの破棄
-	if (m_pldxBuff != NULL)
+	if (m_pldxBuff != nullptr)
 	{
 		m_pldxBuff->Release();
-		m_pldxBuff = NULL;
+		m_pldxBuff = nullptr;
 	}
 
 	this->Release();

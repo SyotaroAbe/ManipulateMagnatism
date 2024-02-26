@@ -9,7 +9,6 @@
 #include "manager.h"
 #include "camera.h"
 #include "game.h"
-#include "bossBattle.h"
 
 //=============================
 // 静的メンバ変数 
@@ -26,18 +25,18 @@ CObject::CObject()
 	m_nPriority = 3;	// 描画順を設定
 
 	// 値をクリア
-	m_pPrev = NULL;
-	m_pNext = NULL;
+	m_pPrev = nullptr;
+	m_pNext = nullptr;
 	m_type = TYPE_NONE;
-	m_pShadow = NULL;
+	m_pShadow = nullptr;
 	m_bDeath = false;
 
-	if (m_apTop[m_nPriority] == NULL)
+	if (m_apTop[m_nPriority] == nullptr)
 	{// 先頭のオブジェクトが存在しない
 		m_apTop[m_nPriority] = this;		// 先頭のオブジェクトに自分を代入
 	}
 
-	if (m_apCur[m_nPriority] != NULL)
+	if (m_apCur[m_nPriority] != nullptr)
 	{// 最後尾のオブジェクトが保存されている
 		m_pPrev = m_apCur[m_nPriority];			// 前回の最後尾のオブジェクトを前のオブジェクトのポインタに保存
 		m_pPrev->m_pNext = this;				// 前回の最後尾の次のオブジェクトに自身を保存
@@ -55,18 +54,18 @@ CObject::CObject(int nPriority)
 	m_nPriority = nPriority;	// 描画順を設定
 
 	// 値をクリア
-	m_pPrev = NULL;
-	m_pNext = NULL;
+	m_pPrev = nullptr;
+	m_pNext = nullptr;
 	m_type = TYPE_NONE;
-	m_pShadow = NULL;
+	m_pShadow = nullptr;
 	m_bDeath = false;
 
-	if (m_apTop[m_nPriority] == NULL)
+	if (m_apTop[m_nPriority] == nullptr)
 	{// 先頭のオブジェクトが存在しない
 		m_apTop[m_nPriority] = this;		// 先頭のオブジェクトに自分を代入
 	}
 
-	if (m_apCur[m_nPriority] != NULL)
+	if (m_apCur[m_nPriority] != nullptr)
 	{// 最後尾のオブジェクトが保存されている
 		m_pPrev = m_apCur[m_nPriority];			// 前回の最後尾のオブジェクトを前のオブジェクトのポインタに保存
 		m_pPrev->m_pNext = this;				// 前回の最後尾の次のオブジェクトに自身を保存
@@ -93,7 +92,7 @@ void CObject::ReleaseAll()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
@@ -108,7 +107,7 @@ void CObject::ReleaseAll()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
@@ -131,16 +130,16 @@ void CObject::ReleaseAll()
 
 				if (pObject == m_apTop[nCntPriority])
 				{// 先頭と一致
-					m_apTop[nCntPriority] = NULL;
+					m_apTop[nCntPriority] = nullptr;
 				}
 				if (pObject == m_apCur[nCntPriority])
 				{// 最後尾と一致
-					m_apCur[nCntPriority] = NULL;
+					m_apCur[nCntPriority] = nullptr;
 				}
 
 				// メモリを開放
 				delete pObject;
-				pObject = NULL;
+				pObject = nullptr;
 			}
 
 			pObject = pObjectNext;	// 次のオブジェクトを代入
@@ -157,12 +156,12 @@ void CObject::Reset()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 			TYPE type = pObject->GetType();				// オブジェクトの種類を取得
 
-			if (type == TYPE_ENEMY || type == TYPE_BOSS || type == TYPE_BOXNORMAL || type == TYPE_BOXDAMAGE)
+			if (type == TYPE_ENEMY || type == TYPE_BOXNORMAL || type == TYPE_BOXDAMAGE)
 			{// 敵、ボス
 				// 終了処理
 				pObject->Uninit();
@@ -176,7 +175,7 @@ void CObject::Reset()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
@@ -199,16 +198,16 @@ void CObject::Reset()
 
 				if (pObject == m_apTop[nCntPriority])
 				{// 先頭と一致
-					m_apTop[nCntPriority] = NULL;
+					m_apTop[nCntPriority] = nullptr;
 				}
 				if (pObject == m_apCur[nCntPriority])
 				{// 最後尾と一致
-					m_apCur[nCntPriority] = NULL;
+					m_apCur[nCntPriority] = nullptr;
 				}
 
 				// メモリを開放
 				delete pObject;
-				pObject = NULL;
+				pObject = nullptr;
 			}
 
 			pObject = pObjectNext;	// 次のオブジェクトを代入
@@ -228,7 +227,7 @@ void CObject::UpdateAll()
 		{
 			CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-			while (pObject != NULL)
+			while (pObject != nullptr)
 			{// ポインタが使用されている
 				CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
@@ -244,7 +243,7 @@ void CObject::UpdateAll()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
@@ -254,12 +253,12 @@ void CObject::UpdateAll()
 				if (m_apTop[nCntPriority] != pObject && m_apCur[nCntPriority] == pObject)
 				{// 自身が先頭ではないが最後尾である
 					m_apCur[nCntPriority] = pObject->m_pPrev;		// 最後尾を前のオブジェクトに設定する
-					pObject->m_pPrev->m_pNext = NULL;				// 前のオブジェクトの次のオブジェクトを削除
+					pObject->m_pPrev->m_pNext = nullptr;				// 前のオブジェクトの次のオブジェクトを削除
 				}
 				else if (m_apTop[nCntPriority] == pObject && m_apCur[nCntPriority] != pObject)
 				{// 自身が先頭だが最後尾ではない
 					m_apTop[nCntPriority] = pObject->m_pNext;		// 先頭を次のオブジェクトに設定する
-					pObject->m_pNext->m_pPrev = NULL;				// 次のオブジェクトの前のオブジェクトを削除
+					pObject->m_pNext->m_pPrev = nullptr;				// 次のオブジェクトの前のオブジェクトを削除
 				}
 				else if (m_apTop[nCntPriority] != pObject && m_apCur[nCntPriority] != pObject)
 				{// 自身が先頭でも最後尾でもない
@@ -269,16 +268,16 @@ void CObject::UpdateAll()
 
 				if (pObject == m_apTop[nCntPriority])
 				{// 先頭と一致
-					m_apTop[nCntPriority] = NULL;
+					m_apTop[nCntPriority] = nullptr;
 				}
 				if(pObject == m_apCur[nCntPriority])
 				{// 最後尾と一致
-					m_apCur[nCntPriority] = NULL;
+					m_apCur[nCntPriority] = nullptr;
 				}
 
 				// メモリを開放
 				delete pObject;
-				pObject = NULL;
+				pObject = nullptr;
 			}
 
 			pObject = pObjectNext;	// 次のオブジェクトを代入
@@ -293,7 +292,7 @@ void CObject::DrawAll()
 {
 	CCamera *m_pCamera = CManager::GetInstance()->GetCamera();	// カメラへのポインタを取得
 
-	if (m_pCamera != NULL)
+	if (m_pCamera != nullptr)
 	{// カメラが使用されている
 		// カメラの設定処理
 		m_pCamera->Set();
@@ -303,11 +302,11 @@ void CObject::DrawAll()
 	{
 		CObject *pObject = m_apTop[nCntPriority];	// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// ポインタが使用されている
 			CObject *pObjectNext = pObject->m_pNext;	// 次のオブジェクトを保存
 
-			if (pObject->m_type != TYPE_PAUSE || CGame::GetPauseState() == true && CGame::GetPauseCamera() == false || CBossBattle::GetPauseState() == true && CBossBattle::GetPauseCamera() == false)
+			if (pObject->m_type != TYPE_PAUSE || CGame::GetPauseState() == true && CGame::GetPauseCamera() == false)
 			{// オブジェクトの種類がポーズじゃない もしくはポーズ状態のとき
 				// 描画処理
 				pObject->Draw();

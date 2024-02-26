@@ -9,7 +9,7 @@
 //=========================================================
 // 静的メンバ変数
 //=========================================================
-LPDIRECTINPUT8 CInput::m_pInput = NULL;
+LPDIRECTINPUT8 CInput::m_pInput = nullptr;
 
 //***********************************************************
 // 入力クラス（親）
@@ -20,8 +20,8 @@ LPDIRECTINPUT8 CInput::m_pInput = NULL;
 CInput::CInput()
 {
 	// 値のクリア
-	m_pDevice = NULL;
-	m_pInput = NULL;
+	m_pDevice = nullptr;
+	m_pInput = nullptr;
 }
 
 //=========================================================
@@ -37,10 +37,10 @@ CInput::~CInput()
 //=========================================================
 HRESULT CInput::Init(HINSTANCE hInstance, HWND hWnd)
 {
-	if (m_pInput == NULL)
+	if (m_pInput == nullptr)
 	{// メモリが使用されていない
 		// DirectInputオブジェクトの初期化
-		if (FAILED(DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_pInput, NULL)))
+		if (FAILED(DirectInput8Create(hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&m_pInput, nullptr)))
 		{
 			return E_FAIL;
 		}
@@ -55,18 +55,18 @@ HRESULT CInput::Init(HINSTANCE hInstance, HWND hWnd)
 void CInput::Uninit(void)
 {
 	// 入力デバイス(キーボード)の破棄
-	if (m_pDevice != NULL)
+	if (m_pDevice != nullptr)
 	{
 		m_pDevice->Unacquire();			// キーボードへのアクセス権を放棄
 		m_pDevice->Release();
-		m_pDevice = NULL;
+		m_pDevice = nullptr;
 	}
 
 	// Directinputオブジェクトの破棄
-	if (m_pInput != NULL)
+	if (m_pInput != nullptr)
 	{
 		m_pInput->Release();
-		m_pInput = NULL;
+		m_pInput = nullptr;
 	}
 }
 
@@ -108,7 +108,7 @@ HRESULT CInputKeyboard::Init(HINSTANCE hInstance, HWND hWnd)
 	}
 
 	// 入力デバイス(キーボード)の生成
-	if (FAILED(m_pInput->CreateDevice(GUID_SysKeyboard, &m_pDevice, NULL)))
+	if (FAILED(m_pInput->CreateDevice(GUID_SysKeyboard, &m_pDevice, nullptr)))
 	{
 		return E_FAIL;
 	}

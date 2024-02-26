@@ -39,13 +39,6 @@
 #define MOVE_GRAVITY		(0.75f)		// 重力
 #define LAND_POS			(0.0f)		// 地面
 
-#define JUMP_PREHIPDROP		(12.0f)		// ヒップドロップ初動の浮力
-#define JUMP_HIPDROP		(12.0f)		// ヒップドロップの浮力
-#define MOVE_HIPDROP		(1.2f)		// ヒップドロップ中重力
-
-#define JUMP_ATTACK			(0.75f)		// 空中攻撃時の浮力
-#define ROT_BULLET			(0.7f)		// 弾生成の向き
-
 #define MOVE_MINUS			(0.07f)		// 移動量の減衰
 #define TURN_TIME			(1)			// 曲がる時間
 #define COUNT_PARTICLE		(25)		// パーティクル発生時間
@@ -106,7 +99,7 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_nStateCounter = 0;
 	m_apModel[MAX_MODEL] = {};
 	m_nNumModel = 0;
-	m_pMotion = NULL;
+	m_pMotion = nullptr;
 	m_nParticleCounter = 0;
 	m_vtxMax = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_vtxMin = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -138,7 +131,7 @@ CPlayer *CPlayer::Create(D3DXVECTOR3 pos, int nPriority)
 	// プレイヤーの生成
 	pPlayer = new CPlayer(nPriority);
 
-	if (pPlayer != NULL)
+	if (pPlayer != nullptr)
 	{
 		// 種類の設定
 		pPlayer->SetType(CObject::TYPE_PLAYER);
@@ -197,7 +190,7 @@ HRESULT CPlayer::Init(D3DXVECTOR3 pos)
 	m_pMotion->SetModel(&m_apModel[0], m_nNumModel);
 
 	// 親モデルの設定（全パーツ）
-	m_apModel[0]->SetParent(NULL);
+	m_apModel[0]->SetParent(nullptr);
 	for (int nCntModel = 1; nCntModel < m_nNumModel; nCntModel++)
 	{
 		int nParent = 0;
@@ -258,7 +251,7 @@ HRESULT CPlayer::Init(D3DXVECTOR3 pos)
 	m_pMotion->Set(MOTIONTYPE_NEUTRAL);
 
 	// モーションの更新処理
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Update();
 	}
@@ -278,29 +271,29 @@ void CPlayer::Uninit(void)
 	// モデルの破棄
 	for (int nCntModel = 0; nCntModel < m_nNumModel; nCntModel++)
 	{
-		if (m_apModel[nCntModel] != NULL)
+		if (m_apModel[nCntModel] != nullptr)
 		{// 使用されている
 			// モデルの終了処理
 			m_apModel[nCntModel]->Uninit();
 			delete m_apModel[nCntModel];
-			m_apModel[nCntModel] = NULL;
+			m_apModel[nCntModel] = nullptr;
 		}
 	}
 
 	// モーションへのポインタの破棄
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Uninit();
 		delete m_pMotion;
-		m_pMotion = NULL;
+		m_pMotion = nullptr;
 	}
 
 	this->Release();
 
-	//if (m_pPlayer != NULL)
+	//if (m_pPlayer != nullptr)
 	//{
 	//	delete m_pPlayer;
-	//	m_pPlayer = NULL;
+	//	m_pPlayer = nullptr;
 	//}
 }
 
@@ -485,7 +478,7 @@ void CPlayer::Update(void)
 	}
 
 	// モーションの更新処理
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Update();
 	}
@@ -761,7 +754,7 @@ void CPlayer::SetPosShadow(void)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -795,7 +788,7 @@ void CPlayer::SetPosShadow(void)
 //===============================================
 CPlayer* CPlayer::GetInstance(void)
 {
-	if (m_pPlayer == NULL)
+	if (m_pPlayer == nullptr)
 	{
 		return m_pPlayer = new CPlayer(m_nPriority);
 	}

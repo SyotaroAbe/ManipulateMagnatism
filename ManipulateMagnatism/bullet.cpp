@@ -16,8 +16,6 @@
 #include "objectBillboard.h"
 #include "texture.h"
 #include "game.h"
-#include "bossBattle.h"
-#include "boss.h"
 
 //===============================================
 // マクロ定義
@@ -189,12 +187,12 @@ bool CBullet::CollisionEnemy(D3DXVECTOR3 pos)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while(pObject != NULL)
+		while(pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクト
 			TYPE type = pObject->GetType();					// 種類を取得
 
-			if (type == TYPE_ENEMY || type == TYPE_BOXNORMAL || type == TYPE_BOXDAMAGE || type == TYPE_BOSS)
+			if (type == TYPE_ENEMY || type == TYPE_BOXNORMAL || type == TYPE_BOXDAMAGE)
 			{// 敵、地形
 				D3DXVECTOR3 ObjPos = pObject->GetPos();			// 位置を取得
 				D3DXVECTOR3 ObjSize = pObject->GetSize();		// サイズを取得
@@ -213,11 +211,6 @@ bool CBullet::CollisionEnemy(D3DXVECTOR3 pos)
 						CParticle::Create(1)->Set(pObject->GetPos(), CParticle::TYPE_ENEMY);	// パーティクルの生成
 						pObject->Uninit();														// 敵の終了処理
 						//CGame::GetScore()->Add(ENEMY_SCORE);									// スコア加算
-					}
-					else if (type == TYPE_BOSS)
-					{// ボス
-						CParticle::Create(1)->Set(pObject->GetPos(), CParticle::TYPE_ENEMY);	// パーティクルの生成
-						CBossBattle::GetBoss()->HitDamage(1);
 					}
 					else
 					{

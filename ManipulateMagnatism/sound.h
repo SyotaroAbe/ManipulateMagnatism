@@ -24,7 +24,6 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 		LABEL_BGM_TITLE = 0,	// BGM（タイトル）
 		LABEL_BGM_TUTORIAL,		// BGM（チュートリアル）
 		LABEL_BGM_GAME,			// BGM（ゲーム）
-		LABEL_BGM_BOSS,			// BGM（ボス）
 		LABEL_BGM_RANKING,		// BGM（ランキング）
 		LABEL_SE_PAUSE,			// ポーズ起動
 		LABEL_SE_PAUSE_CANCEL,	// ポーズキャンセル
@@ -57,8 +56,8 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	HRESULT CheckChunk(HANDLE hFile, DWORD format, DWORD *pChunkSize, DWORD *pChunkDataPosition);
 	HRESULT ReadChunkData(HANDLE hFile, void *pBuffer, DWORD dwBuffersize, DWORD dwBufferoffset);
 
-	IXAudio2 *m_pXAudio2 = NULL;							// XAudio2オブジェクトへのインターフェイス
-	IXAudio2MasteringVoice *m_pMasteringVoice = NULL;		// マスターボイス
+	IXAudio2 *m_pXAudio2 = nullptr;							// XAudio2オブジェクトへのインターフェイス
+	IXAudio2MasteringVoice *m_pMasteringVoice = nullptr;		// マスターボイス
 	IXAudio2SourceVoice *m_apSourceVoice[LABEL_MAX] = {};	// ソースボイス
 	BYTE *m_apDataAudio[LABEL_MAX] = {};					// オーディオデータ
 	DWORD m_aSizeAudio[LABEL_MAX] = {};						// オーディオデータサイズ

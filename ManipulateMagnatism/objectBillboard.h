@@ -52,8 +52,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	D3DXVECTOR3 GetSizeMin(void) { return D3DXVECTOR3(m_fSizeX, 0.0f, m_fSizeZ); }
 
 protected:	// 派生クラスからもアクセスできる [アクセス指定子]
-	LPDIRECT3DTEXTURE9 m_pTexture = NULL;		// テクスチャへのポインタ
-	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL;	// 頂点バッファへのポインタ
+	LPDIRECT3DTEXTURE9 m_pTexture = nullptr;		// テクスチャへのポインタ
+	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = nullptr;	// 頂点バッファへのポインタ
 	D3DXMATRIX m_mtxWorld;						// ワールドマトリックス
 	D3DXVECTOR3 m_pos;							// 位置
 	D3DXVECTOR3 m_posOld;						// 前回の位置

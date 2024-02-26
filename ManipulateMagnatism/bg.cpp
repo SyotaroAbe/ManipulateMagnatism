@@ -13,6 +13,7 @@
 // マクロ定義
 //===============================================
 #define TEXTURE_TITLE		"data\\TEXTURE\\title000.png"		// タイトルのテクスチャ
+#define TEXTURE_SELECT		"data\\TEXTURE\\title000.png"		// セレクトのテクスチャ
 #define TEXTURE_TUTORIAL	"data\\TEXTURE\\tutorial000.png"	// チュートリアルのテクスチャ
 #define TEXTURE_RESULT		"data\\TEXTURE\\ranking000.png"		// リザルトのテクスチャ
 #define TEX_MOVE	(0.00005f)									// テクスチャの移動量
@@ -91,6 +92,7 @@ HRESULT CBg::Init(D3DXVECTOR3 pos)
 
 	// テクスチャの設定
 	m_aIdxTexture[TYPE_TITLE] = CManager::GetInstance()->GetTexture()->Regist(TEXTURE_TITLE);
+	m_aIdxTexture[TYPE_SELECT] = CManager::GetInstance()->GetTexture()->Regist(TEXTURE_SELECT);
 	m_aIdxTexture[TYPE_TUTORIAL] = CManager::GetInstance()->GetTexture()->Regist(TEXTURE_TUTORIAL);
 	m_aIdxTexture[TYPE_RESULT] = CManager::GetInstance()->GetTexture()->Regist(TEXTURE_RESULT);
 

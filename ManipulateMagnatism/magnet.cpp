@@ -15,10 +15,10 @@
 #include "game.h"
 #include "player.h"
 #include "enemy.h"
-#include "bossBattle.h"
 #include "tutorial.h"
 #include "manager.h"
 #include "debugproc.h"
+#include "particle.h"
 
 //===============================================
 // 定数定義
@@ -141,7 +141,7 @@ void CMagnet::Update(void)
 	D3DXVECTOR3 playerPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの位置
 	D3DXVECTOR3 playerPosOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		// プレイヤーの前回の位置
 	D3DXVECTOR3 playerRot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの向き
-	CObject *pObj = NULL;
+	CObject *pObj = nullptr;
 
 	m_posOld = m_pos;
 
@@ -149,7 +149,7 @@ void CMagnet::Update(void)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -221,7 +221,7 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 	{
 		CObject* pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject* pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -276,6 +276,7 @@ bool CMagnet::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 							pMove->y += vecDiff.y * 0.04f;
 							pMove->z += vecDiff.z * 0.04f;
 						}
+						CParticle::Create()->Set({ pPos->x, pPos->y, pPos->z }, CParticle::TYPE_ENEMY);
 					}
 					else if ((CManager::GetMode() == CScene::MODE_GAME && CGame::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S)
 						|| (CManager::GetMode() == CScene::MODE_TUTORIAL && CTutorial::GetPlayer()->GetMagnet() == CPlayer::EMAGNET_S))
@@ -318,7 +319,7 @@ bool CMagnet::CollisionEnemy(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得

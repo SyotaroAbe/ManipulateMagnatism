@@ -36,6 +36,7 @@ public:		// 誰でもアクセス可能[アクセス指定子]
 	enum MODE
 	{
 		MODE_TITLE,		// タイトル画面
+		MODE_SELECT,	// セレクト画面
 		MODE_TUTORIAL,	// チュートリアル画面
 		MODE_GAME,		// ゲーム画面
 		MODE_RESULT,	// リザルト画面
@@ -79,6 +80,8 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void SetFPS(int nCountFPS);
 	HWND GetHWND(void) { return m_hWnd; }
 	void AddCountDeath(CScene::MODE mode);
+	void SetStage(int stage) { m_nStage = stage; }
+	int GetStage(void) { return m_nStage; }
 
 	static CManager* GetInstance(void);
 	static void SetMode(CScene::MODE mode);
@@ -114,7 +117,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 
 	int m_nCountFPS;						// FPSをカウント
 	int m_nCntDeathGame;					// ゲームモード死亡数カウント
-	int m_nCntDeathBoss;					// ボスバトル死亡数カウント
+	int m_nStage;							// 選択したステージ
 	bool m_bEdit;							// エディット切り替え
 };
 

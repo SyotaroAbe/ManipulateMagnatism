@@ -45,7 +45,6 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	{
 		FILE_PLAYER = 0,	// プレイヤー
 		FILE_ENEMY,			// 敵
-		FILE_BOSS,			// ボス
 		FILE_MAX
 	};
 

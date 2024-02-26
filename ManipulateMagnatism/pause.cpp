@@ -15,7 +15,6 @@
 #include "object2D.h"
 #include "fade.h"
 #include "sound.h"
-#include "bossBattle.h"
 #include "time.h"
 
 //===============================================
@@ -31,7 +30,7 @@ int CPause::m_aIdxTexture[TEX_MAX] = {};			// 使用するテクスチャの番号
 CPause::CPause()
 {
 	// 値のクリア
-	m_pVtxBuff = NULL;
+	m_pVtxBuff = nullptr;
 	m_Menu = MENU_CONTINUE;
 	m_nPosCursor = 0;
 	m_EnterFade = false;
@@ -48,7 +47,7 @@ CPause::CPause()
 CPause::CPause(int nPriority)
 {
 	// 値のクリア
-	m_pVtxBuff = NULL;
+	m_pVtxBuff = nullptr;
 	m_Menu = MENU_CONTINUE;
 	m_nPosCursor = 0;
 	m_EnterFade = false;

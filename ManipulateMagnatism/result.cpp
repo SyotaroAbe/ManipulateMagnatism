@@ -21,9 +21,9 @@
 //===============================================
 // 静的メンバ変数
 //===============================================
-CBg *CResult::m_pBg = NULL;						// 背景クラスのポインタ
-CRanking *CResult::m_pRanking = NULL;			// ランキングクラスのポインタ
-CRankIn *CResult::m_pRankIn = NULL;				// ランクインクラスのポインタ
+CBg *CResult::m_pBg = nullptr;						// 背景クラスのポインタ
+CRanking *CResult::m_pRanking = nullptr;			// ランキングクラスのポインタ
+CRankIn *CResult::m_pRankIn = nullptr;				// ランクインクラスのポインタ
 
 //===============================================
 // コンストラクタ
@@ -65,12 +65,12 @@ HRESULT CResult::Init(HWND hWnd)
 //===============================================
 void CResult::Uninit(void)
 {
-	if (m_pRanking != NULL)
+	if (m_pRanking != nullptr)
 	{
 		// ランキングの終了処理
 		m_pRanking->Uninit();
 		delete m_pRanking;
-		m_pRanking = NULL;
+		m_pRanking = nullptr;
 	}
 
 	// 全てのオブジェクトの破棄
@@ -96,7 +96,7 @@ void CResult::Update(void)
 		}
 	}
 
-	if (m_pRanking != NULL)
+	if (m_pRanking != nullptr)
 	{
 		// ランキングの更新処理
 		m_pRanking->Update();
@@ -108,7 +108,7 @@ void CResult::Update(void)
 //===============================================
 void CResult::Draw(void)
 {
-	if (m_pRanking != NULL)
+	if (m_pRanking != nullptr)
 	{
 		// ランキングの描画処理
 		m_pRanking->Draw();

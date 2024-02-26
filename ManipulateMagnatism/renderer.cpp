@@ -10,12 +10,11 @@
 #include "manager.h"
 #include "game.h"
 #include "fade.h"
-#include "bossBattle.h"
 
 //===============================================
 // 静的メンバ変数
 //===============================================
-CFade * CRenderer::m_pFade = NULL;					// フェードクラスのポインタ
+CFade * CRenderer::m_pFade = nullptr;					// フェードクラスのポインタ
 
 //===============================================
 // コンストラクタ
@@ -23,8 +22,8 @@ CFade * CRenderer::m_pFade = NULL;					// フェードクラスのポインタ
 CRenderer::CRenderer()
 {
 	// 値をクリアする
-	m_pD3D = NULL;
-	m_pD3DDevice = NULL;
+	m_pD3D = nullptr;
+	m_pD3DDevice = nullptr;
 }
 
 //===============================================
@@ -45,7 +44,7 @@ HRESULT CRenderer::Init(HWND hWnd, BOOL bWindow)
 
 	// Direct3Dオブジェクトの生成
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
-	if (m_pD3D == NULL)
+	if (m_pD3D == nullptr)
 	{
 		return E_FAIL;
 	}
@@ -101,6 +100,17 @@ HRESULT CRenderer::Init(HWND hWnd, BOOL bWindow)
 	m_pD3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 	m_pD3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 
+	//サンプラースラートの誕生
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);
+	m_pD3DDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);
+
+	//テクスチャステージステートの誕生
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_CURRENT);
+
 	// フェードの生成
 	m_pFade = CFade::Create(CScene::MODE_TITLE, 7);
 
@@ -113,26 +123,26 @@ HRESULT CRenderer::Init(HWND hWnd, BOOL bWindow)
 //===============================================
 void CRenderer::Uninit(void)
 {// 各種オブジェクトの終了処理
-	if (m_pFade != NULL)
+	if (m_pFade != nullptr)
 	{// 使用されている
 		// フェードの終了処理
 		m_pFade->Uninit();
 		delete m_pFade;
-		m_pFade = NULL;
+		m_pFade = nullptr;
 	}
 	
 	// Direct3Dデバイスの破棄
-	if (m_pD3DDevice != NULL)
+	if (m_pD3DDevice != nullptr)
 	{
 		m_pD3DDevice->Release();
-		m_pD3DDevice = NULL;
+		m_pD3DDevice = nullptr;
 	}
 
 	// Direct3Dオブジェクトの破棄
-	if (m_pD3D != NULL)
+	if (m_pD3D != nullptr)
 	{
 		m_pD3D->Release();
-		m_pD3D = NULL;
+		m_pD3D = nullptr;
 	}
 }
 
@@ -148,7 +158,7 @@ void CRenderer::Update(void)
 		CObject::UpdateAll();
 	}
 
-	if (m_pFade != NULL)
+	if (m_pFade != nullptr)
 	{
 		// フェードの更新処理
 		m_pFade->Update();
@@ -161,7 +171,7 @@ void CRenderer::Update(void)
 void CRenderer::Draw(void)
 {
 	// 画面クリア（バックバッファとＺバッファのクリア）
-	m_pD3DDevice->Clear(0, NULL,
+	m_pD3DDevice->Clear(0, nullptr,
 		(D3DCLEAR_STENCIL | D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER),
 		D3DCOLOR_RGBA(0, 0, 0, 0), 1.0f, 0);
 
@@ -171,7 +181,7 @@ void CRenderer::Draw(void)
 		// 全てのオブジェクトの描画処理
 		CObject::DrawAll();
 
-		if (m_pFade != NULL)
+		if (m_pFade != nullptr)
 		{
 			// フェードの描画処理
 			m_pFade->Draw();
@@ -185,5 +195,5 @@ void CRenderer::Draw(void)
 	}
 
 	// バックバッファとフロントバッファの入れ替え
-	m_pD3DDevice->Present(NULL, NULL, NULL, NULL);
+	m_pD3DDevice->Present(nullptr, nullptr, nullptr, nullptr);
 }

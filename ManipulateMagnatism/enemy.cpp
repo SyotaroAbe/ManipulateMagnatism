@@ -26,12 +26,12 @@
 #include "objectX.h"
 #include "fileload.h"
 #include "item.h"
+#include "select.h"
 
 //===============================================
 // マクロ定義
 //===============================================
 #define MOVE_ENEMY			(0.1f)		// 動く速度
-#define JUMP_ENEMY			(16.85f)	// ジャンプ力
 #define MOVE_GRAVITY		(0.75f)		// 重力
 
 #define MOVE_MINUS			(0.07f)		// 移動量の減衰
@@ -79,7 +79,7 @@ CEnemy::CEnemy(int nPriority) : CObject(nPriority)
 	m_nStateCounter = 0;
 	m_apModel[MAX_MODEL] = {};
 	m_nNumModel = 0;
-	m_pMotion = NULL;
+	m_pMotion = nullptr;
 	m_vtxMax = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_vtxMin = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_type = TYPE_NORMAL;
@@ -100,7 +100,17 @@ CEnemy::~CEnemy()
 //===============================================
 void CEnemy::Load(HWND hWnd)
 {
-	CEnemy::Create(D3DXVECTOR3(0.0f, 120.0f, 400.0f), CEnemy::TYPE_NORMAL, 4);
+	int nStage = CManager::GetInstance()->GetStage();
+
+	switch (nStage)
+	{
+	case CSelect::STAGE_1:		//ステージ１
+		break;
+
+	case CSelect::STAGE_2:		//ステージ２
+		CEnemy::Create(D3DXVECTOR3(0.0f, 120.0f, 400.0f), CEnemy::TYPE_NORMAL, 4);
+		break;
+	}
 }
 
 //===============================================
@@ -108,7 +118,7 @@ void CEnemy::Load(HWND hWnd)
 //===============================================
 CEnemy *CEnemy::Create(D3DXVECTOR3 pos, EType type, int nPriority)
 {
-	CEnemy *pEnemy;
+	CEnemy *pEnemy = nullptr;
 
 	// プレイヤーの生成
 	pEnemy = new CEnemy(nPriority);
@@ -164,7 +174,7 @@ HRESULT CEnemy::Init(D3DXVECTOR3 pos)
 	m_pMotion->SetModel(&m_apModel[0], m_nNumModel);
 
 	// 親モデルの設定（全パーツ）
-	m_apModel[0]->SetParent(NULL);
+	m_apModel[0]->SetParent(nullptr);
 	for (int nCntModel = 1; nCntModel < m_nNumModel; nCntModel++)
 	{
 		int nParent = 0;
@@ -225,7 +235,7 @@ HRESULT CEnemy::Init(D3DXVECTOR3 pos)
 	m_pMotion->Set(MOTIONTYPE_NEUTRAL);
 
 	// モーションの更新処理
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Update();
 	}
@@ -247,21 +257,21 @@ void CEnemy::Uninit(void)
 	// モデルの破棄
 	for (int nCntModel = 0; nCntModel < m_nNumModel; nCntModel++)
 	{
-		if (m_apModel[nCntModel] != NULL)
+		if (m_apModel[nCntModel] != nullptr)
 		{// 使用されている
 			// モデルの終了処理
 			m_apModel[nCntModel]->Uninit();
 			delete m_apModel[nCntModel];
-			m_apModel[nCntModel] = NULL;
+			m_apModel[nCntModel] = nullptr;
 		}
 	}
 
 	// モーションへのポインタの破棄
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Uninit();
 		delete m_pMotion;
-		m_pMotion = NULL;
+		m_pMotion = nullptr;
 	}
 
 	this->Release();
@@ -280,7 +290,7 @@ void CEnemy::Update(void)
 	switch (m_state)
 	{
 	case STATE_NORMAL:		// 通常
-		if (m_pMotion != NULL)
+		if (m_pMotion != nullptr)
 		{
 			m_pMotion->Set(MOTIONTYPE_NEUTRAL);
 		}
@@ -307,7 +317,7 @@ void CEnemy::Update(void)
 	case STATE_MOVELEFT:	// 左移動
 		m_move.z += cosf(D3DX_PI * ROT_DOWN + (ROT_CAMERA * m_rot.y)) * m_fSpeed;
 		//m_rotDest.y = D3DX_PI * ROT_RIGHT + (ROT_CAMERA * CManager::GetInstance()->GetCamera()->GetRot().y);
-		if (m_pMotion != NULL)
+		if (m_pMotion != nullptr)
 		{
 			m_pMotion->Set(MOTIONTYPE_MOVE);				// 初期モーション設定
 		}
@@ -365,7 +375,7 @@ void CEnemy::Update(void)
 	m_move.z += (0.0f - m_move.z) * MOVE_MINUS;
 
 	// モーションの更新処理
-	if (m_pMotion != NULL)
+	if (m_pMotion != nullptr)
 	{
 		m_pMotion->Update();
 	}

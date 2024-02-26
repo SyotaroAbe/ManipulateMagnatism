@@ -23,8 +23,8 @@
 CObject2D::CObject2D() : CObject(3)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -43,8 +43,8 @@ CObject2D::CObject2D() : CObject(3)
 CObject2D::CObject2D(int nPriority) : CObject(nPriority)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -82,9 +82,9 @@ HRESULT CObject2D::Init(D3DXVECTOR3 pos)
 		FVF_VERTEX_2D,
 		D3DPOOL_MANAGED,
 		&m_pVtxBuff,
-		NULL);
+		nullptr);
 
-	if (m_pVtxBuff == NULL)
+	if (m_pVtxBuff == nullptr)
 	{// 使用されていない
 		return -1;
 	}
@@ -165,10 +165,10 @@ HRESULT CObject2D::Init(D3DXVECTOR3 pos)
 void CObject2D::Uninit(void)
 {
 	// 頂点バッファの破棄
-	if (m_pVtxBuff != NULL)
+	if (m_pVtxBuff != nullptr)
 	{
 		m_pVtxBuff->Release();
-		m_pVtxBuff = NULL;
+		m_pVtxBuff = nullptr;
 	}
 
 	this->Release();
@@ -463,6 +463,81 @@ void CObject2D::Brightness(float fBrightness)
 void CObject2D::BindTexture(int nIdx)
 {
 	m_pTexture = CManager::GetInstance()->GetTexture()->GetAddress(nIdx);
+}
+
+//===============================================
+// Vtx設定
+//===============================================
+void CObject2D::SetVtx(void)
+{
+	VERTEX_2D* pVtx;	// 頂点情報へのポインタ
+
+	// 対角線の長さを算出する
+	m_fLength = sqrtf(m_fSizeX * 2 * m_fSizeX * 2 + m_fSizeY * 2 * m_fSizeY * 2) * 0.5f;
+
+	// 対角線の角度を算出する
+	m_fAngle = atan2f(m_fSizeX * 2, m_fSizeY * 2);
+
+	// 頂点バッファをロックし頂点情報へのポインタを取得
+	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
+
+	// 頂点座標の設定
+	if (GetType() == TYPE_PLAYER)
+	{// プレイヤーの場合
+		pVtx[0].pos = D3DXVECTOR3(m_pos.x - m_fSizeX, m_pos.y - m_fSizeY, 0.0f);
+		pVtx[1].pos = D3DXVECTOR3(m_pos.x + m_fSizeX, m_pos.y - m_fSizeY, 0.0f);
+		pVtx[2].pos = D3DXVECTOR3(m_pos.x - m_fSizeX, m_pos.y, 0.0f);
+		pVtx[3].pos = D3DXVECTOR3(m_pos.x + m_fSizeX, m_pos.y, 0.0f);
+	}
+	else if (GetType() == TYPE_BLOCK)
+	{// ブロックの場合
+		pVtx[0].pos = D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f);
+		pVtx[1].pos = D3DXVECTOR3(m_pos.x + m_fSizeX, m_pos.y, 0.0f);
+		pVtx[2].pos = D3DXVECTOR3(m_pos.x, m_pos.y + m_fSizeY, 0.0f);
+		pVtx[3].pos = D3DXVECTOR3(m_pos.x + m_fSizeX, m_pos.y + m_fSizeY, 0.0f);
+	}
+	else
+	{// その他
+		pVtx[0].pos = D3DXVECTOR3(m_pos.x + sinf(m_rot.x + (D3DX_PI + m_fAngle)) * m_fLength,
+			m_pos.y + cosf(m_rot.y + (D3DX_PI + m_fAngle)) * m_fLength, 0.0f);
+		pVtx[1].pos = D3DXVECTOR3(m_pos.x + sinf(m_rot.x + (D3DX_PI - m_fAngle)) * m_fLength,
+			m_pos.y + cosf(m_rot.y + (D3DX_PI - m_fAngle)) * m_fLength, 0.0f);
+		pVtx[2].pos = D3DXVECTOR3(m_pos.x + sinf(m_rot.x + (-m_fAngle)) * m_fLength,
+			m_pos.y + cosf(m_rot.y + (-m_fAngle)) * m_fLength, 0.0f);
+		pVtx[3].pos = D3DXVECTOR3(m_pos.x + sinf(m_rot.x + (m_fAngle)) * m_fLength,
+			m_pos.y + cosf(m_rot.y + (m_fAngle)) * m_fLength, 0.0f);
+	}
+
+	// rhwの設定
+	pVtx[0].rhw = 1.0f;
+	pVtx[1].rhw = 1.0f;
+	pVtx[2].rhw = 1.0f;
+	pVtx[3].rhw = 1.0f;
+
+	// 頂点カラーの設定
+	pVtx[0].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	pVtx[1].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	pVtx[2].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	pVtx[3].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// テクスチャ座標の設定
+	if (GetType() == TYPE_EXPLOSION)
+	{// 爆発の場合
+		pVtx[0].tex = D3DXVECTOR2(0.0f + 0.125f * 0.0f, 0.0f);
+		pVtx[1].tex = D3DXVECTOR2(0.125f + 0.125f * 0.0f, 0.0f);
+		pVtx[2].tex = D3DXVECTOR2(0.0f + 0.125f * 0.0f, 1.0f);
+		pVtx[3].tex = D3DXVECTOR2(0.125f + 0.125f * 0.0f, 1.0f);
+	}
+	else
+	{// その他
+		pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
+		pVtx[1].tex = D3DXVECTOR2(1.0f, 0.0f);
+		pVtx[2].tex = D3DXVECTOR2(0.0f, 1.0f);
+		pVtx[3].tex = D3DXVECTOR2(1.0f, 1.0f);
+	}
+
+	// 頂点バッファをアンロックする
+	m_pVtxBuff->Unlock();
 }
 
 //===============================================

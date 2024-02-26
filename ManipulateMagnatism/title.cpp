@@ -24,9 +24,9 @@
 //===============================================
 // 静的メンバ変数
 //===============================================
-CBg *CTitle::m_pBg = NULL;						// 背景クラスのポインタ
-CLogo *CTitle::m_pLogo = NULL;					// タイトルロゴ描画クラスのポインタ
-CPressEnter *CTitle::m_pPressEnter = NULL;		// PressEnter描画クラスのポインタ
+CBg *CTitle::m_pBg = nullptr;						// 背景クラスのポインタ
+CLogo *CTitle::m_pLogo = nullptr;					// タイトルロゴ描画クラスのポインタ
+CPressEnter *CTitle::m_pPressEnter = nullptr;		// PressEnter描画クラスのポインタ
 
 //===============================================
 // コンストラクタ
@@ -87,7 +87,7 @@ void CTitle::Update(void)
 	{
 		if (m_bFade == false)
 		{// フェードバグ防止
-			CRenderer::GetFade()->Set(CScene::MODE_TUTORIAL);	// ゲーム画面へ移行
+			CRenderer::GetFade()->Set(CScene::MODE_SELECT);	// セレクト画面へ移行
 			m_bFade = true;
 
 			// 点滅設定

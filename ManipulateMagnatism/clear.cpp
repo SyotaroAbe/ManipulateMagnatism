@@ -8,7 +8,6 @@
 #include "clear.h"
 #include "manager.h"
 #include "texture.h"
-#include "boss.h"
 #include "game.h"
 #include "renderer.h"
 #include "fade.h"

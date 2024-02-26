@@ -36,7 +36,6 @@ HRESULT CFileLoad::Init(HWND hWnd)
 	// ファイル名読み込み
 	Name(hWnd, FILE_PLAYER, "data\\TXT\\player00.txt");
 	Name(hWnd, FILE_ENEMY, "data\\TXT\\enemy.txt");
-	Name(hWnd, FILE_BOSS, "data\\TXT\\boss.txt");
 
 	return S_OK;
 }
@@ -59,7 +58,7 @@ void CFileLoad::Name(HWND hWnd, EFile type, const char* pFileName)
 	// ファイルを開く
 	pFile = fopen(pFileName, "r");
 
-	if (pFile != NULL)
+	if (pFile != nullptr)
 	{// 読み込み成功
 		char aStr[MAX_NAME] = {};		// 文字列読み取り
 

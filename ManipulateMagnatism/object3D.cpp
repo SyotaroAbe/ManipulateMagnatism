@@ -21,8 +21,8 @@ int CObject3D::m_nIdxTexture = 0;						// 使用するテクスチャの番号
 CObject3D::CObject3D() : CObject(3)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -38,8 +38,8 @@ CObject3D::CObject3D() : CObject(3)
 CObject3D::CObject3D(int nPriority) : CObject(nPriority)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -98,7 +98,7 @@ HRESULT CObject3D::Init(D3DXVECTOR3 pos)
 		FVF_VERTEX_3D,
 		D3DPOOL_MANAGED,
 		&m_pVtxBuff,
-		NULL);
+		nullptr);
 
 	VERTEX_3D * pVtx;   // 頂点情報へのポインタ
 
@@ -167,10 +167,10 @@ HRESULT CObject3D::Init(D3DXVECTOR3 pos)
 void CObject3D::Uninit(void)
 {
 	// 頂点バッファの破棄
-	if (m_pVtxBuff != NULL)
+	if (m_pVtxBuff != nullptr)
 	{
 		m_pVtxBuff->Release();
-		m_pVtxBuff = NULL;
+		m_pVtxBuff = nullptr;
 	}
 
 	this->Release();

@@ -31,11 +31,11 @@
 //===============================================
 // 静的メンバ変数
 //===============================================
-CPlayer *CTutorial::m_pPlayer = NULL;			// プレイヤークラスのポインタ
-CNumber *CTutorial::m_pNumber = NULL;			// ナンバークラスのポインタ
-CMeshField *CTutorial::m_pMeshField = NULL;		// メッシュフィールドクラスのポインタ
-CBg *CTutorial::m_pBg = NULL;						// 背景クラスのポインタ
-CGameBg *CTutorial::m_pGameBg = NULL;						// 背景クラスのポインタ
+CPlayer *CTutorial::m_pPlayer = nullptr;			// プレイヤークラスのポインタ
+CNumber *CTutorial::m_pNumber = nullptr;			// ナンバークラスのポインタ
+CMeshField *CTutorial::m_pMeshField = nullptr;		// メッシュフィールドクラスのポインタ
+CBg *CTutorial::m_pBg = nullptr;						// 背景クラスのポインタ
+CGameBg *CTutorial::m_pGameBg = nullptr;						// 背景クラスのポインタ
 
 //===============================================
 // コンストラクタ
@@ -99,7 +99,7 @@ void CTutorial::Update(void)
 	{
 		if (m_bFade == false)
 		{// フェードバグ防止
-			CRenderer::GetFade()->Set(CScene::MODE_GAME);	// ゲーム画面へ移行
+			CRenderer::GetFade()->Set(CScene::MODE_SELECT);	// ゲーム画面へ移行
 			m_bFade = true;
 		}
 	}

@@ -15,7 +15,6 @@
 #include "game.h"
 #include "player.h"
 #include "enemy.h"
-#include "bossBattle.h"
 #include "tutorial.h"
 #include "manager.h"
 #include "debugproc.h"
@@ -132,13 +131,13 @@ void CItem::Update(void)
 	D3DXVECTOR3 playerPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの位置
 	D3DXVECTOR3 playerPosOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		// プレイヤーの前回の位置
 	D3DXVECTOR3 playerRot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの向き
-	CObject *pObj = NULL;
+	CObject *pObj = nullptr;
 
 	for (int nCntPriority = 0; nCntPriority < PRIORITY_MAX; nCntPriority++)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -227,7 +226,7 @@ bool CItem::CollisionItem(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTOR3* 
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 		
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -347,7 +346,7 @@ bool CItem::CollisionEnemy(D3DXVECTOR3* pPos, D3DXVECTOR3* pPosOld, D3DXVECTOR3*
 	{
 		CObject* pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject* pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得

@@ -20,7 +20,7 @@
 // マクロ定義
 //===============================================
 #define CLASS_NAME        "WindowClass"			// ウインドウクラスの名前
-#define WINDOW_NAME       "piraner"				// ウインドウの名前（キャプションに表示）
+#define WINDOW_NAME       "ManipulateMagnatism"				// ウインドウの名前（キャプションに表示）
 
 //===============================================
 // プロトタイプ宣言
@@ -43,12 +43,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR IpCmdLine
 		0,                                // ０にする（通常は使用しない）
 		0,                                // ０にする（通常は使用しない）
 		hInstance,                        // インスタンスハンドル
-		LoadIcon(NULL, IDI_APPLICATION),  // タスクバーのアイコン
-		LoadCursor(NULL, IDC_ARROW),      // マウスカーソル
+		LoadIcon(nullptr, IDI_APPLICATION),  // タスクバーのアイコン
+		LoadCursor(nullptr, IDC_ARROW),      // マウスカーソル
 		(HBRUSH)(COLOR_WINDOW + 1),       // クライアント領域の背景色
-		NULL,                             // メニューバー
+		nullptr,                             // メニューバー
 		CLASS_NAME,                       // ウインドウクラスの名前
-		LoadIcon(NULL, IDI_APPLICATION),  // ファイルのアイコン
+		LoadIcon(nullptr, IDI_APPLICATION),  // ファイルのアイコン
 	};
 
 	HWND hWnd;											// ウインドウハンドル（識別子）
@@ -74,12 +74,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR IpCmdLine
 		CW_USEDEFAULT,                   // ウインドウの左上Y座標
 		(rect.right - rect.left),        // ウインドウの幅
 		(rect.bottom - rect.top),        // ウインドウの高さ
-		NULL,                            // 親ウインドウのハンドル
-		NULL,                            // メニューハンドルまたは子ウインドウ
+		nullptr,                            // 親ウインドウのハンドル
+		nullptr,                            // メニューハンドルまたは子ウインドウ
 		hInstance,                       // インスタンスハンドル
-		NULL);                           // ウインドウ制作データ
+		nullptr);                           // ウインドウ制作データ
 
-	CManager *pManager = NULL;
+	CManager *pManager = nullptr;
 	pManager = new CManager;
 
 	// マネージャの初期化処理
@@ -102,7 +102,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR IpCmdLine
 	// メッセージループ
 	while (1)
 	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) != 0)
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) != 0)
 		{// Windowsの処理
 			if (msg.message == WM_QUIT)
 			{// WM_QUITメッセージを受け取ったらメッセージループを抜ける
@@ -133,7 +133,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR IpCmdLine
 				dwExecLastTime = dwCurrentTime;		// 処理開始の時刻（現在時刻）を保存
 				dwFrameCount++;						// フレームカウントを計算
 
-				if (pManager != NULL)
+				if (pManager != nullptr)
 				{// メモリが使用されている
 					// マネージャの更新処理
 					pManager->Update();
@@ -145,14 +145,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hInstancePrev, LPSTR IpCmdLine
 		}
 	}
 
-	if (pManager != NULL)
+	if (pManager != nullptr)
 	{// メモリが使用されている
 		// マネージャの終了処理
 		pManager->Uninit();
 
 		// メモリを開放
 		delete pManager;
-		pManager = NULL;
+		pManager = nullptr;
 	}
 
 	//分解能を戻す

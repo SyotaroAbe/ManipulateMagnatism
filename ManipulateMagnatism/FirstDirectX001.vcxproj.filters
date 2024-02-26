@@ -111,9 +111,6 @@
     <ClCompile Include="gamebg.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="boss.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="clear.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -140,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="objectX.cpp">
       <Filter>ソース ファイル\object</Filter>
-    </ClCompile>
-    <ClCompile Include="bossBattle.cpp">
-      <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>ソース ファイル\scene</Filter>
@@ -173,6 +167,9 @@
     </ClCompile>
     <ClCompile Include="item.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="select.cpp">
+      <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +251,6 @@
     <ClInclude Include="gamebg.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="boss.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="clear.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -283,9 +277,6 @@
     </ClInclude>
     <ClInclude Include="objectX.h">
       <Filter>ヘッダー ファイル\object</Filter>
-    </ClInclude>
-    <ClInclude Include="bossBattle.h">
-      <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>ヘッダー ファイル\scene</Filter>
@@ -319,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="item.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="select.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

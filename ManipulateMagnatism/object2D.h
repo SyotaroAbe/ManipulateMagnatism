@@ -34,6 +34,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void Brightness(float fBrightness);
 
 	void BindTexture(int nIdx);
+	void SetVtx(void);
 	void SetPos(const D3DXVECTOR3 pos);
 	D3DXVECTOR3 GetPos(void) { return m_pos; }
 	virtual D3DXVECTOR3 GetPosOld(void) { return m_posOld; };

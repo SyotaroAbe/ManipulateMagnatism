@@ -101,7 +101,7 @@ void CCamera::Update(void)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得

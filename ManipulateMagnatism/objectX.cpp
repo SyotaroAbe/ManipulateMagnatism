@@ -15,10 +15,10 @@
 #include "game.h"
 #include "player.h"
 #include "enemy.h"
-#include "bossBattle.h"
 #include "tutorial.h"
 #include "magnet.h"
 #include "item.h"
+#include "select.h"
 
 //===============================================
 // 静的メンバ変数
@@ -78,19 +78,29 @@ void CObjectX::Load(HWND hWnd)
 	m_aIdxXFile[MODEL_DAMAGE] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\boxDamage.x");
 	m_aIdxXFile[MODEL_ITEM] = CManager::GetInstance()->GetXFile()->Regist("data\\MODEL\\chair.x");
 
-	FILE *pFile = NULL;
+	FILE *pFile = nullptr;
+	int nStage = CManager::GetInstance()->GetStage();
 
 	// ファイルを開く
 	if (CManager::GetMode() == CScene::MODE_GAME)
 	{
-		pFile = fopen("data\\TXT\\model.txt", "r");
+		switch (nStage)
+		{
+		case CSelect::STAGE_1:		// ステージ１
+			pFile = fopen("data\\TXT\\stage01.txt", "r");
+			break;
+
+		case CSelect::STAGE_2:		// ステージ２
+			pFile = fopen("data\\TXT\\stage02.txt", "r");
+			break;
+		}
 	}
 	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
 	{
 		pFile = fopen("data\\TXT\\tutorial.txt", "r");
 	}
 
-	if (pFile != NULL)
+	if (pFile != nullptr)
 	{// 読み込み成功
 		char aStr[MAX_NAME] = {};
 
@@ -120,7 +130,7 @@ void CObjectX::Load(HWND hWnd)
 	//// ファイル作成
 	//FILE *pFile = fopen("data\\TXT\\map000.csv", "r");
 
-	//if (pFile != NULL)
+	//if (pFile != nullptr)
 	//{// 読み込み成功
 	//	char aTemp[MAX_NAME];
 	//	D3DXVECTOR3 pos = D3DXVECTOR3(0.0f, 700.0f, -600.0f);
@@ -304,7 +314,7 @@ void CObjectX::Update(void)
 	D3DXVECTOR3 playerPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの位置
 	D3DXVECTOR3 playerPosOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		// プレイヤーの前回の位置
 	D3DXVECTOR3 playerRot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);			// プレイヤーの向き
-	CObject *pObj = NULL;
+	CObject *pObj = nullptr;
 
 	m_posOld = m_pos;
 
@@ -312,7 +322,7 @@ void CObjectX::Update(void)
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -431,7 +441,7 @@ bool CObjectX::CollisionModel(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 		
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得
@@ -494,7 +504,7 @@ bool CObjectX::CollisionEnemy(D3DXVECTOR3 *pPos, D3DXVECTOR3 *pPosOld, D3DXVECTO
 	{
 		CObject *pObject = CObject::GetTop(nCntPriority);		// 先頭のオブジェクトを代入
 
-		while (pObject != NULL)
+		while (pObject != nullptr)
 		{// 使用されている
 			CObject *pObjectNext = pObject->GetNext();		// 次のオブジェクトを保存
 			CObject::TYPE type = pObject->GetType();		// 種類を取得

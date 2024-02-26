@@ -25,8 +25,8 @@
 CObjectBillboard::CObjectBillboard() : CObject(4)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -44,8 +44,8 @@ CObjectBillboard::CObjectBillboard() : CObject(4)
 CObjectBillboard::CObjectBillboard(int nPriority) : CObject(nPriority)
 {
 	// 値をクリアする
-	m_pTexture = NULL;
-	m_pVtxBuff = NULL;
+	m_pTexture = nullptr;
+	m_pVtxBuff = nullptr;
 	m_mtxWorld;
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_posOld = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -103,7 +103,7 @@ HRESULT CObjectBillboard::Init(D3DXVECTOR3 pos)
 		FVF_VERTEX_3D,
 		D3DPOOL_MANAGED,
 		&m_pVtxBuff,
-		NULL);
+		nullptr);
 
 	VERTEX_3D * pVtx;   // 頂点情報へのポインタ
 
@@ -146,10 +146,10 @@ HRESULT CObjectBillboard::Init(D3DXVECTOR3 pos)
 void CObjectBillboard::Uninit(void)
 {
 	// 頂点バッファの破棄
-	if (m_pVtxBuff != NULL)
+	if (m_pVtxBuff != nullptr)
 	{
 		m_pVtxBuff->Release();
-		m_pVtxBuff = NULL;
+		m_pVtxBuff = nullptr;
 	}
 
 	this->Release();
@@ -179,7 +179,7 @@ void CObjectBillboard::Draw(void)
 	pDevice->GetTransform(D3DTS_VIEW, &mtxView);
 
 	// ポリゴンをカメラに対して正面に向ける
-	D3DXMatrixInverse(&m_mtxWorld, NULL, &mtxView);
+	D3DXMatrixInverse(&m_mtxWorld, nullptr, &mtxView);
 
 	// 逆行列を求める
 	m_mtxWorld._41 = 0.0f;
@@ -249,7 +249,7 @@ void CObjectBillboard::DrawEffect(void)
 	pDevice->GetTransform(D3DTS_VIEW, &mtxView);
 
 	// ポリゴンをカメラに対して正面に向ける
-	D3DXMatrixInverse(&m_mtxWorld, NULL, &mtxView);
+	D3DXMatrixInverse(&m_mtxWorld, nullptr, &mtxView);
 
 	// 逆行列を求める
 	m_mtxWorld._41 = 0.0f;

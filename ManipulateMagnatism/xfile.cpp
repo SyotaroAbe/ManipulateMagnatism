@@ -30,10 +30,10 @@ CXFile::CXFile()
 	for (int nCntXFile = 0; nCntXFile < MAX_XFILE; nCntXFile++)
 	{
 		m_aXFile[nCntXFile].m_dwNumMat = 0;
-		m_aXFile[nCntXFile].m_pBuffMat = NULL;
-		m_aXFile[nCntXFile].m_pIdxTexture = NULL;
-		m_aXFile[nCntXFile].m_pMesh = NULL;
-		m_aXFile[nCntXFile].m_pTexture = NULL;
+		m_aXFile[nCntXFile].m_pBuffMat = nullptr;
+		m_aXFile[nCntXFile].m_pIdxTexture = nullptr;
+		m_aXFile[nCntXFile].m_pMesh = nullptr;
+		m_aXFile[nCntXFile].m_pTexture = nullptr;
 		m_aXFile[nCntXFile].m_vtxMin = D3DXVECTOR3(MIN_VTX, MIN_VTX, MIN_VTX);
 		m_aXFile[nCntXFile].m_vtxMax = D3DXVECTOR3(MAX_VTX, MAX_VTX, MAX_VTX);
 	}
@@ -65,42 +65,42 @@ void CXFile::Unload(void)
 	// メッシュの破棄
 	for (int nCntMesh = 0; nCntMesh < MAX_XFILE; nCntMesh++)
 	{
-		if (m_aXFile[nCntMesh].m_pMesh != NULL)
+		if (m_aXFile[nCntMesh].m_pMesh != nullptr)
 		{// 使用されている
 			m_aXFile[nCntMesh].m_pMesh->Release();
-			m_aXFile[nCntMesh].m_pMesh = NULL;
+			m_aXFile[nCntMesh].m_pMesh = nullptr;
 		}
 	}
 
 	// マテリアルの破棄
 	for (int nCntBuff = 0; nCntBuff < MAX_XFILE; nCntBuff++)
 	{
-		if (m_aXFile[nCntBuff].m_pBuffMat != NULL)
+		if (m_aXFile[nCntBuff].m_pBuffMat != nullptr)
 		{// 使用されている
 			m_aXFile[nCntBuff].m_pBuffMat->Release();
-			m_aXFile[nCntBuff].m_pBuffMat = NULL;
+			m_aXFile[nCntBuff].m_pBuffMat = nullptr;
 		}
 	}
 
 	// テクスチャの破棄
 	for (int nCntTexture = 0; nCntTexture < MAX_XFILE; nCntTexture++)
 	{
-		if (m_aXFile[nCntTexture].m_pTexture != NULL)
+		if (m_aXFile[nCntTexture].m_pTexture != nullptr)
 		{// 使用されている
 			// メモリの開放
 			delete[] m_aXFile[nCntTexture].m_pTexture;
-			m_aXFile[nCntTexture].m_pTexture = NULL;
+			m_aXFile[nCntTexture].m_pTexture = nullptr;
 		}
 	}
 
 	// テクスチャ番号のポインタの破棄
 	for (int nCntIdTexture = 0; nCntIdTexture < MAX_XFILE; nCntIdTexture++)
 	{
-		if (m_aXFile[nCntIdTexture].m_pIdxTexture != NULL)
+		if (m_aXFile[nCntIdTexture].m_pIdxTexture != nullptr)
 		{// 使用されている
 			// メモリの開放
 			delete[] m_aXFile[nCntIdTexture].m_pIdxTexture;
-			m_aXFile[nCntIdTexture].m_pIdxTexture = NULL;
+			m_aXFile[nCntIdTexture].m_pIdxTexture = nullptr;
 		}
 	}
 }
@@ -122,7 +122,7 @@ int CXFile::Regist(const char *pFilename)
 
 	for (int nCntXFile = 0; nCntXFile < MAX_XFILE; nCntXFile++)
 	{
-		if (m_apFileName[nCntXFile] == NULL)
+		if (m_apFileName[nCntXFile] == nullptr)
 		{// 使用されていない
 			m_apFileName[nCntXFile] = pFilename;
 
@@ -130,9 +130,9 @@ int CXFile::Regist(const char *pFilename)
 			D3DXLoadMeshFromX(m_apFileName[nCntXFile],
 				D3DXMESH_SYSTEMMEM,
 				pDevice,
-				NULL,
+				nullptr,
 				&m_aXFile[nCntXFile].m_pBuffMat,
-				NULL,
+				nullptr,
 				&m_aXFile[nCntXFile].m_dwNumMat,
 				&m_aXFile[nCntXFile].m_pMesh);
 
@@ -166,7 +166,7 @@ void CXFile::BindX(int nIdx)
 
 	for (int nCntMat = 0; nCntMat < (int)m_aXFile[nIdx].m_dwNumMat; nCntMat++)
 	{
-		if (pMat[nCntMat].pTextureFilename != NULL)
+		if (pMat[nCntMat].pTextureFilename != nullptr)
 		{// テクスチャファイルが存在する
 			// テクスチャの設定
 			m_aXFile[nIdx].m_pIdxTexture[nCntMat] = CManager::GetInstance()->GetTexture()->Regist(pMat[nCntMat].pTextureFilename);
@@ -175,7 +175,7 @@ void CXFile::BindX(int nIdx)
 		else
 		{// 存在しない
 			m_aXFile[nIdx].m_pIdxTexture[nCntMat] = NULL;
-			m_aXFile[nIdx].m_pTexture[nCntMat] = NULL;
+			m_aXFile[nIdx].m_pTexture[nCntMat] = nullptr;
 		}
 	}
 }

@@ -24,7 +24,6 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	{
 		TEX_GAME = 0,	// ゲーム
 		TEX_TUTORIAL,	// チュートリアル
-		TEX_BOSS,		// ボス
 		TEX_MAX
 	};
 

@@ -26,23 +26,24 @@
 #include "time.h"
 #include "result.h"
 #include "ranking.h"
+#include "select.h"
 
 //===============================================
 // 静的メンバ変数
 //===============================================
-CManager *CManager::m_pManager = NULL;				// マネージャクラスのポインタ
-CRenderer *CManager::m_pRenderer = NULL;			// レンダラークラスのポインタ
-CInputKeyboard *CManager::m_pKeyboardInput = NULL;	// キーボード入力クラスのポインタ
-CInputGamePad *CManager::m_pInputGamePad = NULL;	// ゲームパッド入力クラスのポインタ
-CDebugProc *CManager::m_pDebugProc = NULL;			// デバッグ表示クラスのポインタ
-CSound *CManager::m_pSound = NULL;					// サウンドクラスのポインタ
-CCamera *CManager::m_pCamera = NULL;				// カメラクラスのポインタ
-CLight *CManager::m_pLight = NULL;					// ライトクラスのポインタ
-CTexture *CManager::m_pTexture = NULL;				// テクスチャクラスのポインタ
-CXFile *CManager::m_pXFile = NULL;					// Xファイルクラスのポインタ
-CFileLoad *CManager::m_pFileLoad = NULL;			// ファイルロードクラスのポインタ
-CScene * CManager::m_pScene = NULL;					// シーンクラスのポインタ
-HWND CManager::m_hWnd = NULL;						// ウインドウ保存用
+CManager *CManager::m_pManager = nullptr;				// マネージャクラスのポインタ
+CRenderer *CManager::m_pRenderer = nullptr;			// レンダラークラスのポインタ
+CInputKeyboard *CManager::m_pKeyboardInput = nullptr;	// キーボード入力クラスのポインタ
+CInputGamePad *CManager::m_pInputGamePad = nullptr;	// ゲームパッド入力クラスのポインタ
+CDebugProc *CManager::m_pDebugProc = nullptr;			// デバッグ表示クラスのポインタ
+CSound *CManager::m_pSound = nullptr;					// サウンドクラスのポインタ
+CCamera *CManager::m_pCamera = nullptr;				// カメラクラスのポインタ
+CLight *CManager::m_pLight = nullptr;					// ライトクラスのポインタ
+CTexture *CManager::m_pTexture = nullptr;				// テクスチャクラスのポインタ
+CXFile *CManager::m_pXFile = nullptr;					// Xファイルクラスのポインタ
+CFileLoad *CManager::m_pFileLoad = nullptr;			// ファイルロードクラスのポインタ
+CScene * CManager::m_pScene = nullptr;					// シーンクラスのポインタ
+HWND CManager::m_hWnd = nullptr;						// ウインドウ保存用
 
 CScene::MODE CScene::m_modeOld = CScene::MODE_TITLE;	// 前回の画面モード
 CScene::MODE CManager::m_mode = CScene::MODE_TITLE;		// 現在の画面モード
@@ -104,6 +105,10 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 		}
 		break;
 
+	case MODE_SELECT:	// セレクト画面
+		pScene = new CSelect;
+		break;
+
 	case MODE_TUTORIAL:	// チュートリアル画面
 		pScene = new CTutorial;
 		break;
@@ -126,7 +131,7 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 		break;
 	}
 
-	if (pScene != NULL)
+	if (pScene != nullptr)
 	{// 使用されている
 		// モードの設定
 		pScene->SetMode(mode);
@@ -184,7 +189,7 @@ CManager::CManager()
 	// 値のクリア
 	m_nCountFPS = 0;
 	m_nCntDeathGame = 0;
-	m_nCntDeathBoss = 0;
+	m_nStage = 0;
 	m_bEdit = false;
 }
 
@@ -270,7 +275,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// ロードの生成
 	m_pFileLoad = new CFileLoad;
 
-	if (m_pFileLoad != NULL)
+	if (m_pFileLoad != nullptr)
 	{// 使用されている
 	 // ロードの読み込み処理
 		if (FAILED(m_pFileLoad->Init(hWnd)))
@@ -305,74 +310,74 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 //===============================================
 void CManager::Uninit(void)
 {
-	if (m_pScene != NULL)
+	if (m_pScene != nullptr)
 	{// 使用されている
 		// シーンの終了処理
 		m_pScene->Uninit();
 		delete m_pScene;
-		m_pScene = NULL;
+		m_pScene = nullptr;
 	}
 
-	if (m_pRenderer != NULL)
+	if (m_pRenderer != nullptr)
 	{// メモリが使用されている
 		// キーボード入力の終了処理
 		m_pKeyboardInput->Uninit();
 		delete m_pKeyboardInput;
-		m_pKeyboardInput = NULL;
+		m_pKeyboardInput = nullptr;
 
 		// ゲームパッド入力の終了処理
 		m_pInputGamePad->Uninit();
 		delete m_pInputGamePad;
-		m_pInputGamePad = NULL;
+		m_pInputGamePad = nullptr;
 
 		// レンダラーの終了処理
 		m_pRenderer->Uninit();
 		delete m_pRenderer;
-		m_pRenderer = NULL;
+		m_pRenderer = nullptr;
 
 		// サウンドの終了処理
 		m_pSound->Uninit();
 		delete m_pSound;
-		m_pSound = NULL;
+		m_pSound = nullptr;
 
 		// カメラの終了処理
 		m_pCamera->Uninit();
 		delete m_pCamera;
-		m_pCamera = NULL;
+		m_pCamera = nullptr;
 
 		// ライトの終了処理
 		m_pLight->Uninit();
 		delete m_pLight;
-		m_pLight = NULL;
+		m_pLight = nullptr;
 
 		// テクスチャの破棄
 		m_pTexture->Unload();
 		delete m_pTexture;
-		m_pTexture = NULL;
+		m_pTexture = nullptr;
 
 		// ファイル読み込みの終了処理
 		m_pFileLoad->Uninit();
 		delete m_pFileLoad;
-		m_pFileLoad = NULL;
+		m_pFileLoad = nullptr;
 
 		// Xファイルの破棄
 		m_pXFile->Unload();
 		delete m_pXFile;
-		m_pXFile = NULL;
+		m_pXFile = nullptr;
 
 		// デバッグ表示の終了処理
 		m_pDebugProc->Uninit();
 		delete m_pDebugProc;
-		m_pDebugProc = NULL;
+		m_pDebugProc = nullptr;
 
 		// メモリを開放
 		delete m_pRenderer;
-		m_pRenderer = NULL;
+		m_pRenderer = nullptr;
 
-		if (m_pManager != NULL)
+		if (m_pManager != nullptr)
 		{
 			delete m_pManager;
-			m_pManager = NULL;
+			m_pManager = nullptr;
 		}
 	}
 }
@@ -382,7 +387,7 @@ void CManager::Uninit(void)
 //===============================================
 void CManager::Update(void)
 {
-	if (m_pRenderer != NULL)
+	if (m_pRenderer != nullptr)
 	{// メモリが使用されている
 		// FPSの表示
 		m_pDebugProc->Print(" FPS：%d\n\n", m_nCountFPS);
@@ -421,7 +426,7 @@ void CManager::Update(void)
 		// デバッグ表示の更新処理
 		m_pDebugProc->Update();
 
-		if (m_pScene != NULL)
+		if (m_pScene != nullptr)
 		{
 			// シーンの更新処理
 			m_pScene->Update();
@@ -453,12 +458,12 @@ void CManager::Update(void)
 //===============================================
 void CManager::Draw(void)
 {
-	if (m_pRenderer != NULL)
+	if (m_pRenderer != nullptr)
 	{// メモリが使用されている
 		// レンダラーの描画処理
 		m_pRenderer->Draw();
 
-		if (m_pScene != NULL)
+		if (m_pScene != nullptr)
 		{
 			// シーンの描画処理
 			m_pScene->Draw();
@@ -504,7 +509,7 @@ void CManager::AddCountDeath(CScene::MODE mode)
 //===============================================
 CManager* CManager::GetInstance(void)
 {
-	if (m_pManager == NULL)
+	if (m_pManager == nullptr)
 	{
 		return m_pManager = new CManager;
 	}
@@ -537,7 +542,7 @@ void CManager::SetMode(CScene::MODE mode)
 	//}
 
 	// 現在のモードの破棄
-	if (pScenePrev != NULL)
+	if (pScenePrev != nullptr)
 	{
 		pScenePrev->Uninit();
 	}
@@ -547,7 +552,7 @@ void CManager::SetMode(CScene::MODE mode)
 
 	// メモリの開放
 	delete pScenePrev;
-	pScenePrev = NULL;
+	pScenePrev = nullptr;
 }
 
 //===============================================

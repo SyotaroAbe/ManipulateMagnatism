@@ -20,19 +20,20 @@
 #include "gamebg.h"
 #include "time.h"
 #include "clear.h"
+#include "select.h"
 
 //===============================================
 // 静的メンバ変数
 //===============================================
-CPlayer *CGame::m_pPlayer = NULL;						// プレイヤークラスのポインタ
-CMeshField *CGame::m_pMeshField = NULL;					// メッシュフィールドクラスのポインタ
-CObject3D *CGame::m_pObject3D = NULL;					// オブジェクト3Dクラスのポインタ
-CPause *CGame::m_pPause = NULL;							// ポーズクラスのポインタ
-CEnemy *CGame::m_pEnemy = NULL;							// 敵クラスのポインタ
-CGameBg *CGame::m_pGameBg = NULL;						// 背景クラスのポインタ
-CTime *CGame::m_pTime = NULL;							// タイムクラスのポインタ
-CItem* CGame::m_pItem = NULL;							// アイテムクラスのポインタ
-CClear* CGame::m_pClear = NULL;						// クリア表示クラスのポインタ
+CPlayer *CGame::m_pPlayer = nullptr;						// プレイヤークラスのポインタ
+CMeshField *CGame::m_pMeshField = nullptr;					// メッシュフィールドクラスのポインタ
+CObject3D *CGame::m_pObject3D = nullptr;					// オブジェクト3Dクラスのポインタ
+CPause *CGame::m_pPause = nullptr;							// ポーズクラスのポインタ
+CEnemy *CGame::m_pEnemy = nullptr;							// 敵クラスのポインタ
+CGameBg *CGame::m_pGameBg = nullptr;						// 背景クラスのポインタ
+CTime *CGame::m_pTime = nullptr;							// タイムクラスのポインタ
+CItem* CGame::m_pItem = nullptr;							// アイテムクラスのポインタ
+CClear* CGame::m_pClear = nullptr;						// クリア表示クラスのポインタ
 
 bool CGame::m_bPause = false;				// ポーズ状態
 bool CGame::m_bStateReady = false;			// GAMSESTATE_READYかどうか
@@ -47,7 +48,7 @@ CGame::CGame() : CScene()
 	// 値のクリア
 	m_state = STATE_NONE;
 	m_nCounterState = 0;
-	m_hWnd = NULL;
+	m_hWnd = nullptr;
 }
 
 //===============================================
@@ -69,21 +70,31 @@ HRESULT CGame::Init(HWND hWnd)
 	m_bClear = false;
 
 	m_hWnd = hWnd;		// HWND保存
+	int nStage = CManager::GetInstance()->GetStage();	// ステージ情報取得
 
 	// カメラの初期化処理
 	CManager::GetInstance()->GetCamera()->Init();
 
 	// オブジェクトXファイルの生成
-	CObjectX::Load(hWnd);
+	CObjectX::Load(m_hWnd);
 
 	// プレイヤーの生成
-	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
+	switch (nStage)
+	{
+	case CSelect::STAGE_1:		// ステージ１
+		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 110.0f, -600.0f), 4);
+		break;
+
+	case CSelect::STAGE_2:		// ステージ２
+		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
+		break;
+	}
 	
 	// 背景の生成
 	m_pGameBg = CGameBg::Create(D3DXVECTOR3(m_pPlayer->GetPos().x, 201.0f, CManager::GetInstance()->GetCamera()->GetPosR().z), CGameBg::TEX_GAME, 0);
 
 	// 敵の生成
-	CEnemy::Load(hWnd);
+	CEnemy::Load(m_hWnd);
 
 	// タイムの生成
 	m_pTime = CTime::Create(5);
@@ -115,19 +126,19 @@ void CGame::Uninit(void)
 	m_bClear = false;
 
 	// タイムの終了処理
-	if (m_pTime != NULL)
+	if (m_pTime != nullptr)
 	{
 		m_pTime->Uninit();
 		delete m_pTime;
-		m_pTime = NULL;
+		m_pTime = nullptr;
 	}
 
 	// ポーズの終了処理
-	if (m_pPause != NULL)
+	if (m_pPause != nullptr)
 	{
 		m_pPause->Uninit();
 		delete m_pPause;
-		m_pPause = NULL;
+		m_pPause = nullptr;
 	}
 
 	// 全てのオブジェクトの破棄
@@ -188,7 +199,7 @@ void CGame::Update(void)
 		if (m_bPause == false)
 		{// ポーズ状態じゃない
 			// タイムの更新処理
-			if (m_pTime != NULL)
+			if (m_pTime != nullptr)
 			{
 				if (m_bClear == false)
 				{// クリアしていない
@@ -210,7 +221,7 @@ void CGame::Update(void)
 	if (m_bPause == true && m_bPauseCamera == false)
 	{// ポーズ状態
 		// ポーズの更新処理
-		if (m_pPause != NULL)
+		if (m_pPause != nullptr)
 		{
 			m_pPause->Update();
 		}
@@ -259,7 +270,7 @@ void CGame::Update(void)
 void CGame::Draw(void)
 {
 	// タイムの描画処理
-	if (m_pTime != NULL)
+	if (m_pTime != nullptr)
 	{
 		m_pTime->Draw();
 	}
@@ -280,7 +291,7 @@ void CGame::Reset(void)
 	//	// ポーズの終了処理
 	//	m_pPause->Uninit();
 	//	delete m_pPause;
-	//	m_pPause = NULL;
+	//	m_pPause = nullptr;
 
 	//	// オブジェクトのリセット
 	//	CObject::Reset();
