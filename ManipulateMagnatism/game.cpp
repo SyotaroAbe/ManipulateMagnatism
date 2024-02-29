@@ -88,6 +88,14 @@ HRESULT CGame::Init(HWND hWnd)
 	case CSelect::STAGE_2:		// ステージ２
 		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
 		break;
+	
+	case CSelect::STAGE_3:		// ステージ３
+		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
+		break;
+
+	default:
+		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f), 4);
+		break;
 	}
 	
 	// 背景の生成

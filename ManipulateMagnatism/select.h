@@ -34,6 +34,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 		STAGE_TUTORIAL = 0,		// チュートリアル
 		STAGE_1,				// ステージ１
 		STAGE_2,				// ステージ２
+		STAGE_3,				// ステージ３
 		STAGE_MAX
 	};
 
@@ -52,6 +53,7 @@ private:	// 自分のみアクセス可能 [アクセス指定子]
 	CObject2D* m_pTutorial;		// チュートリアル
 	CObject2D* m_pFirstStage;	// ステージ１
 	CObject2D* m_pSecondStage;	// ステージ２
+	CObject2D* m_pThirdStage;	// ステージ３
 	int m_nTime;				// 経過時間をカウント
 	int m_nSelectStage;			// 現在選択中のステージ
 	bool m_bFade;				// フェードに入ったか

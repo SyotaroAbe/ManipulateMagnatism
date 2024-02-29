@@ -1,10 +1,9 @@
-﻿  player.cpp
-C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(179,21): warning C4457: 'pos' を宣言すると、関数パラメーターが隠蔽されます
-C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(149,35): message : 'pos' の宣言を確認してください
-C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\player.cpp(643,43): warning C4100: 'pPos': 引数は関数の本体部で 1 度も参照されません。
+﻿  game.cpp
+  objectX.cpp
+C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\objectX.cpp(218,7): warning C4189: 'nResult': ローカル変数が初期化されましたが、参照されていません
   コード生成しています。
-  2 of 594 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  3 of 594 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+    72 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
   FirstDirectX001.vcxproj -> C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\FirstDirectX001.exe

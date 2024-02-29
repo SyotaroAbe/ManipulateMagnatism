@@ -34,6 +34,7 @@ CSelect::CSelect() : CScene()
 	m_pTutorial = nullptr;
 	m_pFirstStage = nullptr;
 	m_pSecondStage = nullptr;
+	m_pThirdStage = nullptr;
 	m_nTime = 0;
 	m_nSelectStage = STAGE_TUTORIAL;
 	m_bFade = false;
@@ -64,7 +65,7 @@ HRESULT CSelect::Init(HWND hWnd)
 	m_pTutorial = new CObject2D(3);
 	if (m_pTutorial != nullptr)
 	{
-		m_pTutorial->Init({ 400.0f, 200.0f, 0.0f });
+		m_pTutorial->Init({ 300.0f, 150.0f, 0.0f });
 		m_pTutorial->BindTexture(CManager::GetInstance()->GetTexture()->Regist("data\\TEXTURE\\ui_Tutorial.png"));
 		m_pTutorial->SetSize(200.0f, 50.0f);
 		m_pTutorial->SetVtx();
@@ -74,7 +75,7 @@ HRESULT CSelect::Init(HWND hWnd)
 	m_pFirstStage = new CObject2D(3);
 	if (m_pFirstStage != nullptr)
 	{
-		m_pFirstStage->Init({ 600.0f, 400.0f, 0.0f });
+		m_pFirstStage->Init({ 500.0f, 300.0f, 0.0f });
 		m_pFirstStage->BindTexture(CManager::GetInstance()->GetTexture()->Regist("data\\TEXTURE\\ui_FirstStage.png"));
 		m_pFirstStage->SetSize(200.0f, 50.0f);
 		m_pFirstStage->SetVtx();
@@ -84,10 +85,20 @@ HRESULT CSelect::Init(HWND hWnd)
 	m_pSecondStage = new CObject2D(3);
 	if (m_pSecondStage != nullptr)
 	{
-		m_pSecondStage->Init({ 800.0f, 600.0f, 0.0f });
+		m_pSecondStage->Init({ 700.0f, 450.0f, 0.0f });
 		m_pSecondStage->BindTexture(CManager::GetInstance()->GetTexture()->Regist("data\\TEXTURE\\ui_SecondStage.png"));
 		m_pSecondStage->SetSize(200.0f, 50.0f);
 		m_pSecondStage->SetVtx();
+	}
+
+	// ステージ３
+	m_pThirdStage = new CObject2D(3);
+	if (m_pThirdStage != nullptr)
+	{
+		m_pThirdStage->Init({ 900.0f, 600.0f, 0.0f });
+		m_pThirdStage->BindTexture(CManager::GetInstance()->GetTexture()->Regist("data\\TEXTURE\\ui_ThirdStage.png"));
+		m_pThirdStage->SetSize(200.0f, 50.0f);
+		m_pThirdStage->SetVtx();
 	}
 
 	// サウンドの再生
@@ -112,6 +123,7 @@ void CSelect::Update(void)
 {
 	m_nTime++;	// 時間をカウント
 
+	// 色をリセット
 	if (m_pTutorial != nullptr)
 	{
 		m_pTutorial->SetCol({0.0f, 0.0f, 0.0f, 0.0f});
@@ -123,6 +135,10 @@ void CSelect::Update(void)
 	if (m_pSecondStage != nullptr)
 	{
 		m_pSecondStage->SetCol({ 0.0f, 0.0f, 0.0f, 0.0f });
+	}
+	if (m_pThirdStage != nullptr)
+	{
+		m_pThirdStage->SetCol({ 0.0f, 0.0f, 0.0f, 0.0f });
 	}
 
 	// ステージ選択
@@ -156,6 +172,7 @@ void CSelect::Update(void)
 			m_pTutorial->Brightness(0.05f);
 			m_pFirstStage->SetVtx();
 			m_pSecondStage->SetVtx();
+			m_pThirdStage->SetVtx();
 		}
 		break;
 
@@ -165,6 +182,7 @@ void CSelect::Update(void)
 			m_pTutorial->SetVtx();
 			m_pFirstStage->Brightness(0.05f);
 			m_pSecondStage->SetVtx();
+			m_pThirdStage->SetVtx();
 		}
 		break;
 
@@ -174,10 +192,20 @@ void CSelect::Update(void)
 			m_pTutorial->SetVtx();
 			m_pFirstStage->SetVtx();
 			m_pSecondStage->Brightness(0.05f);
+			m_pThirdStage->SetVtx();
+		}
+		break;
+
+	case STAGE_3:			// ステージ３
+		if (m_pThirdStage != nullptr)
+		{
+			m_pTutorial->SetVtx();
+			m_pFirstStage->SetVtx();
+			m_pSecondStage->SetVtx();
+			m_pThirdStage->Brightness(0.05f);
 		}
 		break;
 	}
-
 
 	if (CManager::GetInstance()->GetKeyboardInput()->GetTrigger(DIK_RETURN) == true
 		|| CManager::GetInstance()->GetInputGamePad()->GetTrigger(CInputGamePad::BUTTON_A, 0) == true)

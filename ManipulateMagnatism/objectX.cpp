@@ -93,6 +93,14 @@ void CObjectX::Load(HWND hWnd)
 		case CSelect::STAGE_2:		// ステージ２
 			pFile = fopen("data\\TXT\\stage02.txt", "r");
 			break;
+		
+		case CSelect::STAGE_3:		// ステージ３
+			pFile = fopen("data\\TXT\\stage03.txt", "r");
+			break;
+		
+		default:					// その他
+			pFile = fopen("data\\TXT\\stage01.txt", "r");
+			break;
 		}
 	}
 	else if (CManager::GetMode() == CScene::MODE_TUTORIAL)
