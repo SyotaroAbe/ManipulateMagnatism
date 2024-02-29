@@ -110,6 +110,10 @@ void CEnemy::Load(HWND hWnd)
 	case CSelect::STAGE_2:		//ステージ２
 		CEnemy::Create(D3DXVECTOR3(0.0f, 120.0f, 400.0f), CEnemy::TYPE_NORMAL, 4);
 		break;
+	
+	case CSelect::STAGE_3:		//ステージ３
+		CEnemy::Create(D3DXVECTOR3(0.0f, 120.0f, 500.0f), CEnemy::TYPE_NORMAL, 4);
+		break;
 	}
 }
 
@@ -396,7 +400,7 @@ void CEnemy::Update(void)
 
 	if (CItem::CollisionEnemy(&m_pos, &m_posOld, &m_move, m_vtxMax, m_vtxMin) == true)
 	{// アイテムに当たった
-		CParticle::Create()->Set(m_pos, CParticle::TYPE_ENEMY);
+		CParticle::Create()->Set(m_pos, CParticle::TYPE_BULLET);
 		Uninit();
 	}
 }

@@ -14,12 +14,23 @@
 #include "result.h"
 #include "corecrt_wstdio.h"
 #include <stdio.h>
+#include "select.h"
 
 //===============================================
 // 静的メンバ変数
 //===============================================
 CNumber *CRanking::m_apNumber[MAX_RANK][MAX_NUMBER] = {};		// ナンバークラスのポインタ
 int CRanking::m_nIdxTexture = 0;								// 使用するテクスチャの番号
+
+//===============================================
+// 定数定義
+//===============================================
+namespace
+{
+	const char* FIRSTSTAGE_FILE = "data\\TXT\\ranking01.txt";		// ステージ１のランキングファイル
+	const char* SECONDSTAGE_FILE = "data\\TXT\\ranking02.txt";		// ステージ２のランキングファイル
+	const char* THIRDSTAGE_FILE = "data\\TXT\\ranking03.txt";		// ステージ３のランキングファイル
+}
 
 //===============================================
 // マクロ定義
@@ -126,11 +137,29 @@ HRESULT CRanking::Init(D3DXVECTOR3 pos, float fSizeX, float fSizeY, int nPriorit
 	}
 
 	FILE *pFile;
+	int nStage = CManager::GetInstance()->GetStage();
 
 	// ファイルを開く
-	pFile = fopen("data\\TXT\\ranking.txt", "r");
+	switch (nStage)
+	{
+	case CSelect::STAGE_1:		// ステージ１
+		pFile = fopen(FIRSTSTAGE_FILE, "r");
+		break;
 
-	if (pFile != NULL)
+	case CSelect::STAGE_2:		// ステージ２
+		pFile = fopen(SECONDSTAGE_FILE, "r");
+		break;
+
+	case CSelect::STAGE_3:		// ステージ３
+		pFile = fopen(THIRDSTAGE_FILE, "r");
+		break;
+
+	default:					// その他
+		pFile = fopen(FIRSTSTAGE_FILE, "r");
+		break;
+	}
+
+	if (pFile != nullptr)
 	{
 		for (int nCntRank = 0; nCntRank < YOUR_SCORE; nCntRank++)
 		{
@@ -276,9 +305,28 @@ void CRanking::Set(void)
 	}
 
 	// ファイルを開く
-	pFile = fopen("data\\TXT\\ranking.txt", "w");
+	int nStage = CManager::GetInstance()->GetStage();
 
-	if (pFile != NULL)
+	switch (nStage)
+	{
+	case CSelect::STAGE_1:		// ステージ１
+		pFile = fopen(FIRSTSTAGE_FILE, "w");
+		break;
+
+	case CSelect::STAGE_2:		// ステージ２
+		pFile = fopen(SECONDSTAGE_FILE, "w");
+		break;
+
+	case CSelect::STAGE_3:		// ステージ３
+		pFile = fopen(THIRDSTAGE_FILE, "w");
+		break;
+
+	default:					// その他
+		pFile = fopen(FIRSTSTAGE_FILE, "w");
+		break;
+	}
+
+	if (pFile != nullptr)
 	{
 		for (int nCntRank = 0; nCntRank < YOUR_SCORE; nCntRank++)
 		{

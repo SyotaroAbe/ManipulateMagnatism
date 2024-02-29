@@ -90,7 +90,7 @@ HRESULT CGame::Init(HWND hWnd)
 		break;
 	
 	case CSelect::STAGE_3:		// ステージ３
-		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 510.0f, -600.0f), 4);
+		m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 110.0f, -500.0f), 4);
 		break;
 
 	default:

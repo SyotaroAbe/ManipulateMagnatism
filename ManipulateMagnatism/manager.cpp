@@ -120,22 +120,16 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 	case MODE_RESULT:	// リザルト画面
 		pScene = new CResult;
 
-		//if (m_mode != MODE_TITLE)
-		//{
-			// サウンドの停止
-			CManager::GetInstance()->GetSound()->Stop();
+		// サウンドの停止
+		CManager::GetInstance()->GetSound()->Stop();
 
-			// サウンドの再生
-			CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_RANKING);
-		//}
+		// サウンドの再生
+		CManager::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_RANKING);
 		break;
 	}
 
 	if (pScene != nullptr)
 	{// 使用されている
-		// モードの設定
-		pScene->SetMode(mode);
-
 		// シーンの初期化処理
 		pScene->Init(hWnd);
 
@@ -154,6 +148,8 @@ CScene *CScene::Create(HWND hWnd, MODE mode)
 			m_nTime = 0;	// タイムを初期化
 		}
 
+		// モードの設定
+		pScene->SetMode(mode);
 	}
 
 	return pScene;

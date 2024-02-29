@@ -118,7 +118,7 @@ void CParticle::Set(D3DXVECTOR3 pos, TYPE type)
 	case TYPE_ENEMY:		// “G‚Ì”š”­
 		m_tex = CEffect::TYPE_NORMAL;
 		m_col = D3DXCOLOR(1.0f, 0.2f, 0.1f, 1.0f);
-		m_nMaxApeear = 10;
+		m_nMaxApeear = 7;
 		m_nRadius = 30;
 		m_nLife = 250;
 		break;

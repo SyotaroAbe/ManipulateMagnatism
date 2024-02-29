@@ -589,7 +589,7 @@ void CPlayer::Death(void)
 
 	if (CManager::GetMode() == CScene::MODE_GAME)
 	{
-		CParticle::Create()->Set(m_pos, CParticle::TYPE_ENEMY);
+		CParticle::Create()->Set(m_pos, CParticle::TYPE_BULLET);
 		int nTime = CGame::GetTime()->Get();
 		CGame::SetTime(nTime);		// ŠÔ‚Ìİ’è
 	}

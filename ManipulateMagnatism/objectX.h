@@ -62,6 +62,7 @@ public:		// 誰でもアクセス可能 [アクセス指定子]
 	void SetSizeMin(D3DXVECTOR3 size);
 	D3DXVECTOR3 GetSizeMin(void);
 	void SetModel(MODEL type);
+	int GetXFile(int nModel) { return m_aIdxXFile[nModel]; }
 
 protected:	// 派生クラスからもアクセスできる
 	D3DXVECTOR3 m_pos;		// 位置

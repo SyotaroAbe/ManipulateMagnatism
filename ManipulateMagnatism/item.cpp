@@ -185,7 +185,9 @@ void CItem::Update(void)
 //===============================================
 void CItem::Draw(void)
 {
-	CObjectX::Draw();
+	int nIdxXFile = CObjectX::GetXFile(CObjectX::MODEL_ITEM);
+
+	CObjectX::DrawXFile(nIdxXFile, CXFile::COL_RED);
 }
 
 //===============================================

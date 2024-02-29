@@ -161,7 +161,7 @@ void CSelect::Update(void)
 	}
 	else if (m_nSelectStage < STAGE_TUTORIAL)
 	{
-		m_nSelectStage = STAGE_MAX;
+		m_nSelectStage = STAGE_MAX -1;
 	}
 
 	switch (m_nSelectStage)
@@ -221,11 +221,7 @@ void CSelect::Update(void)
 				CRenderer::GetFade()->Set(CScene::MODE_TUTORIAL);	// チュートリアル画面へ移行
 				break;
 
-			case STAGE_1:			// ステージ１
-				CRenderer::GetFade()->Set(CScene::MODE_GAME);	// ゲーム画面へ移行
-				break;
-
-			case STAGE_2:			// ステージ２
+			default:				// ステージ１以降
 				CRenderer::GetFade()->Set(CScene::MODE_GAME);	// ゲーム画面へ移行
 				break;
 			}
