@@ -1,2 +1,3 @@
 C:\Users\student\Desktop\ManipulateMagnatism\piraner\Debug\FirstDirectX001.exe
 C:\Users\student\Desktop\magnet\manipulateMagnatism\ManipulateMagnatism\Debug\FirstDirectX001.exe
+C:\Users\student\Documents\Git\magnet\manipulateMagnatism\ManipulateMagnatism\Debug\FirstDirectX001.exe
